@@ -1,4 +1,4 @@
-var jsontufile = require('json-tu-file')
+var jsontufile = require('json-tu-file');
 
 var uglyjHeroes = jsontufile.readFileSync("heroes.json");
 var uglyjAbilities = jsontufile.readFileSync("abilities.json");
