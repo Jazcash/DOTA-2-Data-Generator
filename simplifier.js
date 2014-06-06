@@ -1,7 +1,14 @@
 var jsontufile = require('json-tu-file');
+var fs = require('fs')
+var vdf = require('vdf')
 
-var uglyjHeroes = jsontufile.readFileSync("heroes.json");
-var uglyjAbilities = jsontufile.readFileSync("abilities.json");
+var english = fs.readFileSync("dota_english.txt", "utf-8")
+var heroesvdf = fs.readFileSync("npc_heroes.txt", 'utf8')
+var abilitiesvdf = fs.readFileSync("npc_abilities.txt", 'utf8')
+var itemsvdf = fs.readFileSync("items.txt", 'utf8')
+
+var uglyjHeroes = vdf.parse(heroesvdf)
+var uglyjAbilities = vdf.parse(abilitiesvdf)
 
 function convertDictValsToNums(dict){
 	for (key in dict){
@@ -44,6 +51,23 @@ function abilitySpecialToArray(abilitiesJson){
 			}
 		}
 		abilitiesJson[ability].AbilitySpecial = abilitySpecialFixed;
+	}
+}
+
+var json = vdf.parse(english)
+
+var abilityTooltips = {}
+
+splitValuesToArrays(json.lang.Tokens)
+
+function splitValuesToArrays(dict){
+	for (key in dict){
+		var val = dict[key];
+		if (/DOTA_Tooltip_ability_/.test(key)){
+			var newkey = key.split("DOTA_Tooltip_ability_")[1]
+				//console.log(newkey)
+			abilityTooltips[newkey] = val
+		}
 	}
 }
 
@@ -105,12 +129,14 @@ for (heroid in uglyjHeroes.DOTAHeroes){
 	else  									primaryStat = intellect;
 	var IAS 					= primaryStat/100;  // Increased Attack Speed (percentage)
 
-	var abilities = {};
+	var abilities = [];
 	for (key in hero){
 		if (/Ability\d/.test(key)){
 			var abilityName = hero[key];
+			if (abilityName == "attribute_bonus") continue;
 			var ability = {}
-			abilities[abilityName] = jAbilities[abilityName];
+			
+			abilities.push(jAbilities[abilityName]);
 		}
 	}
 
@@ -147,5 +173,5 @@ for (heroid in uglyjHeroes.DOTAHeroes){
 	}
 }
 
-console.log(heroes);
-jsontufile.writeFileSync(heroes, "fullheroes.json")
+//console.log(abilityTooltips)
+console.log(heroes.earth_spirit.abilities);
