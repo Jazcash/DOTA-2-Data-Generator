@@ -5,36 +5,95 @@ var ArgumentParser 	= require('argparse').ArgumentParser;
 var fs 				= require('fs'); // file system
 var jsontufile 		= require('json-tu-file'); // import and export json files
 var vdf 			= require('vdf'); // parse VDF (Valve Data Format) files to JSON
-var vdfCleaner 		= require('vdfcleaner'); // my own functions for cleaning up the parsed VDF files by fixing data types and such
-var Hero 			= require('./hero'); // my own Hero class
-var Ability 		= require('./ability'); // my own Hero class
 
 var parser = new ArgumentParser({version: '0.0.1', addHelp:true, description: 'Argparse example'});
-parser.addArgument(["-i", "--indir"], {help: "Full path of your DotA2 folder", defaultValue:"C://Program Files (x86)/Steam/steamapps/common/dota 2 beta/"});
-parser.addArgument(["-o", "--outdir"], {help: "Output you wish the data to be dumped to", defaultValue:""});
+parser.addArgument(["-o", "--outdir"], {help: "Output directory you wish the data to be dumped to", defaultValue:""});
 var args = parser.parseArgs();
 
 main(args);
 
 function main(args){
-	var scriptsPath 		= args.indir+"res/flash3/images/heroes"
-	var heroImagesPath  	= args.indir+"res/flash3/images/heroes";
-	var abilityImagesPath 	= args.indir+"res/flash3/images/spellicons";
-	var itemImagesPath  	= args.indir+"res/flash3/images/items";
-	var heroWebmsPath   	= args.indir+"res/webms";
-	var miniIconsPath 		= args.indir+"res/flash3/images/miniheroes";
+	var npcPath 			= "resources/scripts/npc/";
+	var localesPath 		= "resources/locales/";
+	var heroImagesPath  	= "resources/images/heroes/";
+	var miniIconsPath 		= "resources/images/miniheroes/";
+	var abilityImagesPath 	= "resources/images/spellicons/";
+	var itemImagesPath  	= "resources/images/items/";
+	var heroWebmsPath   	= "resources/webms/";
 
 	// VDF files parsed to JSON then data types fixed general cleaning done making them usable
-	var preHeroesJson 		= removeVersion(vdfCleaner.clean(vdf.parse(fs.readFileSync("res/entitydata/npc_heroes.txt", 'utf8'))).DOTAHeroes);
+	var preHeroesJson 		= vdfToJson(fs.readFileSync(npcPath+"npc_heroes.txt", 'utf8'));
+	var preAbilitiesJson 	= vdfToJson(fs.readFileSync(npcPath+"npc_abilities.txt", 'utf8'));
 	var defaultHero			= preHeroesJson.npc_dota_hero_base; delete preHeroesJson.npc_dota_hero_base; // contains all the default values for a hero, most values are then overridden by each specific hero's data
-	var preAbilitiesJson 	= removeVersion(vdfCleaner.clean(vdf.parse(fs.readFileSync("res/entitydata/npc_abilities.txt", 'utf8'))).DOTAAbilities);
-	delete preAbilitiesJson.ability_base;
-	delete preAbilitiesJson.default_attack;
-	delete preAbilitiesJson.attribute_bonus;
+	//delete preAbilitiesJson.ability_base;
+	//delete preAbilitiesJson.default_attack;
+	//delete preAbilitiesJson.attribute_bonus;
 	// var itemsJson 		= vdfCleaner.clean(vdf.parse(fs.readFileSync("res/entitydata/items.txt", 'utf8')));
 	// //var lang 			= getLanguagesJson("res/lang")
 	// var language  		= {english:parseLanguageJson(vdf.parse(fs.readFileSync("res/lang/dota_english.txt", "utf-8")))}; // REPLACE THIS LINE WITH THE ABOVE LINE IN FINAL RELEASE
 	// var heroes 			= getHeroes(heroesJson, abilitiesJson, language.english);
+	console.log(preHeroesJson);
+}
+
+function vdfToJson(inJson){
+	var json = vdf.parse(inJson);
+	if ("DOTAHeroes" in json) json = json.DOTAHeroes;
+	if ("DOTAAbilities" in json) json = json.DOTAAbilities;
+
+	if ("Version" in json) delete json.Version;
+	if ("default_attack" in json) delete json.default_attack;
+	if ("ability_base" in json) delete json.ability_base;
+	if ("attribute_bonus" in json) delete json.attribute_bonus;
+	//if ("npc_dota_hero_base" in json) delete json.npc_dota_hero_base;
+
+
+	return json;
+}
+
+function cleanVDF(){
+	function convertDictValsToNums(dict){
+		for (key in dict){
+			if (typeof(dict[key]) == "object"){
+				convertDictValsToNums(dict[key]);
+			} else {
+				if (dict[key].indexOf(",") == -1 && dict[key].indexOf(" ") == -1)
+					dict[key] = parseFloat(dict[key]) || dict[key];
+				if (dict[key] == "0" || dict[key] == "0.0"){
+					dict[key] = 0;
+				}
+			}
+		}
+	}
+
+	function splitSpaces(dict){
+		for (key in dict){
+			if (typeof(dict[key]) == "object"){
+				splitSpaces(dict[key]);
+			} else {
+				if (dict[key].indexOf(" ") != -1 && dict[key].indexOf("|") == -1){
+					dict[key] = dict[key].split(" ");
+				} else if(dict[key].indexOf("|") != -1){
+					dict[key] = dict[key].split(" | ");
+				}
+			}
+		}
+	}
+
+	function abilitySpecialToArray(abilitiesJson){
+		for (ability in abilitiesJson){
+			if (ability == "ability_base" || ability == "default_attack" || ability == "attribute_bonus") continue;
+			var abilitySpecial = abilitiesJson[ability].AbilitySpecial;
+			var abilitySpecialFixed = {};
+			for (index in abilitySpecial){
+				for (property in abilitySpecial[index]){
+					if (property != "var_type"){
+						abilitySpecialFixed[property] = abilitySpecial[index][property];
+					}
+				}
+			}
+			abilitiesJson[ability].AbilitySpecial = abilitySpecialFixed;
+		}
+	}
 }
 
 // Could take up to a minute to run this function
@@ -53,7 +112,7 @@ function parseLanguageJson(languageJson){
 
 // remove version numbers to leave only pure data
 function removeVersion(dict){
-	if ("Version" in dict) delete dict.Version;
+	
 	return dict;
 }
 
