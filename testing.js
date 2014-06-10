@@ -36,6 +36,26 @@ function main(args){
 }
 
 function vdfToJson(inJson){
+	function traverse(object){
+		for (var key in object){
+			if (typeof(object[key]) == "object"){
+				traverse(object[key]);
+			} else {
+				if (object[key].indexOf(",") != -1){
+					object[key] = object[key].split(",");
+				} else if (object[key].indexOf(" | ") != -1){
+					object[key] = object[key].split(" | ");
+				} else if(object[key].indexOf(" ") != -1){
+					object[key] = object[key].split(" ");
+				}
+				if (object[key] == "0" || object[key] == "0.0"){
+					object[key] = 0;
+				}
+				object[key] = parseFloat(object[key]) || object[key];
+			}
+		}
+	}
+
 	var json = vdf.parse(inJson);
 	if ("DOTAHeroes" in json) json = json.DOTAHeroes;
 	if ("DOTAAbilities" in json) json = json.DOTAAbilities;
@@ -44,8 +64,8 @@ function vdfToJson(inJson){
 	if ("default_attack" in json) delete json.default_attack;
 	if ("ability_base" in json) delete json.ability_base;
 	if ("attribute_bonus" in json) delete json.attribute_bonus;
-	//if ("npc_dota_hero_base" in json) delete json.npc_dota_hero_base;
 
+	traverse(json);
 
 	return json;
 }
