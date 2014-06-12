@@ -26,13 +26,10 @@ function main(args){
 	var defaultHero			= preHeroesJson.npc_dota_hero_base; delete preHeroesJson.npc_dota_hero_base; // base hero data
 	var preAbilitiesJson 	= vdfToJson(fs.readFileSync(npcPath+"npc_abilities.txt", 'utf8'));
 	var preItemsJson 		= vdfToJson(fs.readFileSync(npcPath+"items.txt", 'utf8'));
+	var locale 				= getLanguagesJson(localesPath)
 
-	var lang 				= getLanguagesJson(localesPath)
-
-
-	// var language  		= {english:parseLanguageJson(vdf.parse(fs.readFileSync("res/lang/dota_english.txt", "utf-8")))}; // REPLACE THIS LINE WITH THE ABOVE LINE IN FINAL RELEASE
 	// var heroes 			= getHeroes(heroesJson, abilitiesJson, language.english);
-	//console.log(lang);
+	console.log(locale.subtitles)
 }
 
 // vdf module does generic VDF to JSON conversion, this function is DotA2 specific and formats numbers and other values appropriately
@@ -103,19 +100,36 @@ function vdfToJson(inJson){
 // Could take up to a minute to run this function
 function getLanguagesJson(dir){
 	var locale = {"info":{}, "subtitles":{}};
+	var heroPart = /\_(\w*)_english/g;
 	fs.readdirSync(dir).forEach(function(filename) {
-		if (/dota_\w*.txt/.test(filename)){
+		if (filename[0] == "." || /announcer|koreana|tut1|tutorial/.test(filename)) return;
+		var filepath = dir+filename;
+		var encoding = (fs.readFileSync(filepath)[0] == 255) ? "ucs2" : "utf-8";
+		if (/dota_/g.test(filename)){
+			var output = vdf.parse(fs.readFileSync(filepath, encoding));
 			var language = filename.split("_")[1].split(".")[0];
-			//var content = vdf.parse(fs.readFileSync(dir+"/"+filename, "utf-8"));
-			console.log(fs.readFileSync(dir+"/"+filename, "utf-8"));
-			//locale.info[language] = content;
-		} else if (/subtitles\_((?!announcer|tutorial|tut1)[\s\S])\w*english.txt/.test(filename)){
-			var heroname = filename.match(/\_(\w*)_english/)[1];
-			//var content = vdf.parse(fs.readFileSync(dir+"/"+filename, "utf-8"));
-			//locale.subtitles[heroname] = content;
+			for (var key in output){
+				locale.info[language] = output[key].Tokens;
+			}
+		} else if (/subtitles\_/g.test(filename)){
+			var output = vdf.parse(fs.readFileSync(filepath, encoding)); 
+			var heroname = getMatches(filename, heroPart, 1)[0];
+			for (var key in output){
+				locale.subtitles[heroname] = output[key].Tokens;
+			}
 		}
 	});
 	return locale;
+}
+
+function getMatches(string, regex, index) {
+    index || (index = 1); // default to the first capturing group
+    var matches = [];
+    var match;
+    while (match = regex.exec(string)) {
+        matches.push(match[index]);
+    }
+    return matches;
 }
 
 function jsonHeroToHero(jsonHeroName, jsonHero, language){
