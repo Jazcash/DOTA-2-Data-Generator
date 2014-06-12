@@ -23,35 +23,66 @@ function main(args){
 
 	// VDF files parsed to JSON then data types fixed general cleaning done making them usable
 	var preHeroesJson 		= vdfToJson(fs.readFileSync(npcPath+"npc_heroes.txt", 'utf8'));
+	var defaultHero			= preHeroesJson.npc_dota_hero_base; delete preHeroesJson.npc_dota_hero_base; // base hero data
 	var preAbilitiesJson 	= vdfToJson(fs.readFileSync(npcPath+"npc_abilities.txt", 'utf8'));
-	var defaultHero			= preHeroesJson.npc_dota_hero_base; delete preHeroesJson.npc_dota_hero_base; // contains all the default values for a hero, most values are then overridden by each specific hero's data
-	//delete preAbilitiesJson.ability_base;
-	//delete preAbilitiesJson.default_attack;
-	//delete preAbilitiesJson.attribute_bonus;
-	// var itemsJson 		= vdfCleaner.clean(vdf.parse(fs.readFileSync("res/entitydata/items.txt", 'utf8')));
-	// //var lang 			= getLanguagesJson("res/lang")
+	var preItemsJson 		= vdfToJson(fs.readFileSync(npcPath+"items.txt", 'utf8'));
+
+	var lang 				= getLanguagesJson(localesPath)
+
+
 	// var language  		= {english:parseLanguageJson(vdf.parse(fs.readFileSync("res/lang/dota_english.txt", "utf-8")))}; // REPLACE THIS LINE WITH THE ABOVE LINE IN FINAL RELEASE
 	// var heroes 			= getHeroes(heroesJson, abilitiesJson, language.english);
-	console.log(preHeroesJson);
+	//console.log(lang);
 }
 
+// vdf module does generic VDF to JSON conversion, this function is DotA2 specific and formats numbers and other values appropriately
 function vdfToJson(inJson){
 	function traverse(object){
 		for (var key in object){
-			if (typeof(object[key]) == "object"){
+			if (typeof(object[key]) == "object" && key != "AbilitySpecial" && key != "ItemRequirements"){
 				traverse(object[key]);
+			} else if(key == "AbilitySpecial"){
+				var AbilitySpecial = object[key];
+				var properties = {};
+				for (var index in AbilitySpecial){
+					var property = AbilitySpecial[index];
+					for (var name in property){
+						if (name != "var_type"){
+							properties[name] = property[name];
+						}
+					}
+				}
+				object[key] = properties;
+				traverse(object[key]);
+			} else if (key == "ItemRequirements"){
+				var ItemRequirements = object[key];
+				var requirements = [];
+				for (var index in ItemRequirements){
+					var thisRequirements = ItemRequirements[index].split(";");
+					for (var requirement in thisRequirements){
+						requirements.push(thisRequirements[requirement]);
+					}
+				}
+				object[key] = requirements;
+				traverse(object[key]);
+			} else if (object[key].indexOf(",") != -1){ // Roles
+				object[key] = object[key].split(","); 
+				traverse(object[key]);
+			} else if (object[key].indexOf("; ") != -1){ // Timbersaw NameAliases exception (silly VDF files)
+				object[key] = object[key].split("; ");
+			} else if (object[key].indexOf(";") != -1){ // NameAliases
+				object[key] = object[key].split(";");
+			} else if (object[key].indexOf(" | ") != -1){ // Ability Types
+				object[key] = object[key].split(" | ");
+			} else if (object[key].indexOf(" ") != -1 && key != "ItemAliases"){
+				object[key] = object[key].split(" ");
+				traverse(object[key]);
+			} else if (object[key] == "0" || object[key] == "0.0"){
+				object[key] = 0;
+			} else if (object[key] == ""){
+				delete object[key];
 			} else {
-				if (object[key].indexOf(",") != -1){
-					object[key] = object[key].split(",");
-				} else if (object[key].indexOf(" | ") != -1){
-					object[key] = object[key].split(" | ");
-				} else if(object[key].indexOf(" ") != -1){
-					object[key] = object[key].split(" ");
-				}
-				if (object[key] == "0" || object[key] == "0.0"){
-					object[key] = 0;
-				}
-				object[key] = parseFloat(object[key]) || object[key];
+				object[key] = parseFloat(object[key]) || object[key].trim();
 			}
 		}
 	}
@@ -59,7 +90,6 @@ function vdfToJson(inJson){
 	var json = vdf.parse(inJson);
 	if ("DOTAHeroes" in json) json = json.DOTAHeroes;
 	if ("DOTAAbilities" in json) json = json.DOTAAbilities;
-
 	if ("Version" in json) delete json.Version;
 	if ("default_attack" in json) delete json.default_attack;
 	if ("ability_base" in json) delete json.ability_base;
@@ -70,70 +100,22 @@ function vdfToJson(inJson){
 	return json;
 }
 
-function cleanVDF(){
-	function convertDictValsToNums(dict){
-		for (key in dict){
-			if (typeof(dict[key]) == "object"){
-				convertDictValsToNums(dict[key]);
-			} else {
-				if (dict[key].indexOf(",") == -1 && dict[key].indexOf(" ") == -1)
-					dict[key] = parseFloat(dict[key]) || dict[key];
-				if (dict[key] == "0" || dict[key] == "0.0"){
-					dict[key] = 0;
-				}
-			}
-		}
-	}
-
-	function splitSpaces(dict){
-		for (key in dict){
-			if (typeof(dict[key]) == "object"){
-				splitSpaces(dict[key]);
-			} else {
-				if (dict[key].indexOf(" ") != -1 && dict[key].indexOf("|") == -1){
-					dict[key] = dict[key].split(" ");
-				} else if(dict[key].indexOf("|") != -1){
-					dict[key] = dict[key].split(" | ");
-				}
-			}
-		}
-	}
-
-	function abilitySpecialToArray(abilitiesJson){
-		for (ability in abilitiesJson){
-			if (ability == "ability_base" || ability == "default_attack" || ability == "attribute_bonus") continue;
-			var abilitySpecial = abilitiesJson[ability].AbilitySpecial;
-			var abilitySpecialFixed = {};
-			for (index in abilitySpecial){
-				for (property in abilitySpecial[index]){
-					if (property != "var_type"){
-						abilitySpecialFixed[property] = abilitySpecial[index][property];
-					}
-				}
-			}
-			abilitiesJson[ability].AbilitySpecial = abilitySpecialFixed;
-		}
-	}
-}
-
 // Could take up to a minute to run this function
 function getLanguagesJson(dir){
-	var languageFiles = {};
+	var locale = {"info":{}, "subtitles":{}};
 	fs.readdirSync(dir).forEach(function(filename) {
-		var language = filename.split("_")[1].split(".")[0];
-		languageFiles[language] = parseLanguageJson(vdf.parse(fs.readFileSync(dir+"/"+filename, "utf-8")));
+		if (/dota_\w*.txt/.test(filename)){
+			var language = filename.split("_")[1].split(".")[0];
+			//var content = vdf.parse(fs.readFileSync(dir+"/"+filename, "utf-8"));
+			console.log(fs.readFileSync(dir+"/"+filename, "utf-8"));
+			//locale.info[language] = content;
+		} else if (/subtitles\_((?!announcer|tutorial|tut1)[\s\S])\w*english.txt/.test(filename)){
+			var heroname = filename.match(/\_(\w*)_english/)[1];
+			//var content = vdf.parse(fs.readFileSync(dir+"/"+filename, "utf-8"));
+			//locale.subtitles[heroname] = content;
+		}
 	});
-	return languageFiles;
-}
-
-function parseLanguageJson(languageJson){
-	return languageJson.lang.Tokens;
-}
-
-// remove version numbers to leave only pure data
-function removeVersion(dict){
-	
-	return dict;
+	return locale;
 }
 
 function jsonHeroToHero(jsonHeroName, jsonHero, language){
