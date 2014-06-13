@@ -136,7 +136,7 @@ function getHeroes(heroesJson, abilitiesJson, heroSubs, languageJson){
 				if (abilityName == "attribute_bonus") continue;
 				var abilityJson = abilitiesJson[abilityName];
 				for (var property in abilityJson.AbilitySpecial){
-					console.log()
+					//console.log()
 				}
 			}
 		}
