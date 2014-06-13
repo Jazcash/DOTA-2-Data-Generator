@@ -28,8 +28,7 @@ function main(args){
 	var preItemsJson 		= vdfToJson(fs.readFileSync(npcPath+"items.txt", 'utf8'));
 	var locale 				= getLanguagesJson(localesPath)
 
-	// var heroes 			= getHeroes(heroesJson, abilitiesJson, language.english);
-	console.log(locale.subtitles)
+	var engHeroes 			= getHeroes(preHeroesJson, preAbilitiesJson, locale.subtitles, locale.info.english);
 }
 
 // vdf module does generic VDF to JSON conversion, this function is DotA2 specific and formats numbers and other values appropriately
@@ -105,13 +104,13 @@ function getLanguagesJson(dir){
 		if (filename[0] == "." || /announcer|koreana|tut1|tutorial/.test(filename)) return;
 		var filepath = dir+filename;
 		var encoding = (fs.readFileSync(filepath)[0] == 255) ? "ucs2" : "utf-8";
-		if (/dota_/g.test(filename)){
+		if (/dota_english/g.test(filename)){              // REPLACE THIS LINE WITH THIS LATER: if (/dota_/g.test(filename)){
 			var output = vdf.parse(fs.readFileSync(filepath, encoding));
 			var language = filename.split("_")[1].split(".")[0];
 			for (var key in output){
 				locale.info[language] = output[key].Tokens;
 			}
-		} else if (/subtitles\_/g.test(filename)){
+		} else if (/subtitles_antimage\_/g.test(filename)){				// REPLACE THIS LINE WITH THIS LATER: } else if (/subtitles\_/g.test(filename)){
 			var output = vdf.parse(fs.readFileSync(filepath, encoding)); 
 			var heroname = getMatches(filename, heroPart, 1)[0];
 			for (var key in output){
@@ -122,14 +121,28 @@ function getLanguagesJson(dir){
 	return locale;
 }
 
-function getMatches(string, regex, index) {
-    index || (index = 1); // default to the first capturing group
-    var matches = [];
-    var match;
-    while (match = regex.exec(string)) {
-        matches.push(match[index]);
-    }
-    return matches;
+// get all fully usable heroes and all their specific language data
+function getHeroes(heroesJson, abilitiesJson, heroSubs, languageJson){
+	var heroes = [];
+	for (var fullherourl in heroesJson){ // for each hero
+		var preHero = heroesJson[fullherourl];
+		var herourl = fullherourl.split("npc_dota_hero_")[1];
+		var subtitles = heroSubs[herourl];
+		
+		var abilities = [];
+		for (var key in preHero){
+			if (/Ability\d/.test(key)){
+				var abilityName = preHero[key];
+				if (abilityName == "attribute_bonus") continue;
+				var abilityJson = abilitiesJson[abilityName];
+				for (var property in abilityJson.AbilitySpecial){
+					console.log()
+				}
+			}
+		}
+
+	}
+	return heroes;
 }
 
 function jsonHeroToHero(jsonHeroName, jsonHero, language){
@@ -251,13 +264,13 @@ function getHeroAbilityNames(heroUrl, jsonHero){
 	return abilityNames;
 }
 
-// get all fully usable heroes and all their specific language data
-function getHeroes(heroesJson, abilitiesJson, locale){
-	var heroes = [];
-
-	for (var heroJson in heroesJson){ // for each hero
-		heroes.push(jsonHeroToHero(heroJson, heroesJson[heroJson], locale));
-	}
-
-	return heroes;
+// returns an array of matches of a string for given regex
+function getMatches(string, regex, index) {
+    index || (index = 1); // default to the first capturing group
+    var matches = [];
+    var match;
+    while (match = regex.exec(string)) {
+        matches.push(match[index]);
+    }
+    return matches;
 }
