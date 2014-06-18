@@ -13,7 +13,7 @@ var args = parser.parseArgs();
 main(args);
 
 function main(args){
-	var npcPath 			= "resources/scripts/npc/";
+	var npcPath 			= "resources/scripts/";
 	var localesPath 		= "resources/locales/";
 	var heroImagesPath  	= "resources/images/heroes/";
 	var miniIconsPath 		= "resources/images/miniheroes/";
@@ -129,29 +129,31 @@ function getHeroes(heroesJson, abilitiesJson, heroSubs, languageJson){
 		var preHero = heroesJson[fullherourl];
 		var herourl = fullherourl.split("npc_dota_hero_")[1];
 		var subtitles = heroSubs[herourl];
-		
-		var abilities = [];
-		for (var key in preHero){
-			if (/Ability\d/.test(key)){
-				var abilityName = preHero[key];
-				if (abilityName == "attribute_bonus") continue;
-				var ability = abilitiesJson[abilityName]
-				ability["Name"] = abilityName
-				abilities.push(ability)
-			}
-		}
+		//heroes.push(getHero(herourl, ));
 
-		var fullname = languageJson[fullherourl];
-
-		getHero(herourl, preHero, abilities, subtitles, languageJson)
+		console.log(heroesJson)
+		// var abilities = [];
+		// for (var key in preHero){
+		// 	if (/Ability\d/.test(key)){
+		// 		var abilityUrl = preHero[key];
+		// 		if (abilityUrl == "attribute_bonus") continue;
+		// 		var ability = abilitiesJson[abilityUrl]
+		// 		ability["Url"] = abilityUrl
+		// 		ability["Name"] = languageJson["DOTA_Tooltip_ability_"+abilityUrl] || languageJson["DOTA_Tooltip_modifier_"+abilityUrl];
+		// 		ability["Description"] = languageJson["DOTA_Tooltip_ability_"+abilityUrl+"_Description"] || null;
+		// 		ability["Lore"] = languageJson["DOTA_Tooltip_ability_"+abilityUrl+"_Lore"] || null; // || null;
+		// 		abilities.push(ability)
+		// 	}
+		// }
 
 	}
 	return heroes;
 }
 
 function getHero(herourl, hero, abilities, subtitles, locale){
+	//var hero = {};
 	if (herourl == "antimage"){
-		//console.log(locale)
+		return hero
 	}
 }
 
