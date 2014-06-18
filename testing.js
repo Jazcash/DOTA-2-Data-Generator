@@ -29,6 +29,7 @@ function main(args){
 	var locale 				= getLanguagesJson(localesPath)
 
 	var engHeroes 			= getHeroes(preHeroesJson, preAbilitiesJson, locale.subtitles, locale.info.english);
+	console.log(engHeroes)
 }
 
 // vdf module does generic VDF to JSON conversion, this function is DotA2 specific and formats numbers and other values appropriately
@@ -134,15 +135,24 @@ function getHeroes(heroesJson, abilitiesJson, heroSubs, languageJson){
 			if (/Ability\d/.test(key)){
 				var abilityName = preHero[key];
 				if (abilityName == "attribute_bonus") continue;
-				var abilityJson = abilitiesJson[abilityName];
-				for (var property in abilityJson.AbilitySpecial){
-					//console.log()
-				}
+				var ability = abilitiesJson[abilityName]
+				ability["Name"] = abilityName
+				abilities.push(ability)
 			}
 		}
 
+		var fullname = languageJson[fullherourl];
+
+		getHero(herourl, preHero, abilities, subtitles, languageJson)
+
 	}
 	return heroes;
+}
+
+function getHero(herourl, hero, abilities, subtitles, locale){
+	if (herourl == "antimage"){
+		//console.log(locale)
+	}
 }
 
 function jsonHeroToHero(jsonHeroName, jsonHero, language){
