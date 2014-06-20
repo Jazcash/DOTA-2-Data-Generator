@@ -27,6 +27,8 @@ var LOCALES 			= getLocales(PATH.LOCALES);
 
 var HEROES 				= getHeroes();
 
+console.log(LOCALES)
+
 function vdfToJson(inJson){
 	function traverse(object){
 		for (var key in object){
