@@ -8,7 +8,7 @@ var vdf 			= require('vdf'); // parse VDF (Valve Data Format) files to JSON
 
 // global variables
 var PATH = {
-	LOCALES: "resources/locales/",
+	LOCALES: "resources/localesTesting/",
 	HEROES: "resources/scripts/npc_heroes.txt",
 	ABILITIES: "resources/scripts/npc_abilities.txt",
 	ITEMS: "resources/scripts/items.txt",
@@ -25,9 +25,7 @@ var INITIAL_Abilities	= vdfToJson(fs.readFileSync(PATH.ABILITIES, 'utf8'));
 var INITIAL_Items 		= vdfToJson(fs.readFileSync(PATH.ITEMS, 'utf8'));
 var LOCALES 			= getLocales(PATH.LOCALES);
 
-var HEROES 				= getHeroes();
-
-console.log(LOCALES)
+var heroes 				= getHeroes();
 
 function vdfToJson(inJson){
 	function traverse(object){
@@ -170,10 +168,33 @@ function getHeroAbility(abilityurl, herourl){
 	    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	}
 
-	var abilityname = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
-	if (abilityname === undefined || abilityname == "" || abilityname == " ") {
-		abilityname = toTitleCase(abilityurl.split(herourl+"_")[1].replace(/\_/g, " "));
+	var name = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
+	if (name === undefined || name == "" || name == " ") {
+		name = toTitleCase(abilityurl.split(herourl+"_")[1].replace(/\_/g, " "));
+	}
+
+	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
+	if (description === undefined || description == "" || description == " ") {
+		description = "";
 	}
 	
-	
+	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
+	if (lore === undefined || lore == "" || lore == " ") {
+		lore = "";
+	}
+
+	var notes = [];
+	for (var i=0; i<5; i++){
+		var note =  LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Note"+i];
+		if (note == undefined) break;
+		notes.push(note);
+	}
+
+	var data = INITIAL_Abilities[abilityurl];
+	data["Name"] = name;
+	data["Description"] = description;
+	data["Lore"] = lore;
+	data["Notes"] = notes;
+
+	console.log(data);
 }
