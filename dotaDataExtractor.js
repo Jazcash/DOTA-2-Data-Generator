@@ -164,23 +164,41 @@ function getHeroAbilities(abilityurls, herourl){
 }
 
 function getHeroAbility(abilityurl, herourl){
-	function toTitleCase(str){
-	    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
+	function getSimpleNames(key, longpart){
+		var things = [];
+		if (key in data){
+			var thing = (typeof(data[key]) == "object") ? data[key] : [data[key]];
+			for (var i in thing){
+				things.push(thing[i].split(longpart+"_")[1]);
+			}
+		}
+		if (things.length != 0) return things; else return null;
 	}
 
-	var name = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
-	if (name === undefined || name == "" || name == " ") {
-		name = toTitleCase(abilityurl.split(herourl+"_")[1].replace(/\_/g, " "));
+	function objectify(value){
+		if (typeof(value) != "object") return [value]; else return value;
+	}
+
+	var shortAbilityUrl = abilityurl.split(herourl+"_")[1];
+
+	var title = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
+	if (title === undefined || title == "" || title == " ") {
+		title = toTitleCase(abilityurl.split(herourl+"_")[1].replace(/\_/g, " "));
 	}
 
 	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
 	if (description === undefined || description == "" || description == " ") {
 		description = "";
+	} else {
+		description = description.replace(/(<[^>]*>)/g, "").replace("\\n\\n", " ");
 	}
 	
 	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
 	if (lore === undefined || lore == "" || lore == " ") {
 		lore = "";
+	} else {
+		lore = lore.replace(/(<[^>]*>)/g, "").replace("\\n\\n", " ");
 	}
 
 	var notes = [];
@@ -191,10 +209,57 @@ function getHeroAbility(abilityurl, herourl){
 	}
 
 	var data = INITIAL_Abilities[abilityurl];
-	data["Name"] = name;
-	data["Description"] = description;
-	data["Lore"] = lore;
-	data["Notes"] = notes;
 
-	console.log(data);
+	var special = [];
+	if ("AbilitySpecial" in data){
+		for (var specialurl in data.AbilitySpecial){
+			var value = data.AbilitySpecial[specialurl];
+			if (typeof(value) != "object") value = [value];
+			var name = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_"+specialurl];
+			if (name == undefined) continue;
+			var type = (name[0] == "%") ? "percentage" : "fixed";
+			if (type == "percentage"){
+				name = name.substr(1);
+				for (var i in value){
+					value[i] = value[i]/100;
+				}
+			}
+			special.push({
+				name: toTitleCase(name),
+				url: specialurl,
+				type: type,
+				value: value
+			})
+		}
+	}
+	delete data.AbilitySpecial;
+
+	var newdata = {
+		ID: data.ID,
+		Url: shortAbilityUrl,
+		Name: title,
+		Description: description,
+		Lore: lore,
+		Notes: notes,
+		Special: special
+	};
+
+	delete data.ID;
+
+	for (var key in data){
+		newdata[key.substr(7)] = objectify(data[key]);
+	}
+
+	console.log(newdata)
+
+	// var type = getSimpleNames("Type", "DOTA_ABILITY_TYPE");
+	// var behavior = getSimpleNames("Behavior", "DOTA_ABILITY_BEHAVIOR");
+	// var targetType = getSimpleNames("UnitTargetType", "DOTA_UNIT_TARGET");
+	// var targetTeam = getSimpleNames("UnitTargetTeam", "DOTA_UNIT_TARGET_TEAM");
+	// var targetFlags = getSimpleNames("AbilityUnitTargetFlags", "DOTA_UNIT_TARGET_FLAG") || getSimpleNames("AbilityUnitTargetFlag", "DOTA_UNIT_TARGET_FLAG");
+	// var damageType = getSimpleNames("AbilityUnitDamageType", "DAMAGE_TYPE");
+}
+
+function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
