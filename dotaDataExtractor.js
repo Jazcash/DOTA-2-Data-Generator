@@ -140,15 +140,16 @@ function getHeroes(){
 
 	for (var fullherourl in INITIAL_Heroes){
 		var INITIAL_Hero = INITIAL_Heroes[fullherourl];
-		var herourl = fullherourl.split("npc_dota_hero_")[1];
-		var hero = getHero(INITIAL_Hero, herourl);
+		var longHeroUrl = fullherourl;
+		var shortHeroUrl = fullherourl.split("npc_dota_hero_")[1];
+		var hero = getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl);
 		heroes.push(hero);
 	}
 
 	return heroes;
 }
 
-function getHero(INITIAL_Hero, herourl){
+function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 	var hero = {};
 
 	console.log(INITIAL_Hero);
@@ -163,16 +164,20 @@ function getHero(INITIAL_Hero, herourl){
 
 	var title = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
 	if (title === undefined || title == "" || title == " ") {
-		title = toTitleCase(abilityurl.split(herourl+"_")[1].replace(/\_/g, " "));
+		title = toTitleCase(abilityurl.split(shortHeroUrl+"_")[1].replace(/\_/g, " "));
 	}
-	hero["Title"] = LOCALES.LANGUAGES.english["npc_dota_hero_"+herourl];
+	hero["Title"] = LOCALES.LANGUAGES.english[longHeroUrl];
 
-	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
+	hero["Url"] = shortHeroUrl;
+
+	hero["ID"] = INITIAL_Hero.HeroID;
+
+	var lore = LOCALES.LANGUAGES.english[longHeroUrl+"_bio"];
 	if (lore !== undefined && lore != "" && lore != " ") {
 		hero["Lore"] = lore.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ");
 	}
 
-	hero["Abilities"] = getHeroAbilities(abilityurls, herourl);
+	hero["Abilities"] = getHeroAbilities(abilityurls, shortHeroUrl);
 
 	return hero;
 }
