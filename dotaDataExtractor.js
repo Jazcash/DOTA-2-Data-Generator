@@ -33,7 +33,7 @@ var LOCALES 			= getLocales(PATH.LOCALES);
 
 var heroes 				= getHeroes();
 
-console.log(heroes);
+jsontufile.writeFile(heroes, "heroes.json", "utf-8")
 
 function vdfToJson(inJson){
 	function traverse(object){
