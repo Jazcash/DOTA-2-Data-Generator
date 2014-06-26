@@ -152,7 +152,99 @@ function getHeroes(){
 function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 	var hero = {};
 
-	console.log(INITIAL_Hero);
+	hero["Title"] = LOCALES.LANGUAGES.english[longHeroUrl];
+	hero["Url"] = shortHeroUrl;
+	hero["ID"] = INITIAL_Hero.HeroID;
+
+	var lore = LOCALES.LANGUAGES.english[longHeroUrl+"_bio"];
+	if (lore !== undefined && lore != "" && lore != " ") {
+		hero["Lore"] = lore.replace(/(<[^>]*>)|(\\)*\\n|\\/g, "").replace(/\s(\s)+/g, " ").replace(/\-\-/g, " \- ");
+	}
+
+	if (INITIAL_Hero.Role !== undefined){
+		if (typeof(INITIAL_Hero.Role) != "object") INITIAL_Hero.Role = [INITIAL_Hero.Role];
+		var roles = {};
+		for (var i=0; i<INITIAL_Hero.Role.length; i++){
+			roles[INITIAL_Hero.Role[i]] = INITIAL_Hero.Rolelevels[i];
+		}
+		hero["SuggestedRoleLevels"] = roles;
+	}
+
+	hero["Enabled"] = (INITIAL_Hero.Enabled == 1) ? true : false;
+	hero["Side"] = (INITIAL_Hero.Team == "Good") ? "Radiant" : "Dire";
+	hero["Aliases"] = INITIAL_Hero.NameAliases || null;
+	if (typeof(hero["Aliases"]) != "object") hero["Aliases"] = [hero["Aliases"]];
+	//hero["IsRanged"] = (INITIAL_Hero.AttackCapabilities == "DOTA_UNIT_CAP_MELEE_ATTACK") ? false : true;
+
+	function getProperty(key){
+		if (key in INITIAL_Hero) return INITIAL_Hero[key];
+		return INITIAL_Defaulthero[key];
+	}
+
+	hero["AttackCapabilities"] = getProperty("AttackCapabilities");
+	hero["PrimaryAttribute"] = getProperty("AttributePrimary");
+	//hero["AttackDamageType"] = getProperty("AttackDamageType");
+
+	var strength = getProperty("AttributeBaseStrength");
+	var strengthGain = getProperty("AttributeStrengthGain");
+	var agility = getProperty("AttributeBaseAgility");
+	var agilityGain = getProperty("AttributeAgilityGain");
+	var intelligence = getProperty("AttributeBaseIntelligence");
+	var intelligenceGain = getProperty("AttributeIntelligenceGain");
+	var health = getProperty("StatusHealth");
+	var healthRegen = getProperty("StatusHealthRegen");
+	var mana = getProperty("StatusMana");
+	var manaRegen = getProperty("StatusManaRegen");
+	var attackDamageMin = getProperty("AttackDamageMin");
+	var attackDamageMax = getProperty("AttackDamageMax");
+	var BAT = getProperty("AttackRate");
+	var armor = getProperty("ArmorPhysical");
+	var magicResistance = getProperty("MagicalResistance");
+	var movementSpeed = getProperty("MovementSpeed");
+	var turnRate = getProperty("MovementTurnRate");
+	
+	var primaryStat = 0;
+	switch(hero.PrimaryAttribute){
+		case "DOTA_ATTRIBUTE_STRENGTH":
+			primaryStat = strength;
+			break;
+		case "DOTA_ATTRIBUTE_INTELLECT":
+			primaryStat = intelligence;
+			break;
+		case "DOTA_ATTRIBUTE_AGILITY":
+			primaryStat = agility;
+			break;
+	}
+	var IAS = agility/100;
+
+	hero.Initial = {};
+	hero.Initial["Strength"] = strength;
+	hero.Initial["StrengthGain"] = strengthGain;
+	hero.Initial["Agility"] = agility;
+	hero.Initial["AgilityGain"] = agilityGain;
+	hero.Initial["Intelligence"] = intelligence;
+	hero.Initial["IntelligenceGain"] = intelligenceGain;
+	hero.Initial["Health"] = health + (19 * strength);
+	hero.Initial["HealthRegen"] = healthRegen + (0.03 * strength);
+	hero.Initial["Mana"] = mana + (13 * intelligence);
+	hero.Initial["ManaRegen"] = manaRegen + (0.04 * intelligence);
+	hero.Initial["Armor"] = parseFloat(parseFloat(armor + 0.14 * agility).toFixed(2));
+	hero.Initial["MagicResistance"] = magicResistance / 100;
+	hero.Initial["MinDamage"] = attackDamageMin + primaryStat;
+	hero.Initial["MaxDamage"] = attackDamageMax + primaryStat;
+	hero.Initial["AvgDamage"] = (hero.Initial["MinDamage"] + hero.Initial["MaxDamage"])/2;
+	hero.Initial["IncreasedAttackSpeed"] = IAS * 100;
+	hero.Initial["BaseAttackTime"] = BAT;
+	hero.Initial["AttackTime"] = parseFloat((BAT / (1 + IAS)).toFixed(2));
+	hero.Initial["AttacksPerSecond"] = parseFloat(((1 + IAS) / BAT).toFixed(2));
+	hero.Initial["AttackAnimationPoint"] = getProperty("AttackAnimationPoint");
+	hero.Initial["AttackAcquisitionRange"] = getProperty("AttackAcquisitionRange");
+	hero.Initial["AttackRange"] = getProperty("AttackRange");
+	hero.Initial["VisionDayRange"] = getProperty("VisionDaytimeRange");
+	hero.Initial["VisionNightRange"] = getProperty("VisionNighttimeRange");
+	hero.Initial["ProjectileSpeed"] = INITIAL_Hero.ProjectileSpeed || 0;
+	hero.Initial["MovementSpeed"] = movementSpeed;
+	hero.Initial["TurnRate"] = turnRate;
 
 	var abilityurls = [];
 	for (var key in INITIAL_Hero){
@@ -162,22 +254,9 @@ function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 		}
 	}
 
-	var title = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl];
-	if (title === undefined || title == "" || title == " ") {
-		title = toTitleCase(abilityurl.split(shortHeroUrl+"_")[1].replace(/\_/g, " "));
-	}
-	hero["Title"] = LOCALES.LANGUAGES.english[longHeroUrl];
-
-	hero["Url"] = shortHeroUrl;
-
-	hero["ID"] = INITIAL_Hero.HeroID;
-
-	var lore = LOCALES.LANGUAGES.english[longHeroUrl+"_bio"];
-	if (lore !== undefined && lore != "" && lore != " ") {
-		hero["Lore"] = lore.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ");
-	}
-
 	hero["Abilities"] = getHeroAbilities(abilityurls, shortHeroUrl);
+
+	hero["Subtitles"] = LOCALES.SUBTITLES[shortHeroUrl] || null;
 
 	return hero;
 }
@@ -225,7 +304,7 @@ function getHeroAbility(abilityurl, herourl){
 	
 	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
 	if (description !== undefined && description != "" && description != " ") {
-		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ");
+		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ").replace(/\.\S/, function(match){ return ". "+match[1] });
 	}
 
 	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
@@ -245,44 +324,46 @@ function getHeroAbility(abilityurl, herourl){
 		if (typeof(data[key]) != "object") data[key] = [data[key]];
 	}
 
-	ability["Type"] = "BASIC";
+	ability["Type"] = "DOTA_ABILITY_TYPE_BASIC";
+
+	//ability["IsPassive"] = (data.AbilityBehavior.indexOf("DOTA_ABILITY_BEHAVIOR_PASSIVE") != -1)
 
 	for (var abilityTag in data){
 		var value = data[abilityTag]; // e.g. [ 'DOTA_UNIT_TARGET_HERO', 'DOTA_UNIT_TARGET_BASIC' ]
 		switch (abilityTag){
 			case "AbilityType":
-				ability["Type"] = value[0].split("DOTA_ABILITY_TYPE_")[1];
+				ability["Type"] = value[0];
 				break;
 			case "AbilityUnitDamageType":
-				ability["DamageType"] = value[0].split("DAMAGE_TYPE_")[1];
+				ability["DamageType"] = value[0];
 				break;
 			case "AbilityBehavior":
 				ability["Behavior"] = [];
 				for (var abilityFlag in value){
-					ability["Behavior"].push(value[abilityFlag].split("DOTA_ABILITY_BEHAVIOR_")[1]);
+					ability["Behavior"].push(value[abilityFlag]);
 				}
 				break;
 			case "AbilityUnitTargetType":
 				ability["TargetType"] = [];
 				for (var abilityFlag in value){
-					ability["TargetType"].push(value[abilityFlag].split("DOTA_UNIT_TARGET_")[1]);
+					ability["TargetType"].push(value[abilityFlag]);
 				}
 				break;
 			case "AbilityUnitTargetTeam":
 				ability["TargetTeam"] = [];
 				for (var abilityFlag in value){
-					ability["TargetTeam"].push(value[abilityFlag].split("DOTA_UNIT_TARGET_TEAM_")[1]);
+					ability["TargetTeam"].push(value[abilityFlag]);
 				}
 				break;
 			case "AbilityUnitTargetFlag":
 			case "AbilityUnitTargetFlags":
 				ability["TargetFlags"] = [];
 				for (var abilityFlag in value){
-					ability["TargetFlags"].push(value[abilityFlag].split("DOTA_UNIT_TARGET_FLAG_")[1]);
+					ability["TargetFlags"].push(value[abilityFlag]);
 				}
 				break;
 			case "MaxLevel":
-				ability["MaxLevel"] = value[0];
+				//ability["MaxLevel"] = value[0];
 				break;
 			case "DisplayAdditionalHeroes": // Meepo, Lone Druid
 				ability["SpawnsAdditionalHero"] = true;
