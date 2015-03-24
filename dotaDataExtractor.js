@@ -381,24 +381,28 @@ function getHeroAbility(abilityurl, herourl){
 	var special = [];
 	if ("AbilitySpecial" in data){
 		for (var specialurl in data.AbilitySpecial){
+			var abilitySpecial = {};
 			var value = data.AbilitySpecial[specialurl];
 			if (typeof(value) != "object") value = [value];
 			var name = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_"+specialurl];
-			if (name == undefined) continue;
-			name = name.replace(":", "").replace("(\\)*\\n", "");
-			var type = (name[0] == "%") ? "PERCENTAGE" : "FIXED";
-			if (type == "PERCENTAGE"){
-				name = name.replace("%", "");
-				for (var i in value){
-					value[i] = value[i]/100;
+			if (name !== undefined){
+				name = name.replace(":", "").replace("(\\)*\\n", "");
+				var type = (name[0] == "%") ? "PERCENTAGE" : "FIXED";
+				if (type == "PERCENTAGE"){
+					name = name.replace("%", "");
+					for (var i in value){
+						value[i] = value[i]/100;
+					}
 				}
+			} else {
+				name = toTitleCase(specialurl.replace("_", " "));
 			}
-			special.push({
-				Attribute: toTitleCase(name),
-				Url: specialurl,
-				ValueType: type,
-				Value: value
-			})
+			abilitySpecial["Name"] = toTitleCase(name);
+			abilitySpecial["Url"] = specialurl;
+			abilitySpecial["ValueType"] = type;
+			abilitySpecial["Value"] = value;
+
+			special.push(abilitySpecial);
 		}
 	}
 	ability["AbilitySpecial"] = special;
