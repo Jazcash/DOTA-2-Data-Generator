@@ -1,16 +1,14 @@
-/* 	Author: Jazcash June 2014 
+/* 	Author: Jazcash
 	Note: The DotA2 VDF files are really messy. They seem to have incosistent formatting, names, typos and other such messes so don't be surprised if some of the data comes out funky.
 */
 
-"use strict"; // node.js strict mode
+"use strict";
 
-// node_module imports
 //var ArgumentParser 	= require('argparse').ArgumentParser;
 var fs 				= require('fs'); // file system
 var jsontufile 		= require('json-tu-file'); // import and export json files
 var vdf 			= require('vdf'); // parse VDF (Valve Data Format) files to JSON
 
-// global variables
 var PATH = {
 	LOCALES: "resources/localesTesting/",
 	HEROES: "resources/scripts/npc_heroes.txt",
