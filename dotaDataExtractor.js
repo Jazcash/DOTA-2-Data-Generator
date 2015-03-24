@@ -185,23 +185,23 @@ function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 	hero["PrimaryAttribute"] = getProperty("AttributePrimary");
 	//hero["AttackDamageType"] = getProperty("AttackDamageType");
 
-	var strength = getProperty("AttributeBaseStrength");
-	var strengthGain = getProperty("AttributeStrengthGain");
-	var agility = getProperty("AttributeBaseAgility");
-	var agilityGain = getProperty("AttributeAgilityGain");
-	var intelligence = getProperty("AttributeBaseIntelligence");
-	var intelligenceGain = getProperty("AttributeIntelligenceGain");
-	var health = getProperty("StatusHealth");
-	var healthRegen = getProperty("StatusHealthRegen");
-	var mana = getProperty("StatusMana");
-	var manaRegen = getProperty("StatusManaRegen");
-	var attackDamageMin = getProperty("AttackDamageMin");
-	var attackDamageMax = getProperty("AttackDamageMax");
-	var BAT = getProperty("AttackRate");
-	var armor = getProperty("ArmorPhysical");
-	var magicResistance = getProperty("MagicalResistance");
-	var movementSpeed = getProperty("MovementSpeed");
-	var turnRate = getProperty("MovementTurnRate");
+	var strength 			= getProperty("AttributeBaseStrength");
+	var strengthGain 		= getProperty("AttributeStrengthGain");
+	var agility 			= getProperty("AttributeBaseAgility");
+	var agilityGain 		= getProperty("AttributeAgilityGain");
+	var intelligence 		= getProperty("AttributeBaseIntelligence");
+	var intelligenceGain 	= getProperty("AttributeIntelligenceGain");
+	var health 				= getProperty("StatusHealth");
+	var healthRegen 		= getProperty("StatusHealthRegen");
+	var mana 				= getProperty("StatusMana");
+	var manaRegen 			= getProperty("StatusManaRegen");
+	var attackDamageMin 	= getProperty("AttackDamageMin");
+	var attackDamageMax 	= getProperty("AttackDamageMax");
+	var BAT 				= getProperty("AttackRate");
+	var armor 				= getProperty("ArmorPhysical");
+	var magicResistance 	= getProperty("MagicalResistance");
+	var movementSpeed 		= getProperty("MovementSpeed");
+	var turnRate 			= getProperty("MovementTurnRate");
 	
 	var primaryStat = 0;
 	switch(hero.PrimaryAttribute){
@@ -228,15 +228,15 @@ function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 	hero.Initial["HealthRegen"] = healthRegen + (0.03 * strength);
 	hero.Initial["Mana"] = mana + (13 * intelligence);
 	hero.Initial["ManaRegen"] = manaRegen + (0.04 * intelligence);
-	hero.Initial["Armor"] = parseFloat(parseFloat(armor + 0.14 * agility).toFixed(2));
+	hero.Initial["Armor"] = armor + (0.14 * agility);
 	hero.Initial["MagicResistance"] = magicResistance / 100;
 	hero.Initial["MinDamage"] = attackDamageMin + primaryStat;
 	hero.Initial["MaxDamage"] = attackDamageMax + primaryStat;
 	hero.Initial["AvgDamage"] = (hero.Initial["MinDamage"] + hero.Initial["MaxDamage"])/2;
 	hero.Initial["IncreasedAttackSpeed"] = IAS * 100;
 	hero.Initial["BaseAttackTime"] = BAT;
-	hero.Initial["AttackTime"] = parseFloat((BAT / (1 + IAS)).toFixed(2));
-	hero.Initial["AttacksPerSecond"] = parseFloat(((1 + IAS) / BAT).toFixed(2));
+	hero.Initial["AttackTime"] = BAT / (1 + IAS);
+	hero.Initial["AttacksPerSecond"] = (1 + IAS) / BAT;
 	hero.Initial["AttackAnimationPoint"] = getProperty("AttackAnimationPoint");
 	hero.Initial["AttackAcquisitionRange"] = getProperty("AttackAcquisitionRange");
 	hero.Initial["AttackRange"] = getProperty("AttackRange");
@@ -245,6 +245,10 @@ function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 	hero.Initial["ProjectileSpeed"] = INITIAL_Hero.ProjectileSpeed || 0;
 	hero.Initial["MovementSpeed"] = movementSpeed;
 	hero.Initial["TurnRate"] = turnRate;
+
+	for (var key in hero.Initial){
+		hero.Initial[key] = toFixed(hero.Initial[key]);
+	}
 
 	var abilityurls = [];
 	for (var key in INITIAL_Hero){
@@ -413,4 +417,8 @@ function getHeroAbility(abilityurl, herourl){
 
 function toTitleCase(str){
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+function toFixed(val){
+	return (val % 1 !== 0) ? parseFloat(parseFloat(val).toFixed(2)) : parseInt(val);
 }
