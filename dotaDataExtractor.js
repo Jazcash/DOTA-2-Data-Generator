@@ -29,6 +29,19 @@ var INITIAL_Abilities	= vdfToJson(fs.readFileSync(PATH.ABILITIES, 'utf8'));
 var INITIAL_Items 		= vdfToJson(fs.readFileSync(PATH.ITEMS, 'utf8'));
 var LOCALES 			= getLocales(PATH.LOCALES);
 
+String.prototype.replaceAll = function(strReplace, strWith) {
+    var reg = new RegExp(strReplace, 'ig');
+    return this.replace(reg, strWith);
+};
+
+function toTitleCase(str){
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+function toFixed(val){
+	return (val % 1 !== 0) ? parseFloat(parseFloat(val).toFixed(2)) : parseInt(val);
+}
+
 var heroes 				= getHeroes();
 
 jsontufile.writeFile(heroes, "heroes.json", "utf-8")
@@ -138,6 +151,7 @@ function getHeroes(){
 
 	for (var fullherourl in INITIAL_Heroes){
 		var INITIAL_Hero = INITIAL_Heroes[fullherourl];
+		if (INITIAL_Hero.Enabled == 0) continue;
 		var longHeroUrl = fullherourl;
 		var shortHeroUrl = fullherourl.split("npc_dota_hero_")[1];
 		var hero = getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl);
@@ -306,7 +320,7 @@ function getHeroAbility(abilityurl, herourl){
 	
 	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
 	if (description !== undefined && description != "" && description != " ") {
-		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ").replace(/\.\S/, function(match){ return ". "+match[1] });
+		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace("%%", "%").replace(/\s(\s)+/g, " ").replace(/\.\S/, function(match){ return ". "+match[1] });
 	}
 
 	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
@@ -404,6 +418,11 @@ function getHeroAbility(abilityurl, herourl){
 			abilitySpecial["ValueType"] = type;
 			abilitySpecial["Value"] = value;
 
+			var descriptionValue = (type === "PERCENTAGE") ? value + "%" : value;
+			if (ability["Description"] !== undefined && ability["Description"] != "" && ability["Description"] != " " && typeof(ability["Description"] === "string")){
+				ability["Description"] = ability["Description"].replaceAll("%"+specialurl+"%", descriptionValue);
+			}
+			
 			special.push(abilitySpecial);
 		}
 	}
@@ -411,12 +430,4 @@ function getHeroAbility(abilityurl, herourl){
 	delete data.AbilitySpecial;
 
 	return ability;
-}
-
-function toTitleCase(str){
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
-
-function toFixed(val){
-	return (val % 1 !== 0) ? parseFloat(parseFloat(val).toFixed(2)) : parseInt(val);
 }

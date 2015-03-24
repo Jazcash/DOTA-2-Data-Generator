@@ -49,7 +49,7 @@
         "Title": "Mana Break",
         "Url": "mana_break",
         "ID": 5003,
-        "Description": "Burns an opponent's mana on each attack. Mana Break deals 60%% of the mana burned as damage to the target. Mana Break is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.",
+        "Description": "Burns an opponent's mana on each attack. Mana Break deals 60% of the mana burned as damage to the target. Mana Break is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.",
         "Lore": "A modified technique of the Turstarkuri monks' peaceful ways is to turn magical energies on their owner.",
         "Notes": [
           "Mana Burn is blocked by magic immunity.",
@@ -2939,7 +2939,7 @@
         "Title": "Starstorm",
         "Url": "starfall",
         "ID": 5051,
-        "Description": "Calls down a wave of meteors to damage nearby enemy units. One random enemy unit in 175 range will take a second hit for 75%% of the damage.",
+        "Description": "Calls down a wave of meteors to damage nearby enemy units. One random enemy unit in 175 range will take a second hit for 75% of the damage.",
         "Lore": "The Goddess breaks the strata to empower her Princess in the time of need.",
         "Notes": [
           "Starstorm is not blocked by Linken's Sphere.",
@@ -3005,7 +3005,7 @@
         "Title": "Sacred Arrow",
         "Url": "arrow",
         "ID": 5048,
-        "Description": "Fires an arrow with deadly precision, stunning and dealing damage to the first enemy unit it strikes. Stun duration increases based on distance to target, ranging from %arrow_min_stun% to %arrow_max_stun% seconds. Bonus damage up to 100 will be added based on the distance the arrow travelled to the target.",
+        "Description": "Fires an arrow with deadly precision, stunning and dealing damage to the first enemy unit it strikes. Stun duration increases based on distance to target, ranging from 0.01 to 5 seconds. Bonus damage up to 100 will be added based on the distance the arrow travelled to the target.",
         "Lore": "Lunar energies make the Princess of the Moon's arrows more deadly than most.",
         "Notes": [
           "For every 150 distance the arrow travels, the stun duration upon impact increases by 0.5 seconds.",
@@ -3818,7 +3818,7 @@
         "Title": "Adaptive Strike",
         "Url": "adaptive_strike",
         "ID": 5053,
-        "Description": "Strikes an enemy unit with a blast of water. If Morphling's agility is 50%% higher than strength, it deals the maximum damage and the minimum stun. If strength is 50%% higher, it deals the maximum stun and minimum damage.",
+        "Description": "Strikes an enemy unit with a blast of water. If Morphling's agility is 50% higher than strength, it deals the maximum damage and the minimum stun. If strength is 50%% higher, it deals the maximum stun and minimum damage.",
         "Lore": "The Morphling calls upon his elements to crush his opponents with waves.",
         "Notes": [
           "Knocks the target back 100 - 300 units."
@@ -4080,7 +4080,7 @@
         "Title": "Replicate",
         "Url": "replicate",
         "ID": 5057,
-        "Description": "Morphling replicates any hero, friend or foe, dealing 50%% of the original Hero's outgoing damage while taking 100%% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana.",
+        "Description": "Morphling replicates any hero, friend or foe, dealing 50% of the original Hero's outgoing damage while taking 100%% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana.",
         "Lore": "Staring into Morphling produces a reflection that mimics the beholder.",
         "Notes": [
           "You can't target yourself with Replicate."
@@ -6299,7 +6299,7 @@
         "Title": "Electric Vortex",
         "Url": "electric_vortex",
         "ID": 5099,
-        "Description": "A vortex that pulls an enemy unit to Storm Spirit's location, it also slows the Storm Spirit by 50%% for 3 seconds.",
+        "Description": "A vortex that pulls an enemy unit to Storm Spirit's location, it also slows the Storm Spirit by 50% for 3 seconds.",
         "Lore": "Raijin's thunderous, boisterous energy often draws others into an electrifying situation.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -6445,7 +6445,7 @@
         "Title": "Ball Lightning",
         "Url": "ball_lightning",
         "ID": 5101,
-        "Description": "Storm Spirit becomes volatile electricity, charging across the battlefield until he depletes his mana or reaches his target. The mana activation cost is 15+7%% of his total mana pool, and the cost per 100 units traveled is 10+1%% of his total mana pool. Damage is expressed in damage per 100 units traveled.",
+        "Description": "Storm Spirit becomes volatile electricity, charging across the battlefield until he depletes his mana or reaches his target. The mana activation cost is 15+7% of his total mana pool, and the cost per 100 units traveled is 10+1%% of his total mana pool. Damage is expressed in damage per 100 units traveled.",
         "Lore": "The Storm is coming in.",
         "Notes": [
           "Instant cast abilities can be used while traveling.",
@@ -6958,7 +6958,7 @@
         "Title": "Toss",
         "Url": "toss",
         "ID": 5107,
-        "Description": "Grabs a random unit in a 275 radius around Tiny, friend or enemy, and launches it at the target unit or rune to deal damage where they land. If the tossed unit is an enemy, it will take an extra 20%% damage. Toss does more damage as Tiny's size increases.",
+        "Description": "Grabs a random unit in a 275 radius around Tiny, friend or enemy, and launches it at the target unit or rune to deal damage where they land. If the tossed unit is an enemy, it will take an extra 20% damage. Toss does more damage as Tiny's size increases.",
         "Lore": "Tiny's gargantuan stature allows him to catapult even the sturdiest of warriors.",
         "Notes": [
           "If a unit is hit by Avalanche then Tossed, it can be hit a second time by Avalanche if it lands in the area of effect before Avalanche ends.",
@@ -7721,7 +7721,7 @@
         "Title": "Powershot",
         "Url": "powershot",
         "ID": 5131,
-        "Description": "Windranger charges her bow for up to 1 second for a single powerful shot. The arrow deals damage to enemy units and destroys trees in its path. Damage is greatest on first target, and reduces by 10%% for each target it pierces thereafter. If the channeling is cancelled early, the shot will still occur but deal less damage.",
+        "Description": "Windranger charges her bow for up to 1 second for a single powerful shot. The arrow deals damage to enemy units and destroys trees in its path. Damage is greatest on first target, and reduces by 10% for each target it pierces thereafter. If the channeling is cancelled early, the shot will still occur but deal less damage.",
         "Lore": "During her early years of training, Lyralei learned to fire powerful arrows that cleaved even trees to reach their targets.",
         "Notes": [
           "The arrow initially moves at 3000 units per second, but slowed a little each time it hits an enemy or tree.",
@@ -8155,7 +8155,7 @@
         "Title": "Lightning Bolt",
         "Url": "lightning_bolt",
         "ID": 5111,
-        "Description": "Calls down a bolt of lightning to strike an enemy unit, causing damage and a mini-stun. When cast, Lightning Bolt briefly provides unobstructed vision and True Sight around the target in a 750 radius. Can be cast on the ground, affecting the closest enemy hero in %spread_aoe% range.",
+        "Description": "Calls down a bolt of lightning to strike an enemy unit, causing damage and a mini-stun. When cast, Lightning Bolt briefly provides unobstructed vision and True Sight around the target in a 750 radius. Can be cast on the ground, affecting the closest enemy hero in 325 range.",
         "Lore": "A shocking punishment for rebellious heathen.",
         "Notes": [
           "You can interrupt channeling spells and items with this ability."
@@ -13149,7 +13149,7 @@
         "Title": "Reaper's Scythe",
         "Url": "reapers_scythe",
         "ID": 5161,
-        "Description": "Stuns the target enemy hero, then deals damage based on how much life it is missing. Heroes killed by Reaper's Scythe will have 30%% more time added to their respawn timer. Any kill under this effect is credited to Necrophos. Upgradable by Aghanim's Scepter.",
+        "Description": "Stuns the target enemy hero, then deals damage based on how much life it is missing. Heroes killed by Reaper's Scythe will have 30% more time added to their respawn timer. Any kill under this effect is credited to Necrophos. Upgradable by Aghanim's Scepter.",
         "Lore": "The amount of death and suffering in the air increases the power of Necrophos's plague magic.",
         "Notes": [
           "Damage is dealt at the end of the stun.",
@@ -13310,7 +13310,7 @@
         "Title": "Fatal Bonds",
         "Url": "fatal_bonds",
         "ID": 5162,
-        "Description": "Binds several enemy units together, causing %damage_share_percentage%%% of the damage dealt to one of them to be felt by the others.",
+        "Description": "Binds several enemy units together, causing 20% of the damage dealt to one of them to be felt by the others.",
         "Lore": "An ancient incantation that links the vital energies of multiple lifeforms into one collective body.",
         "Notes": [
           "Damage will not disable abilities or items like Blink Dagger which require player based damage."
@@ -13471,7 +13471,7 @@
         "Title": "Upheaval",
         "Url": "upheaval",
         "ID": 5164,
-        "Description": "CHANNELED - A powerful slowing current that grows stronger as it's channelled. Lasts up to 16 seconds, slowing enemies up to 84%%. Enemies are slowed for 3 seconds after leaving the area or the spell ends.",
+        "Description": "CHANNELED - A powerful slowing current that grows stronger as it's channelled. Lasts up to 16 seconds, slowing enemies up to 84%. Enemies are slowed for 3 seconds after leaving the area or the spell ends.",
         "Lore": "Demnok manipulates space-time, impairing entire armies.",
         "Notes": [
           "The slow increase is based on length of the channel, not the duration an enemy was standing in the area."
@@ -14693,7 +14693,7 @@
         "Title": "Plague Ward",
         "Url": "plague_ward",
         "ID": 5180,
-        "Description": "Summons a plague ward to attack enemy units and structures. The ward is immune to magic. Wards gain the Poison Sting level from Venomancer, dealing 50%% of the full damage.",
+        "Description": "Summons a plague ward to attack enemy units and structures. The ward is immune to magic. Wards gain the Poison Sting level from Venomancer, dealing 50% of the full damage.",
         "Lore": "A mixture of his old herbalist talents and newfound toxic mastery creates a living embodiment of plague.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -15439,7 +15439,7 @@
         "Title": "Reincarnation",
         "Url": "reincarnation",
         "ID": 5089,
-        "Description": "Wraith King's members regroup after death, allowing him to resurrect when killed in battle. Upon death, enemy units in a %slow_radius% radius will be slowed.",
+        "Description": "Wraith King's members regroup after death, allowing him to resurrect when killed in battle. Upon death, enemy units in a 900 radius will be slowed.",
         "Lore": "Conspirators against the Wraith King wonder why he never stays dead.",
         "Notes": [
           "Wraith King won't revive if he doesn't have enough mana.",
@@ -16903,7 +16903,7 @@
         "Title": "Psionic Trap",
         "Url": "psionic_trap",
         "ID": 5197,
-        "Description": "Templar Assassin places mystical traps that invisibly monitor enemy movement. When sprung at her command, they exert a slowing influence of 30%% in the area. Traps charge up to slow an additional 5%% every second, up to 50%%.",
+        "Description": "Templar Assassin places mystical traps that invisibly monitor enemy movement. When sprung at her command, they exert a slowing influence of 30% in the area. Traps charge up to slow an additional 5%% every second, up to 50%%.",
         "Lore": "Calling upon the reach of the Hidden Temple, none escape the eye of the Templar.",
         "Notes": [
           "Traps last indefinitely.",
@@ -17103,7 +17103,7 @@
         "Title": "Nethertoxin",
         "Url": "nethertoxin",
         "ID": 5219,
-        "Description": "Nethertoxin causes Viper's normal attack to deal bonus damage to units based on how much health they are missing. The bonus damage doubles for each 20%% of health missing from the target. Nethertoxin deals half damage to creeps and buildings.",
+        "Description": "Nethertoxin causes Viper's normal attack to deal bonus damage to units based on how much health they are missing. The bonus damage doubles for each 20% of health missing from the target. Nethertoxin deals half damage to creeps and buildings.",
         "Lore": "Poison from the Nether Reaches turns wounds into fatalities, and fatigue into death.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -18087,7 +18087,7 @@
         "Title": "Poison Touch",
         "Url": "poison_touch",
         "ID": 5233,
-        "Description": "Casts a poisonous spell on an enemy unit, causing damage and slowness over time, and eventual paralysis. Slow increases per level. Level 1 slows the target by 33%% during the set time.Level 2 slows the target by 33%% for 2 seconds, then by 66%% for 1 second.Level 3 slows the target by 33%%, 66%%, and 100%%, for one second respectively.Level 4 slows the target by 33%%, then slows the target by 66%% for 1 second, then stuns the target for 1 second.",
+        "Description": "Casts a poisonous spell on an enemy unit, causing damage and slowness over time, and eventual paralysis. Slow increases per level. Level 1 slows the target by 33% during the set time.Level 2 slows the target by 33%% for 2 seconds, then by 66%% for 1 second.Level 3 slows the target by 33%%, 66%%, and 100%%, for one second respectively.Level 4 slows the target by 33%%, then slows the target by 66%% for 1 second, then stuns the target for 1 second.",
         "Lore": "One of the few Dezun rites used for offensive purposes, the paralytic enchantment often proves useful.",
         "Notes": [
           "The damage is not reduced by damage block abilities."
@@ -19112,7 +19112,7 @@
         "Title": "Lightning Storm",
         "Url": "lightning_storm",
         "ID": 5243,
-        "Description": "Summons a lightning storm that blasts the target enemy unit, then jumps to nearby enemy units. Struck enemies are slowed by 75%% for 0. 5 seconds.",
+        "Description": "Summons a lightning storm that blasts the target enemy unit, then jumps to nearby enemy units. Struck enemies are slowed by 75% for 0. 5 seconds.",
         "Lore": "The Tormented Soul's mastery of the elements is evident in the massive storms that strike down armies before him.",
         "Notes": [
           "The lightning searches in a 650 area."
@@ -21331,7 +21331,7 @@
         "Title": "Inner Vitality",
         "Url": "inner_vitality",
         "ID": 5271,
-        "Description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 40%% it will heal faster. Lasts 16 seconds.",
+        "Description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 40% it will heal faster. Lasts 16 seconds.",
         "Lore": "While Huskar has little use for magic, this minor enchantment was learned from the Dazzle and the Dezun priests, to be used in times of great injury.",
         "Notes": [
           "The HP percentage is checked every second and the regeneration adjusted accordingly.",
@@ -22134,7 +22134,7 @@
         "Title": "Spin Web",
         "Url": "spin_web",
         "ID": 5280,
-        "Description": "Throws out a web that renders Broodmother invisible, grants a passive movement speed increase, gives free movement, and boosts regeneration while in its vicinity. Free movement is disabled for %damage_time% seconds if damage is taken. Webs never expire. When the maximum limit of webs is exceeded, the oldest web disappears.",
+        "Description": "Throws out a web that renders Broodmother invisible, grants a passive movement speed increase, gives free movement, and boosts regeneration while in its vicinity. Free movement is disabled for 3% seconds if damage is taken. Webs never expire. When the maximum limit of webs is exceeded, the oldest web disappears.",
         "Lore": "Weaving a bed of silken fibers, Arachnia's web both protects her and her offspring, as well as giving advancing opponents a sense of forboding.",
         "Notes": [
           "Has a fade time of 2 seconds.",
@@ -24980,7 +24980,7 @@
         "Title": "LVL? Death",
         "Url": "lvl_death",
         "ID": 5341,
-        "Description": "Dissipates a piece of an enemy Hero's soul, mini-stunning and dealing bonus damage equal to 20%% of the target's maximum health when the enemy's level is a multiple of a specific number or 25.",
+        "Description": "Dissipates a piece of an enemy Hero's soul, mini-stunning and dealing bonus damage equal to 20% of the target's maximum health when the enemy's level is a multiple of a specific number or 25.",
         "Lore": "Lucifer shares the fire branding bestowed upon him at the time of his exile.",
         "Notes": [
           "Interrupts channeling abilities."
@@ -27887,7 +27887,7 @@
         "Title": "EMP",
         "Url": "emp",
         "ID": 5383,
-        "Description": "Invoker builds up a charge of electromagnetic energy at a targeted location which automatically detonates after %delay% seconds. The detonation covers an area, draining mana based on the level of Wex. Deals damage for each point of mana drained. If EMP drains mana from an enemy hero, Invoker gains 50%% of the mana drained.",
+        "Description": "Invoker builds up a charge of electromagnetic energy at a targeted location which automatically detonates after 2.9 seconds. The detonation covers an area, draining mana based on the level of Wex. Deals damage for each point of mana drained. If EMP drains mana from an enemy hero, Invoker gains 50% of the mana drained.",
         "Lore": "Endoleon's Malevolent Perturbation.",
         "Notes": [
           "Will not affect cycloned units (Tornado or Eul's Scepter of Divinity)."
@@ -29149,7 +29149,7 @@
         "Title": "Essence Aura",
         "Url": "essence_aura",
         "ID": 5393,
-        "Description": "Whenever nearby allied Heroes or Outworld Devourer itself casts a spell, it gains a chance to restore 25%% of its mana pool. Outworld Devourer also passively gains a bonus to its base mana pool. Several skills with no cooldown and toggled spells cannot trigger Essence Aura.",
+        "Description": "Whenever nearby allied Heroes or Outworld Devourer itself casts a spell, it gains a chance to restore 25% of its mana pool. Outworld Devourer also passively gains a bonus to its base mana pool. Several skills with no cooldown and toggled spells cannot trigger Essence Aura.",
         "Lore": "The crystals of the Outworld produce arcane power, and the Harbinger channels it into the world of mortals.",
         "Notes": [
           "Other than Arcane Orb, most skills without cooldowns cannot trigger Essence Aura."
@@ -29205,7 +29205,7 @@
         "Title": "Sanity's Eclipse",
         "Url": "sanity_eclipse",
         "ID": 5394,
-        "Description": "Deals damage to enemy Heroes in an area of effect based on the difference between Harbinger and the affected Hero's intelligence. If the Hero takes less than the damage threshold, that Hero loses 75%% of its current mana. Sanity's Eclipse can hit units trapped in Astral Imprisonment. If an enemy hero has the same or higher Intelligence than Outworld Devourer, Sanity's Eclipse has no effect. Upgradable by Aghanim's Scepter.",
+        "Description": "Deals damage to enemy Heroes in an area of effect based on the difference between Harbinger and the affected Hero's intelligence. If the Hero takes less than the damage threshold, that Hero loses 75% of its current mana. Sanity's Eclipse can hit units trapped in Astral Imprisonment. If an enemy hero has the same or higher Intelligence than Outworld Devourer, Sanity's Eclipse has no effect. Upgradable by Aghanim's Scepter.",
         "Lore": "When an Outworld crystal ruptures, cataclysmic energies are released, and the reverberations of this power are felt interdimensionally.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -29875,7 +29875,7 @@
         "Title": "Drunken Brawler",
         "Url": "drunken_brawler",
         "ID": 5402,
-        "Description": "Gives a chance to avoid attacks and to deal critical damage. Drunken Brawler will always activate if you have not attacked, or have not been attacked, in the last %last_proc% seconds.",
+        "Description": "Gives a chance to avoid attacks and to deal critical damage. Drunken Brawler will always activate if you have not attacked, or have not been attacked, in the last 10% seconds.",
         "Lore": "When Mangix won his title as the Brewmaster of the Order of Oyo, he also claimed his place in the mastery of inebriation.",
         "Notes": [
           "Does not stack with evasion from other sources.",
@@ -31160,7 +31160,7 @@
         "Title": "Phantasm",
         "Url": "phantasm",
         "ID": 5429,
-        "Description": "Summons several phantasmal copies of the Chaos Knight from alternate dimensions. There is a 50%% chance an extra phantasm will be summoned. The phantasms deal full damage, but take double damage.",
+        "Description": "Summons several phantasmal copies of the Chaos Knight from alternate dimensions. There is a 50% chance an extra phantasm will be summoned. The phantasms deal full damage, but take double damage.",
         "Lore": "Drawing on his battles fought across many worlds and many times, phantasms of the Chaos Knight rise up to quell all who oppose him.",
         "Notes": [
           "Removes most negative buffs from Chaos Knight.",
@@ -34459,7 +34459,7 @@
         "Title": "Illuminate",
         "Url": "illuminate",
         "ID": 5471,
-        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75%% of its damage values during daytime.",
+        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75% of its damage values during daytime.",
         "Lore": "Ezalor's hidden light reveals itself in marvelous fashion.",
         "Notes": [
           "Gives increasing vision over the channeling time.",
@@ -34975,7 +34975,7 @@
         "Title": "Illuminate",
         "Url": "spirit_form_illuminate",
         "ID": 5479,
-        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75%% of its damage values during daytime.",
+        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75% of its damage values during daytime.",
         "Lore": "Ezalor's hidden light reveals itself in marvelous fashion.",
         "Notes": [
           "Gives increasing vision over the channeling time.",
@@ -36149,7 +36149,7 @@
         "Title": "Dark Pact",
         "Url": "dark_pact",
         "ID": 5494,
-        "Description": "After a short delay, Slark sacrifices some of his life blood, purging negative debuffs and dealing damage to enemy units around him and to himself. Slark only takes 50%% of the damage.",
+        "Description": "After a short delay, Slark sacrifices some of his life blood, purging negative debuffs and dealing damage to enemy units around him and to himself. Slark only takes 50% of the damage.",
         "Lore": "Slithereen are capable of quickly regrowing appendages, in case of critical injury, to save their own lives.",
         "Notes": [
           "1.5 seconds after cast, a series of 10 pulses separated by 0.1 seconds deal the damage.",
@@ -36711,7 +36711,7 @@
         "Title": "Mana Shield",
         "Url": "mana_shield",
         "ID": 5506,
-        "Description": "Creates a shield that absorbs 50%% of the incoming damage by using Medusa's mana.",
+        "Description": "Creates a shield that absorbs 50% of the incoming damage by using Medusa's mana.",
         "Lore": "While Medusa was not gifted with eternal life upon birth, her curse bestowed her with impressive defensive powers.",
         "Notes": [
           "Absorbs damage before any damage reduction takes place, meaning that armor will not reduce the amount of mana needed to absorb damage."
@@ -36746,7 +36746,7 @@
         "Title": "Stone Gaze",
         "Url": "stone_gaze",
         "ID": 5507,
-        "Description": "Any enemy units looking at Medusa will have their movement and attack speed slowed. If 2 seconds of total time is accumulated looking at Medusa while Stone Gaze is active, that unit will turn to stone. Petrified units are stunned, have 100%% magic resistance, and take bonus physical damage. If the petrified unit is an illusion, it is immediately killed.",
+        "Description": "Any enemy units looking at Medusa will have their movement and attack speed slowed. If 2 seconds of total time is accumulated looking at Medusa while Stone Gaze is active, that unit will turn to stone. Petrified units are stunned, have 100% magic resistance, and take bonus physical damage. If the petrified unit is an illusion, it is immediately killed.",
         "Lore": "The beauty of Medusa is legendary.",
         "Notes": [
           "Affects magic immune units.",
@@ -38281,7 +38281,7 @@
         "Title": "Chakram",
         "Url": "chakram",
         "ID": 5527,
-        "Description": "Fires your main saw blade at the target location where it will spin in place, dealing damage in an area around it. Additionally, for each 5%% of health missing, enemies caught in the saw blade move more slowly. The blade deals damage and cuts down trees in its path when fired and retracted. While active the ability costs mana, and you lose the ability to attack.",
+        "Description": "Fires your main saw blade at the target location where it will spin in place, dealing damage in an area around it. Additionally, for each 5% of health missing, enemies caught in the saw blade move more slowly. The blade deals damage and cuts down trees in its path when fired and retracted. While active the ability costs mana, and you lose the ability to attack.",
         "Lore": "The ultimate in anti-flora weaponry.",
         "Notes": [
           "The Chakram will return if Timbersaw runs out of mana or moves over 2000 distance away."
@@ -38957,7 +38957,7 @@
         "Title": "Snowball",
         "Url": "snowball",
         "ID": 5566,
-        "Description": "Tusk begins rolling into a snowball, automatically gathering allied Heroes within a %snowball_windup_radius% radius. Allies within a 400 radius can also be added to the snowball by right-clicking on them. Once launched, any enemies caught in the snowball's path will be stunned and take damage. Each allied Hero in the snowball will add to its speed and damage.",
+        "Description": "Tusk begins rolling into a snowball, automatically gathering allied Heroes within a 100 radius. Allies within a 400 radius can also be added to the snowball by right-clicking on them. Once launched, any enemies caught in the snowball's path will be stunned and take damage. Each allied Hero in the snowball will add to its speed and damage.",
         "Lore": "Tales are still told of the wild feat that ended the grand brawl at White Fields.",
         "Notes": [
           "The snowball destroys trees.",
@@ -39958,7 +39958,7 @@
         "Title": "Borrowed Time",
         "Url": "borrowed_time",
         "ID": 5588,
-        "Description": "When activated, all damage dealt to you will heal instead of harm. Most negative buffs will also be removed. If the ability is not on cooldown, it will passively activate if your hitpoints drop below %hp_threshold%. Upgradable by Aghanim's Scepter.",
+        "Description": "When activated, all damage dealt to you will heal instead of harm. Most negative buffs will also be removed. If the ability is not on cooldown, it will passively activate if your hitpoints drop below 400. Upgradable by Aghanim's Scepter.",
         "Lore": "The most unnatural of all the gifts of the Font of Avernus, this power defies mortal understanding. What should hurt, instead heals; and what should kill gives strength anew.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -41838,372 +41838,6 @@
     "Subtitles": null
   },
   {
-    "Title": "Abyssal Underlord",
-    "Url": "abyssal_underlord",
-    "ID": 108,
-    "Enabled": false,
-    "Side": "Dire",
-    "Aliases": [
-      "PitLord",
-      "Azgalor"
-    ],
-    "AttackCapabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
-    "PrimaryAttribute": "DOTA_ATTRIBUTE_STRENGTH",
-    "Initial": {
-      "Strength": 25,
-      "StrengthGain": 2.6,
-      "Agility": 12,
-      "AgilityGain": 1.3,
-      "Intelligence": 17,
-      "IntelligenceGain": 2.6,
-      "Health": 625,
-      "HealthRegen": 1,
-      "Mana": 221,
-      "ManaRegen": 0.69,
-      "Armor": 3.68,
-      "MagicResistance": 0.25,
-      "MinDamage": 62,
-      "MaxDamage": 68,
-      "AvgDamage": 65,
-      "IncreasedAttackSpeed": 12,
-      "BaseAttackTime": 1.7,
-      "AttackTime": 1.52,
-      "AttacksPerSecond": 0.66,
-      "AttackAnimationPoint": 0.45,
-      "AttackAcquisitionRange": 600,
-      "AttackRange": 128,
-      "VisionDayRange": 1800,
-      "VisionNightRange": 800,
-      "ProjectileSpeed": 0,
-      "MovementSpeed": 305,
-      "TurnRate": 0.6
-    },
-    "Abilities": [
-      {
-        "Title": "Firestorm",
-        "Url": "firestorm",
-        "ID": 5613,
-        "Description": "Calls down waves of fire that damage enemy units in the target area, and continues to burn them for additional damage over time.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_POINT",
-          "DOTA_ABILITY_BEHAVIOR_AOE"
-        ],
-        "DamageType": "DAMAGE_TYPE_MAGICAL",
-        "AbilityCastRange": [
-          750
-        ],
-        "AbilityCastPoint": [
-          0.6
-        ],
-        "AbilityCooldown": [
-          14
-        ],
-        "AbilityManaCost": [
-          100,
-          110,
-          120,
-          130
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              400
-            ]
-          },
-          {
-            "Name": "Wave Duration",
-            "Url": "wave_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              7
-            ]
-          },
-          {
-            "Name": "Wave Count",
-            "Url": "wave_count",
-            "ValueType": "FIXED",
-            "Value": [
-              6
-            ]
-          },
-          {
-            "Name": "Wave Damage",
-            "Url": "wave_damage",
-            "ValueType": "FIXED",
-            "Value": [
-              25,
-              40,
-              55,
-              70
-            ]
-          },
-          {
-            "Name": "Wave Interval",
-            "Url": "wave_interval",
-            "ValueType": "FIXED",
-            "Value": [
-              1
-            ]
-          },
-          {
-            "Name": "Burn Damage",
-            "Url": "burn_damage",
-            "ValueType": "FIXED",
-            "Value": [
-              5,
-              10,
-              15,
-              20
-            ]
-          },
-          {
-            "Name": "Burn Interval",
-            "Url": "burn_interval",
-            "ValueType": "FIXED",
-            "Value": [
-              1
-            ]
-          },
-          {
-            "Name": "Burn Duration",
-            "Url": "burn_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              2
-            ]
-          },
-          {
-            "Name": "First Wave_delay",
-            "Url": "first_wave_delay",
-            "ValueType": "FIXED",
-            "Value": [
-              0.9
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Pit of Malice",
-        "Url": "pit_of_malice",
-        "ID": 5614,
-        "Description": "A deadly pit is conjured at the target location; any unit that enters is unable to move for some time and takes damage. Each enemy unit can only be affected once.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_POINT",
-          "DOTA_ABILITY_BEHAVIOR_AOE"
-        ],
-        "DamageType": "DAMAGE_TYPE_MAGICAL",
-        "AbilityCastRange": [
-          750
-        ],
-        "AbilityCastPoint": [
-          0.6
-        ],
-        "AbilityCooldown": [
-          24,
-          21,
-          18,
-          15
-        ],
-        "AbilityManaCost": [
-          100,
-          115,
-          130,
-          145
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              275
-            ]
-          },
-          {
-            "Name": "Pit Duration",
-            "Url": "pit_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              7
-            ]
-          },
-          {
-            "Name": "Pit Interval",
-            "Url": "pit_interval",
-            "ValueType": "FIXED",
-            "Value": [
-              0.5
-            ]
-          },
-          {
-            "Name": "Pit Damage",
-            "Url": "pit_damage",
-            "ValueType": "FIXED",
-            "Value": [
-              100
-            ]
-          },
-          {
-            "Name": "Ensnare Duration",
-            "Url": "ensnare_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              1,
-              1.5,
-              2,
-              2.5
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Atrophy Aura",
-        "Url": "atrophy_aura",
-        "ID": 5615,
-        "Description": "Nearby enemy units are weakened, losing a portion of their base damage. If it dies while under this effect, Pit Lord gains bonus damage.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_AURA"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        ],
-        "AbilityCastRange": [
-          900
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              900
-            ]
-          },
-          {
-            "Name": "Damage Reduction",
-            "Url": "damage_reduction_pct",
-            "ValueType": "PERCENTAGE",
-            "Value": [
-              0.18,
-              0.26,
-              0.34,
-              0.42
-            ]
-          },
-          {
-            "Name": "Bonus Damage(creep)",
-            "Url": "bonus_damage_from_creep",
-            "ValueType": "FIXED",
-            "Value": [
-              5
-            ]
-          },
-          {
-            "Name": "Bonus Damage(hero)",
-            "Url": "bonus_damage_from_hero",
-            "ValueType": "FIXED",
-            "Value": [
-              30
-            ]
-          },
-          {
-            "Name": "Duration",
-            "Url": "bonus_damage_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              30,
-              35,
-              40,
-              45
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Dark Rift",
-        "Url": "dark_rift",
-        "ID": 5616,
-        "Description": "Opens a dark rift at the targeted friendly unit's position. After a short delay, Abyssal Underlord and all nearby friendly heroes are teleported to that unit's location. Dark Rift can be cancelled at anytime during the cast. If it is cancelled in this way or the target unit dies before the spell becomes active, Dark Rift goes into cooldown.",
-        "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_POINT",
-          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-        ],
-        "TargetType": [
-          "DOTA_UNIT_TARGET_BUILDING"
-        ],
-        "TargetFlags": [
-          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-        ],
-        "AbilityCastRange": [
-          0
-        ],
-        "AbilityCastPoint": [
-          0.6
-        ],
-        "AbilityCooldown": [
-          130
-        ],
-        "AbilityManaCost": [
-          75,
-          150,
-          225
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Teleport Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              450
-            ]
-          },
-          {
-            "Name": "Teleport Delay",
-            "Url": "teleport_delay",
-            "ValueType": "FIXED",
-            "Value": [
-              5,
-              4,
-              3
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Cancel Dark Rift",
-        "Url": "cancel_dark_rift",
-        "ID": 5617,
-        "Description": "Stop the teleport.",
-        "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-        ],
-        "AbilityCastPoint": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "AbilitySpecial": []
-      }
-    ],
-    "Subtitles": null
-  },
-  {
     "Title": "Terrorblade",
     "Url": "terrorblade",
     "ID": 109,
@@ -42927,7 +42561,7 @@
         "Title": "Supernova",
         "Url": "supernova",
         "ID": 5630,
-        "Description": "The Phoenix willingly ends its current life for the chance to be reborn. Transforms into a burning sun that scorches enemies in a huge area. The sun can be destroyed by attacks from enemy Heroes. After %tooltip_duration% seconds the sun explodes, stunning all nearby enemies while restoring Phoenix to full health and mana with refreshed abilities.",
+        "Description": "The Phoenix willingly ends its current life for the chance to be reborn. Transforms into a burning sun that scorches enemies in a huge area. The sun can be destroyed by attacks from enemy Heroes. After 6 seconds the sun explodes, stunning all nearby enemies while restoring Phoenix to full health and mana with refreshed abilities.",
         "Lore": "The solar crucible of a Supernova may be fatal, yet from its flames arise new beacons to wander infinity.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -43191,301 +42825,6 @@
           0
         ],
         "AbilitySpecial": []
-      }
-    ],
-    "Subtitles": null
-  },
-  {
-    "Title": "Oracle",
-    "Url": "oracle",
-    "ID": 111,
-    "Enabled": false,
-    "Side": "Radiant",
-    "Aliases": [
-      "ora"
-    ],
-    "AttackCapabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
-    "PrimaryAttribute": "DOTA_ATTRIBUTE_INTELLECT",
-    "Initial": {
-      "Strength": 18,
-      "StrengthGain": 1.9,
-      "Agility": 15,
-      "AgilityGain": 1.7,
-      "Intelligence": 23,
-      "IntelligenceGain": 2.9,
-      "Health": 492,
-      "HealthRegen": 0.79,
-      "Mana": 299,
-      "ManaRegen": 0.93,
-      "Armor": 2.1,
-      "MagicResistance": 0.25,
-      "MinDamage": 45,
-      "MaxDamage": 51,
-      "AvgDamage": 48,
-      "IncreasedAttackSpeed": 15,
-      "BaseAttackTime": 1.4,
-      "AttackTime": 1.22,
-      "AttacksPerSecond": 0.82,
-      "AttackAnimationPoint": 0.3,
-      "AttackAcquisitionRange": 800,
-      "AttackRange": 620,
-      "VisionDayRange": 1800,
-      "VisionNightRange": 800,
-      "ProjectileSpeed": 900,
-      "MovementSpeed": 305,
-      "TurnRate": 1
-    },
-    "Abilities": [
-      {
-        "Title": "Fortune's End",
-        "Url": "fortunes_end",
-        "ID": 5637,
-        "Description": "Channels Nerif's power into a bolt of scouring energy for up to 2. 9 seconds. When released the bolt strikes the targeted enemy, dealing damage and purging in an area around them. The purge duration is equal to the time spent channeling.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-          "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        ],
-        "TargetType": [
-          "DOTA_UNIT_TARGET_HERO",
-          "DOTA_UNIT_TARGET_BASIC"
-        ],
-        "DamageType": "DAMAGE_TYPE_MAGICAL",
-        "AbilityCastRange": [
-          650
-        ],
-        "AbilityCastPoint": [
-          0.3
-        ],
-        "AbilityChannelTime": [
-          2.5
-        ],
-        "AbilityCooldown": [
-          12
-        ],
-        "AbilityManaCost": [
-          130
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Damage",
-            "Url": "damage",
-            "ValueType": "FIXED",
-            "Value": [
-              75,
-              150,
-              225,
-              300
-            ]
-          },
-          {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              215
-            ]
-          },
-          {
-            "Name": "Bolt Speed",
-            "Url": "bolt_speed",
-            "ValueType": "FIXED",
-            "Value": [
-              1200
-            ]
-          },
-          {
-            "Name": "Min Purge Duration",
-            "Url": "minimum_purge_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              0.3
-            ]
-          },
-          {
-            "Name": "Max Purge Duration",
-            "Url": "maximum_purge_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              2.5
-            ]
-          },
-          {
-            "Name": "Purge Rate",
-            "Url": "purge_rate",
-            "ValueType": "FIXED",
-            "Value": [
-              5
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Fate's Edict",
-        "Url": "fates_edict",
-        "ID": 5638,
-        "Description": "Nerif enraptures the target, rendering them unable to attack, granting them 100% spell resistance, and increasing the damage they take from other damage types. Can be cast on both allies and enemies.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_ENEMY",
-          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-        ],
-        "TargetType": [
-          "DOTA_UNIT_TARGET_HERO",
-          "DOTA_UNIT_TARGET_BASIC"
-        ],
-        "AbilityCastRange": [
-          700
-        ],
-        "AbilityCastPoint": [
-          0.3
-        ],
-        "AbilityCooldown": [
-          12
-        ],
-        "AbilityManaCost": [
-          50
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Damage Amplification",
-            "Url": "damage_amp",
-            "ValueType": "PERCENTAGE",
-            "Value": [
-              0.5
-            ]
-          },
-          {
-            "Name": "Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              3,
-              4,
-              5,
-              6
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "Purifying Flames",
-        "Url": "purifying_flames",
-        "ID": 5639,
-        "Description": "Burns away impurities from the target, dealing heavy damage and causing them to regenerate life each second over the duration. Can be cast on both allies and enemies.",
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
-          "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        ],
-        "TargetType": [
-          "DOTA_UNIT_TARGET_HERO"
-        ],
-        "AbilityCastRange": [
-          750
-        ],
-        "AbilityCastPoint": [
-          0.3
-        ],
-        "AbilityCooldown": [
-          3
-        ],
-        "AbilityManaCost": [
-          55,
-          70,
-          85,
-          100
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Damage",
-            "Url": "damage",
-            "ValueType": "FIXED",
-            "Value": [
-              90,
-              180,
-              270,
-              360
-            ]
-          },
-          {
-            "Name": "Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              9
-            ]
-          },
-          {
-            "Name": "Heal Per Second",
-            "Url": "heal_per_second",
-            "ValueType": "FIXED",
-            "Value": [
-              11,
-              22,
-              33,
-              44
-            ]
-          },
-          {
-            "Name": "Tick Rate",
-            "Url": "tick_rate",
-            "ValueType": "FIXED",
-            "Value": [
-              1
-            ]
-          }
-        ]
-      },
-      {
-        "Title": "False Promise",
-        "Url": "false_promise",
-        "ID": 5640,
-        "Description": "Temporarily alters the target ally's destiny, delaying all damage, healing and regeneration effects on them until False Promise ends. Ally is granted invisibility while attacking and moving. Removes all negative status effects when applied.",
-        "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-        ],
-        "TargetTeam": [
-          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-        ],
-        "TargetType": [
-          "DOTA_UNIT_TARGET_HERO",
-          "DOTA_UNIT_TARGET_BASIC"
-        ],
-        "AbilityCastRange": [
-          1000
-        ],
-        "AbilityCastPoint": [
-          0.3
-        ],
-        "AbilityCooldown": [
-          20
-        ],
-        "AbilityManaCost": [
-          200
-        ],
-        "AbilitySpecial": [
-          {
-            "Name": "Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              7,
-              8,
-              9
-            ]
-          }
-        ]
       }
     ],
     "Subtitles": null
