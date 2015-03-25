@@ -25,8 +25,8 @@ def generate():
 	args = parser.parse_args()
 
 	dotadir = args.steamdir[0] + '\\SteamApps\\common\\dota 2 beta\\dota\\'
-	outputdirname = "dotadata"
-	outputdir = args.o[0] + '\\' + outputdirname
+	outputdirname = "Output"
+	outputdir = args.o + '\\' + outputdirname
 
 	if (not os.path.isdir(dotadir)):
 		print("Couldn't verify dota installation at path: '"+dotadir+"'")
