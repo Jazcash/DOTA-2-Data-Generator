@@ -1,0 +1,3 @@
+[submodule "DotA2-Data-Extractor"]
+	path = DotA2-Data-Extractor
+	url = https://github.com/Jazcash/DotA2-Data-Extractor.git
