@@ -10,15 +10,15 @@ var jsontufile 		= require('json-tu-file'); // import and export json files to o
 var vdf 			= require('vdf'); // parse VDF (Valve Data Format) files to JSON
 
 var PATH = {
-	LOCALES: "resources/localesTesting/",
-	HEROES: "resources/scripts/npc_heroes.txt",
-	ABILITIES: "resources/scripts/npc_abilities.txt",
-	ITEMS: "resources/scripts/items.txt",
-	HEROIMAGES: "resources/images/heroes/",
+	LOCALES: 		"resources/locales/",
+	HEROES: 		"resources/npc/npc_heroes.txt",
+	ABILITIES: 		"resources/npc/npc_abilities.txt",
+	ITEMS: 			"resources/npc/items.txt",
+	HEROIMAGES: 	"resources/images/heroes/",
 	MINIHEROIMAGES: "resources/images/miniheroes/",
 	ABILITYIMAGES:  "resources/images/spellicons/",
-	ITEMIMAGES: "resources/images/items/",
-	WEBMS: "resources/webms/"
+	ITEMIMAGES: 	"resources/images/items/",
+	WEBMS: 			"resources/webm/"
 }
 
 var UNIQUE_VALUES 		= jsontufile.readFileSync("uniqueValues.json");
