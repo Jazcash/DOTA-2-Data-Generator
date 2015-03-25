@@ -2004,7 +2004,7 @@
         "Title": "Frost Arrows",
         "Url": "frost_arrows",
         "ID": 5019,
-        "Description": "Adds a freezing effect to Drow's attacks, slowing enemy movement. Lasts 1. 5 seconds on Heroes, and 7 seconds on creeps.Frost Arrows is a Unique Attack Modifier, and does not stack with other Unique Attack Modifier.",
+        "Description": "Adds a freezing effect to Drow's attacks, slowing enemy movement. Lasts 1.5 seconds on Heroes, and 7 seconds on creeps.Frost Arrows is a Unique Attack Modifier, and does not stack with other Unique Attack Modifier.",
         "Lore": "Ice-encased arrows pierce the silence, chilling their victims to the core.",
         "Notes": [
           "The slow duration is refreshed on successive casts."
@@ -3572,7 +3572,7 @@
         "Title": "Requiem of Souls",
         "Url": "requiem",
         "ID": 5064,
-        "Description": "Captured souls are used to deal massive damage, as well as slowing and reducing the attack damage of nearby enemy units. Requiem of Souls creates one wave of damage for every 2 souls stored by Necromastery. The closest enemy units are hit the hardest. Requiem of Souls has a 1. 67 second cast time before it is activated. Requiem of Souls is automatically cast when Shadow Fiend dies, independent of its cooldown.",
+        "Description": "Captured souls are used to deal massive damage, as well as slowing and reducing the attack damage of nearby enemy units. Requiem of Souls creates one wave of damage for every 2 souls stored by Necromastery. The closest enemy units are hit the hardest. Requiem of Souls has a 1.67 second cast time before it is activated. Requiem of Souls is automatically cast when Shadow Fiend dies, independent of its cooldown.",
         "Lore": "The captured souls of those past slain are released to ravage their former allies.",
         "Notes": [
           "One line is generated around Nevermore, 1 per 2 souls, for a maximum of 18 lines.",
@@ -7621,7 +7621,7 @@
         "Title": "Shackleshot",
         "Url": "shackleshot",
         "ID": 5130,
-        "Description": "Shackles the target to an enemy unit or tree in a line directly behind it. If no unit or tree is present, the stun duration is reduced to 0. 75.",
+        "Description": "Shackles the target to an enemy unit or tree in a line directly behind it. If no unit or tree is present, the stun duration is reduced to 0.75.",
         "Lore": "Windranger's variety of bow skills includes an arrow with thick ropes attached to encumber any escaping target.",
         "Notes": [
           "This spell can shackle two enemies together, stunning them both.",
@@ -12850,7 +12850,7 @@
         "Title": "Assassinate",
         "Url": "assassinate",
         "ID": 5157,
-        "Description": "Sniper locks onto a target enemy unit, and after 1. 7 seconds, fires a devastating shot that deals damage at long range, and mini-stuns the target.",
+        "Description": "Sniper locks onto a target enemy unit, and after 1.7 seconds, fires a devastating shot that deals damage at long range, and mini-stuns the target.",
         "Lore": "In order to fulfill the prophecy and return to his home town, Kardel must make another shot as perfect as the one on the day of his ancient test.",
         "Notes": [
           "Crosshair effect is only visible to allies.",
@@ -19112,7 +19112,7 @@
         "Title": "Lightning Storm",
         "Url": "lightning_storm",
         "ID": 5243,
-        "Description": "Summons a lightning storm that blasts the target enemy unit, then jumps to nearby enemy units. Struck enemies are slowed by 75% for 0. 5 seconds.",
+        "Description": "Summons a lightning storm that blasts the target enemy unit, then jumps to nearby enemy units. Struck enemies are slowed by 75% for 0.5 seconds.",
         "Lore": "The Tormented Soul's mastery of the elements is evident in the massive storms that strike down armies before him.",
         "Notes": [
           "The lightning searches in a 650 area."
@@ -26931,7 +26931,7 @@
         "Title": "Unstable Concoction",
         "Url": "unstable_concoction",
         "ID": 5366,
-        "Description": "Alchemist brews up an unstable concoction that he can throw at an enemy hero, to stun and deal damage in an area around the explosion. The longer the concoction brews, the more damage it deals and the longer the stun. After 5 seconds, the brew reaches its maximum damage and stun time. However, after 5. 5 seconds, the concoction will explode on Alchemist himself if not thrown.",
+        "Description": "Alchemist brews up an unstable concoction that he can throw at an enemy hero, to stun and deal damage in an area around the explosion. The longer the concoction brews, the more damage it deals and the longer the stun. After 5 seconds, the brew reaches its maximum damage and stun time. However, after 5.5 seconds, the concoction will explode on Alchemist himself if not thrown.",
         "Lore": "A silver lining to the failure of turning a mountain into gold, this volatile solution has destructive potential.",
         "Notes": [
           "Alchemist can move and act normally while brewing.",
@@ -31371,7 +31371,7 @@
         "Title": "Poof",
         "Url": "poof",
         "ID": 5431,
-        "Description": "Drawing mystical energies from the earth, a Meepo can teleport to another Meepo or itself after channeling for 1. 5 seconds, dealing damage in both the departure and arrival locations.",
+        "Description": "Drawing mystical energies from the earth, a Meepo can teleport to another Meepo or itself after channeling for 1.5 seconds, dealing damage in both the departure and arrival locations.",
         "Lore": "Sometimes breaking one of the Riftshadow Crystals can be just the trick for getting yourself out of a bind. Or your other self.",
         "Notes": [
           "Can be cast through the minimap.",
@@ -35186,7 +35186,7 @@
         "Title": "Tether",
         "Url": "tether",
         "ID": 5485,
-        "Description": "Tether yourself to an allied hero, granting both of you bonus movement speed. When you restore health or mana, your target gains 1. 5x the amount. Any enemy unit that crosses the tether is slowed. The tether breaks when the allied unit moves too far away, or Io cancels the tether.",
+        "Description": "Tether yourself to an allied hero, granting both of you bonus movement speed. When you restore health or mana, your target gains 1.5x the amount. Any enemy unit that crosses the tether is slowed. The tether breaks when the allied unit moves too far away, or Io cancels the tether.",
         "Lore": "The benevolent touch of Io brings strength from between the planes.",
         "Notes": [
           "If you try to tether a unit that is 700 distance or further away from Io, he will latch on and pull himself closer to the tethered unit (to a distance of 300).",
@@ -41224,7 +41224,7 @@
         "Title": "Fire Remnant",
         "Url": "fire_remnant",
         "ID": 5606,
-        "Description": "Ember Spirit generates Fire Remnant charges every 35 seconds, with a max of 3 charges. Releasing a charge sends a Fire Remnant that runs to the target location at 2. 5x Ember Spirit's speed. Using Activate Fire Remnant, Ember Spirit can dash out to his Remnants, exploding them for area of effect damage. The targeted Remnant will be arrived at last.",
+        "Description": "Ember Spirit generates Fire Remnant charges every 35 seconds, with a max of 3 charges. Releasing a charge sends a Fire Remnant that runs to the target location at 2.5x Ember Spirit's speed. Using Activate Fire Remnant, Ember Spirit can dash out to his Remnants, exploding them for area of effect damage. The targeted Remnant will be arrived at last.",
         "Lore": "By the spirit's power are Xin's teachings spread anew.",
         "Notes": [
           "Starts with 3 charges (maximum).",
@@ -41462,7 +41462,7 @@
         "Title": "Rolling Boulder",
         "Url": "rolling_boulder",
         "ID": 5609,
-        "Description": "After a 0. 6s delay, Earth Spirit becomes a boulder, rolling towards the target position and damaging enemy units, stopping if he collides with an enemy hero or is stunned. If the boulder rolls over a Stone Remnant, the Stone Remnant is consumed and travel distance and speed are improved, and impacted enemies have their movement and attack speed slowed.",
+        "Description": "After a 0.6s delay, Earth Spirit becomes a boulder, rolling towards the target position and damaging enemy units, stopping if he collides with an enemy hero or is stunned. If the boulder rolls over a Stone Remnant, the Stone Remnant is consumed and travel distance and speed are improved, and impacted enemies have their movement and attack speed slowed.",
         "Lore": "Calling upon his connection to the land, the Earth Spirit draws loose stone to him, which forms a protective ball that he can use to roll short distances.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [

@@ -5,8 +5,8 @@
 "use strict";
 
 //var ArgumentParser 	= require('argparse').ArgumentParser;
-var fs 				= require('fs'); // file system
-var jsontufile 		= require('json-tu-file'); // import and export json files
+var fs 				= require('fs');
+var jsontufile 		= require('json-tu-file'); // import and export json files to objects
 var vdf 			= require('vdf'); // parse VDF (Valve Data Format) files to JSON
 
 var PATH = {
@@ -42,7 +42,7 @@ function toFixed(val){
 	return (val % 1 !== 0) ? parseFloat(parseFloat(val).toFixed(2)) : parseInt(val);
 }
 
-var heroes 				= getHeroes();
+var heroes = getHeroes();
 
 jsontufile.writeFile(heroes, "heroes.json", "utf-8")
 
@@ -170,7 +170,9 @@ function getHero(INITIAL_Hero, longHeroUrl, shortHeroUrl){
 
 	var lore = LOCALES.LANGUAGES.english[longHeroUrl+"_bio"];
 	if (lore !== undefined && lore != "" && lore != " ") {
-		hero["Lore"] = lore.replace(/(<[^>]*>)|(\\)*\\n|\\/g, "").replace(/\s(\s)+/g, " ").replace(/\-\-/g, " \- ");
+		hero["Lore"] = 	lore.replace(/(<[^>]*>)|(\\)*\\n|\\/g, "")
+							.replace(/\s(\s)+/g, " ")
+							.replace(/\-\-/g, " \- ");
 	}
 
 	if (INITIAL_Hero.Role !== undefined){
@@ -320,19 +322,26 @@ function getHeroAbility(abilityurl, herourl){
 	
 	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
 	if (description !== undefined && description != "" && description != " ") {
-		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace("%%", "%").replace(/\s(\s)+/g, " ").replace(/\.\S/, function(match){ return ". "+match[1] });
+		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "")
+											.replace("%%", "%")
+											.replace(/\s(\s)+/g, " ")
+											.replace(/\.\S/, function(match){ return ". "+match[1] })
+											.replace(/([0-9]\.)\s([0-9]*)/g, "$1" + "$2");;
 	}
 
 	var lore = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Lore"];
 	if (lore !== undefined && lore != "" && lore != " ") {
-		ability["Lore"] = lore.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " ");
+		ability["Lore"] = 	lore.replace(/(<[^>]*>)|(\\)*\\n/g, "")
+								.replace(/\s(\s)+/g, " ");
 	}
 
 	var notes = [];
 	for (var i=0; i<5; i++){
 		var note =  LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Note"+i];
 		if (note == undefined) break;
-		notes.push(note.replace(/(<[^>]*>)|(\\)*\\n/g, "").replace(/\s(\s)+/g, " "));
+		notes.push(	note.replace(/(<[^>]*>)|(\\)*\\n/g, "")
+						.replace(/\s(\s)+/g, " ")
+		);
 	}
 	if (notes.length != 0) ability["Notes"] = notes;
 	
@@ -386,7 +395,6 @@ function getHeroAbility(abilityurl, herourl){
 				break;
 			default:
 				if (["AbilityCastPoint", "AbilityCooldown", "AbilityDuration", "AbilityDamage", "AbilityManaCost", "AbilityModifierSupportValue", "AbilityCastRange", "AbilityChannelTime", "AbilityModifierSupportBonus", "AbilityCastRangeBuffer"].indexOf(abilityTag) == -1){
-					//console.log(abilityTag);
 				} else {
 					ability[abilityTag] = value;
 				}
