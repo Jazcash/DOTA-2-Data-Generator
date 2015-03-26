@@ -33,7 +33,7 @@ def generate():
 		return
 
 	if (os.path.exists(outputdir)):
-		print("Removing old DOTA2DATA folder...")
+		print("Removing old "+outputdirname+" folder...")
 		subprocess.call(["rm", "-r", outputdir])
 
 	print("Creating Output folder...")

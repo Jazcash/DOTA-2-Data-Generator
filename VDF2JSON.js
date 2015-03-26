@@ -334,7 +334,6 @@ function getHeroAbility(abilityurl, herourl){
 	var description = LOCALES.LANGUAGES.english["DOTA_Tooltip_ability_"+abilityurl+"_Description"];
 	if (description !== undefined && description != "" && description != " ") {
 		ability["Description"] = description.replace(/(<[^>]*>)|(\\)*\\n/g, "")
-											.replace("%%", "%")
 											.replace(/\s(\s)+/g, " ")
 											.replace(/\.\S/, function(match){ return ". "+match[1] })
 											.replace(/([0-9]\.)\s([0-9]*)/g, "$1" + "$2");;
@@ -437,15 +436,16 @@ function getHeroAbility(abilityurl, herourl){
 			abilitySpecial["ValueType"] = type;
 			abilitySpecial["Value"] = value;
 
-			var descriptionValue = (type === "PERCENTAGE") ? value + "%" : value;
+			var descriptionValue = (type === "PERCENTAGE") ? value*100 + "%" : value;
 			if (ability["Description"] !== undefined && ability["Description"] != "" && ability["Description"] != " " && typeof(ability["Description"] === "string")){
-				ability["Description"] = ability["Description"].replaceAll("%"+specialurl+"%", descriptionValue);
+				ability["Description"] = ability["Description"].replaceAll("%"+specialurl+"%", descriptionValue).replaceAll("%%", "%");
 			}
 			
 			special.push(abilitySpecial);
 		}
 	}
 	ability["AbilitySpecial"] = special;
+
 	delete data.AbilitySpecial;
 
 	return ability;

@@ -1072,7 +1072,7 @@
         "Title": "Bloodrage",
         "Url": "bloodrage",
         "ID": 5015,
-        "Description": "Drives a unit into a bloodthirsty rage during which a unit deals, and takes, increased damage. Units affected by Bloodrage will be healed for 25% of the max health of any units they kill. Units affected by Bloodrage when killed will heal 25%% of their max health to their killer.",
+        "Description": "Drives a unit into a bloodthirsty rage during which a unit deals, and takes, increased damage. Units affected by Bloodrage will be healed for 25% of the max health of any units they kill. Units affected by Bloodrage when killed will heal 25% of their max health to their killer.",
         "Lore": "Strygwyr shares his animalistic thirst for bloodshed.",
         "Notes": [
           "Bloodrage can be cast on enemy and allied units, as well as Bloodseeker himself.",
@@ -3697,7 +3697,7 @@
         "Title": "Adaptive Strike",
         "Url": "adaptive_strike",
         "ID": 5053,
-        "Description": "Strikes an enemy unit with a blast of water, stunning the target while dealing base damage plus additional damage based on Morphling's agility times a multiplier. If Morphling's agility is 50% higher than strength, the maximum damage and the minimum stun is dealt. If his strength is 50%% higher than his agility, the maximum stun and minimum damage are dealt.",
+        "Description": "Strikes an enemy unit with a blast of water, stunning the target while dealing base damage plus additional damage based on Morphling's agility times a multiplier. If Morphling's agility is 50% higher than strength, the maximum damage and the minimum stun is dealt. If his strength is 50% higher than his agility, the maximum stun and minimum damage are dealt.",
         "Lore": "The Morphling calls upon his elements to crush his opponents with waves.",
         "Notes": [
           "Knocks the target back 100 - 300 units."
@@ -3959,7 +3959,7 @@
         "Title": "Replicate",
         "Url": "replicate",
         "ID": 5057,
-        "Description": "Morphling replicates any hero, friend or foe, dealing 50% of the original Hero's outgoing damage while taking 100%% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana. If Morphling dies, the Replicate will expire.",
+        "Description": "Morphling replicates any hero, friend or foe, dealing 50% of the original Hero's outgoing damage while taking 100% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana. If Morphling dies, the Replicate will expire.",
         "Lore": "Staring into Morphling produces a reflection that mimics the beholder.",
         "Notes": [
           "You can't target yourself with Replicate."
@@ -4295,7 +4295,7 @@
         "Title": "Doppelganger",
         "Url": "doppelwalk",
         "ID": 5066,
-        "Description": "Phantom Lancer briefly vanishes from the battlefield. After 1 second, Phantom Lancer and any of his nearby illusions reappear at a random position within the targeted location, along with two additional doppelgangers. The two added doppelgangers have different properties: one takes normal damage and deals none, while the other takes 600% damage and deals 20%% damage.",
+        "Description": "Phantom Lancer briefly vanishes from the battlefield. After 1 second, Phantom Lancer and any of his nearby illusions reappear at a random position within the targeted location, along with two additional doppelgangers. The two added doppelgangers have different properties: one takes normal damage and deals none, while the other takes 600% damage and deals 20% damage.",
         "Lore": "Dread Magus Vorn's death imbued the Phantom Lancer with the ability to bend and fracture all spectrums of light.",
         "Notes": [
           "This ability can be used to dodge projectiles, and dispell debuffs.",
@@ -4442,7 +4442,7 @@
         "Title": "Juxtapose",
         "Url": "juxtapose",
         "ID": 5067,
-        "Description": "Phantom Lancer has a chance to fracture his presence, creating an illusion of himself. Illusions also have a chance to fracture further. Illusions created from Phantom Lancer last for 8% seconds, while illusions created from other illusions last 4% seconds.",
+        "Description": "Phantom Lancer has a chance to fracture his presence, creating an illusion of himself. Illusions also have a chance to fracture further. Illusions created from Phantom Lancer last for 800% seconds, while illusions created from other illusions last 400% seconds.",
         "Lore": "Each of Azwraith's lance attacks feels like two from a normal warrior; or three; or four...",
         "Notes": [
           "Illusions created by Juxtapose will attack the target that the ability was triggered upon."
@@ -6380,7 +6380,7 @@
         "Title": "Ball Lightning",
         "Url": "ball_lightning",
         "ID": 5101,
-        "Description": "Storm Spirit becomes volatile electricity, charging across the battlefield until he depletes his mana or reaches his target. The mana activation cost is 15+7% of his total mana pool, and the cost per 100 units traveled is 12+0.75%% of his total mana pool. Damage is expressed in damage per 100 units traveled.",
+        "Description": "Storm Spirit becomes volatile electricity, charging across the battlefield until he depletes his mana or reaches his target. The mana activation cost is 15+7% of his total mana pool, and the cost per 100 units traveled is 12+0.75% of his total mana pool. Damage is expressed in damage per 100 units traveled.",
         "Lore": "The Storm is coming in.",
         "Notes": [
           "Instant cast abilities can be used while traveling.",
@@ -16999,7 +16999,7 @@
         "Title": "Psionic Trap",
         "Url": "psionic_trap",
         "ID": 5197,
-        "Description": "Templar Assassin places mystical traps that invisibly monitor enemy movement. When sprung at her command, they exert a slowing influence of 30% in the area. Traps charge up to slow an additional 5%% every second, up to 50%%.",
+        "Description": "Templar Assassin places mystical traps that invisibly monitor enemy movement. When sprung at her command, they exert a slowing influence of 30% in the area. Traps charge up to slow an additional 5% every second, up to 50%.",
         "Lore": "Calling upon the reach of the Hidden Temple, none escape the eye of the Templar.",
         "Notes": [
           "Traps last indefinitely.",
@@ -18213,7 +18213,7 @@
         "Title": "Poison Touch",
         "Url": "poison_touch",
         "ID": 5233,
-        "Description": "Casts a poisonous spell on an enemy unit, gradually slowing movement, and causing damage over time. LEVEL 1 - Slows the target by 33% for 3 seconds.LEVEL 2 - Slows the target by 33%% for 2 seconds, then by 66%% for 1 second.LEVEL 3 - Slows the target by 33%%, 66%%, and 100%%, for 1 second each.LEVEL 4 - Slows the target by 33%% for 1 second, then 66%% for 1 second, then stuns for 1 second.",
+        "Description": "Casts a poisonous spell on an enemy unit, gradually slowing movement, and causing damage over time. LEVEL 1 - Slows the target by 33% for 3 seconds.LEVEL 2 - Slows the target by 33% for 2 seconds, then by 66% for 1 second.LEVEL 3 - Slows the target by 33%, 66%, and 100%, for 1 second each.LEVEL 4 - Slows the target by 33% for 1 second, then 66% for 1 second, then stuns for 1 second.",
         "Lore": "One of the few Dezun rites used for offensive purposes, the paralytic enchantment often proves useful.",
         "Notes": [
           "The damage is not reduced by damage block abilities."
@@ -19180,7 +19180,7 @@
         "Title": "Diabolic Edict",
         "Url": "diabolic_edict",
         "ID": 5242,
-        "Description": "Saturates the area around Leshrac with magical explosions that deal physical damage to enemy units and structures. The fewer units available to attack, the more damage those units will take. Deals 40% more damage to towers. Lasts 10 seconds.",
+        "Description": "Saturates the area around Leshrac with magical explosions that deal physical damage to enemy units and structures. The fewer units available to attack, the more damage those units will take. Deals 40 more damage to towers. Lasts 10 seconds.",
         "Lore": "Chronoptic energy bursts from one plane to the other, evaporating anything it touches.",
         "Notes": [
           "Damage is not reduced by damage block.",
@@ -22350,7 +22350,7 @@
         "Title": "Spin Web",
         "Url": "spin_web",
         "ID": 5280,
-        "Description": "Spins a large web that renders Broodmother invisible, grants a passive movement speed increase, gives free movement, and boosts regeneration while in its vicinity. Spin Web charges restore every 40 seconds. If damage is taken, free movement is disabled and the movement speed increase is halved for 6% seconds. Spin Web can be cast from anywhere as long as the new web touches an existing web. Webs never expire, and can be manually destroyed. When the maximum limit of webs is exceeded, the oldest web disappears.",
+        "Description": "Spins a large web that renders Broodmother invisible, grants a passive movement speed increase, gives free movement, and boosts regeneration while in its vicinity. Spin Web charges restore every 40 seconds. If damage is taken, free movement is disabled and the movement speed increase is halved for 600% seconds. Spin Web can be cast from anywhere as long as the new web touches an existing web. Webs never expire, and can be manually destroyed. When the maximum limit of webs is exceeded, the oldest web disappears.",
         "Lore": "Weaving a bed of silken fibers, Arachnia's web both protects her and her offspring, as well as giving advancing opponents a sense of forboding.",
         "Notes": [
           "Has a fade time of 2 seconds.",
@@ -30771,7 +30771,7 @@
         "Title": "Summon Spirit Bear",
         "Url": "spirit_bear",
         "ID": 5412,
-        "Description": "Summons a powerful Spirit Bear companion that can equip items. If the bear moves 1100 distance away from the Lone Druid, it cannot attack. Lone Druid suffers 0.1%% of his max health as backlash damage if the Spirit Bear dies. As the bear increases in levels, it can learn the Return, Entangling Claws, and Demolish abilities. Spirit Bear does not benefit from attributes. ",
+        "Description": "Summons a powerful Spirit Bear companion that can equip items. If the bear moves 1100 distance away from the Lone Druid, it cannot attack. Lone Druid suffers 10% of his max health as backlash damage if the Spirit Bear dies. As the bear increases in levels, it can learn the Return, Entangling Claws, and Demolish abilities. Spirit Bear does not benefit from attributes. ",
         "Lore": "Sylla's lifelong companion is symbiotic with his spirit and heart, coming to aid him in any time of need.",
         "Notes": [
           "Most spells interact with the Spirit Bear in the same way as they do with heroes.",
@@ -43620,7 +43620,7 @@
         "Title": "Fate's Edict",
         "Url": "fates_edict",
         "ID": 5638,
-        "Description": "Oracle enraptures a target, disarming them and granting them 100% magic damage resistance, yet also increasing any damage taken from other damage types. Can be cast on allies and enemies.",
+        "Description": "Oracle enraptures a target, disarming them and granting them 100 magic damage resistance, yet also increasing any damage taken from other damage types. Can be cast on allies and enemies.",
         "Lore": "An unbreakable prophecy resounds: a chosen ally shall briefly suffer no magics. Other kinds of suffering however...",
         "Notes": [
           "Cannot be dispelled by purges, except for the purge from Fortune's End."
@@ -44064,7 +44064,7 @@
         "Title": "Suicide Squad, Attack!",
         "Url": "suicide",
         "ID": 5601,
-        "Description": "Techies sacrifice themselves for the greater good, dealing massive area of effect damage. More damage is dealt to units closer to Techies when they explode. Techies' respawn time is reduced by 50% when killed by this ability.",
+        "Description": "Techies sacrifice themselves for the greater good, dealing massive area of effect damage. More damage is dealt to units closer to Techies when they explode. Techies' respawn time is reduced by 50 when killed by this ability.",
         "Lore": "What's this button do?",
         "Notes": [
           "Using this ability counts as suicide, and does not award gold or experience to the enemy team.",
@@ -44401,7 +44401,7 @@
         "Title": "Arctic Burn",
         "Url": "arctic_burn",
         "ID": 5651,
-        "Description": "Winter Wyvern soars upon an arctic wind, granting her unobstructed movement and allowing her to exhale a blistering chill into each attack. While soaring, her attacks travel further and faster, and slow enemies with a burning freeze that strips them of 0.06%% of their current health each second. Her sight is also hardened against night's chill, granting her 400% additional vision range at night while soaring.",
+        "Description": "Winter Wyvern soars upon an arctic wind, granting her unobstructed movement and allowing her to exhale a blistering chill into each attack. While soaring, her attacks travel further and faster, and slow enemies with a burning freeze that strips them of 6% of their current health each second. Her sight is also hardened against night's chill, granting her 400 additional vision range at night while soaring.",
         "Lore": "The same organ where some dragons stoke their inner flame is, in Auroth, a crucible of unimaginable cold. From deep within her frosty gullet, an exhalation sends enemies into burning agony.",
         "Notes": [
           "Enemy units can only receive the Arctic Burn debuff once per cast.",
@@ -44524,7 +44524,7 @@
         "Title": "Splinter Blast",
         "Url": "splinter_blast",
         "ID": 5652,
-        "Description": "Launches a ball of brittle ice toward an enemy. The ice shatters on impact, leaving the primary target completely unaffected, while hurling damaging splinters into nearby enemies in a 500 radius. Enemies struck by these splinters are slowed by 0.25%%.",
+        "Description": "Launches a ball of brittle ice toward an enemy. The ice shatters on impact, leaving the primary target completely unaffected, while hurling damaging splinters into nearby enemies in a 500 radius. Enemies struck by these splinters are slowed by 25%.",
         "Lore": "Produced slowly by specialized vesicles in her frozen gullet, Winter Wyvern blast shards of ice at her enemies.",
         "Notes": [
           "The primary projectile moves at 500 movespeed, or reaches the target in 1.35s, whichever is faster.",
