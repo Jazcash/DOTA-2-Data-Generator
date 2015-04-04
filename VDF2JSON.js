@@ -328,6 +328,7 @@ function getHeroAbility(abilityurl, herourl){
 	var data = INITIAL_Abilities[abilityurl];
 
 	ability["Url"] = shortAbilityUrl;
+	ability["HeroAbilityUrl"] = herourl + '_' + shortAbilityUrl;
 
 	ability["ID"] = data.ID; delete data.ID;
 	

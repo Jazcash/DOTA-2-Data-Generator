@@ -1,5 +1,3 @@
-#!C:\Python34\python.exe
-
 from __future__ import print_function
 from distutils import log
 log.set_verbosity(log.INFO)
@@ -72,20 +70,27 @@ def generate():
 	if os.path.exists('scripts'): shutil.rmtree('scripts')
 	if os.path.exists('locales'): shutil.rmtree('locales')
 
+	smallHeroImageDir = outputdir + "\\images\\heroes\\selection\\"
+	for file in os.listdir(smallHeroImageDir):
+		if ("npc_dota_hero_" in file):
+			os.rename(smallHeroImageDir + file, smallHeroImageDir + file.replace("npc_dota_hero_", ""))
+		else:
+			os.remove(smallHeroImageDir + file)
+
 	# webm conversion
 	print("Converting Valve .webms to valid .webm types...")
 	portraitsdir = outputdir + "\\portraits\\"
 	for file in os.listdir(portraitsdir):
 		if file.endswith(".webm"):
 			print("converting "+file)
-			subprocess.call(["sftowebm.exe",portraitsdir + file])
+			subprocess.call(["sftowebm.exe", portraitsdir + file])
 			os.remove(portraitsdir + file)
 		else:
 			os.remove(portraitsdir + file)
 
 	for file in os.listdir(portraitsdir):
 		if file.endswith(".webm"):
-			os.rename(portraitsdir + file, portraitsdir + file.replace('.webm.webm', '.webm'))
+			os.rename(portraitsdir + file, portraitsdir + file.replace('.webm.webm', '.webm').replace('npc_dota_hero_', ''))
 
 	os.rename(portraitsdir, outputdir + "\\webms")
 
@@ -107,7 +112,7 @@ def generate():
 		link = base + herourl + end
 		imgsrc = urllib.request.Request(link, headers=hdrs)
 		img = urllib.request.urlopen(imgsrc).read()
-		with open(heroimagepath+"/"+herourl+".png", 'b+w') as f:
+		with open(heroimagepath + "/" + herourl+".png", 'b+w') as f:
 			f.write(img)
 
 
