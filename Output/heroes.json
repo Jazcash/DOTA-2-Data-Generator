@@ -310,10 +310,7 @@
           "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
         ],
         "AbilityCastPoint": [
-          0.3,
-          0.3,
-          0.3,
-          0.3
+          0.4
         ],
         "AbilityCooldown": [
           16,
@@ -451,7 +448,7 @@
         "Description": "When attacked, Axe performs a helix counter attack, dealing damage to all nearby enemies.",
         "Lore": "Axe is the only reinforcement this army needs.",
         "Notes": [
-          "Counter Helix checks for triggering whenever an attack against Axe begins, not when Axe is actually damaged by said attack."
+          "Counter Helix triggers when the attack hits."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -523,8 +520,6 @@
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastPoint": [
-          0.3,
-          0.3,
           0.3
         ],
         "AbilityCooldown": [
@@ -562,15 +557,23 @@
             ]
           },
           {
-            "Name": "Speed Bonus",
+            "Name": "Kill Move Speed Bonus",
             "Url": "speed_bonus",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.4
+              0.3
             ]
           },
           {
-            "Name": "Speed Duration",
+            "Name": "Kill Attack Speed Bonus",
+            "Url": "atk_speed_bonus_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              30
+            ]
+          },
+          {
+            "Name": "Kill Speed Duration",
             "Url": "speed_duration",
             "ValueType": "FIXED",
             "Value": [
@@ -578,7 +581,7 @@
             ]
           },
           {
-            "Name": "Speed Radius",
+            "Name": "Kill Speed Radius",
             "Url": "speed_aoe",
             "ValueType": "FIXED",
             "Value": [
@@ -767,10 +770,10 @@
           300
         ],
         "AbilityManaCost": [
+          100,
           125,
           150,
-          175,
-          200
+          175
         ],
         "AbilitySpecial": [
           {
@@ -1022,7 +1025,7 @@
         "Url": "nightmare_end",
         "HeroAbilityUrl": "bane_nightmare_end",
         "ID": 5523,
-        "Description": "Wakes you up from a nightmare.",
+        "Description": "Ends all ongoing Nightmares.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_HIDDEN",
@@ -1251,7 +1254,7 @@
         "Url": "thirst",
         "HeroAbilityUrl": "bloodseeker_thirst",
         "ID": 5017,
-        "Description": "Enables Bloodseeker to sense enemy Heroes whose health is below a certain percentage wherever they are, giving him True Sight on that unit, increased movement speed and increased damage. Bonuses stack per Hero.",
+        "Description": "Enables Bloodseeker to sense enemy Heroes whose health is below a certain percentage wherever they are, giving him True Sight on that unit, increasing his movement speed, and increasing the attack damage he deals to that hero based on how much health they are missing. Bonuses stack per Hero.",
         "Lore": "Strygwyr becomes frenzied when blood is spilled.",
         "Notes": [
           "Not triggered by Illusions."
@@ -1266,7 +1269,7 @@
             "Url": "visibility_threshold_pct",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.3
+              0.25
             ]
           },
           {
@@ -1274,11 +1277,11 @@
             "Url": "invis_threshold_pct",
             "ValueType": "PERCENTAGE",
             "Value": [
-              30
+              25
             ]
           },
           {
-            "Name": "Movement Speed",
+            "Name": "Max Bonus Move Speed",
             "Url": "bonus_movement_speed",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -1289,7 +1292,7 @@
             ]
           },
           {
-            "Name": "Damage",
+            "Name": "Max Thirst Bonus Damage",
             "Url": "bonus_damage",
             "ValueType": "FIXED",
             "Value": [
@@ -1297,6 +1300,14 @@
               20,
               30,
               40
+            ]
+          },
+          {
+            "Name": "Max Bonus_pct",
+            "Url": "max_bonus_pct",
+            "ValueType": "FIXED",
+            "Value": [
+              25
             ]
           }
         ]
@@ -1478,17 +1489,6 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              3.5,
-              4,
-              4.5,
-              5
-            ]
-          },
-          {
             "Name": "Radius",
             "Url": "radius",
             "ValueType": "FIXED",
@@ -1501,7 +1501,10 @@
             "Url": "movespeed_slow",
             "ValueType": "PERCENTAGE",
             "Value": [
-              -0.3
+              -0.2,
+              -0.3,
+              -0.4,
+              -0.5
             ]
           },
           {
@@ -1509,7 +1512,18 @@
             "Url": "attackspeed_slow",
             "ValueType": "FIXED",
             "Value": [
-              -30
+              -20,
+              -30,
+              -40,
+              -50
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              4.5
             ]
           },
           {
@@ -1554,10 +1568,10 @@
           0.3
         ],
         "AbilityCooldown": [
-          10,
           9,
           8,
-          7
+          7,
+          6
         ],
         "AbilityManaCost": [
           115,
@@ -1641,11 +1655,13 @@
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_AURA"
+          "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         ],
         "TargetTeam": [
           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        ],
+        "AbilityCastPoint": [
+          0.2
         ],
         "AbilitySpecial": [
           {
@@ -1657,6 +1673,17 @@
               1.5,
               2,
               2.5
+            ]
+          },
+          {
+            "Name": "Mana Restore",
+            "Url": "mana_restore",
+            "ValueType": "FIXED",
+            "Value": [
+              40,
+              80,
+              120,
+              160
             ]
           }
         ]
@@ -1688,8 +1715,6 @@
           0.3
         ],
         "AbilityCooldown": [
-          150,
-          120,
           90
         ],
         "AbilityDuration": [
@@ -2520,9 +2545,9 @@
           0
         ],
         "AbilityCooldown": [
-          30,
+          42,
+          34,
           26,
-          22,
           18
         ],
         "AbilityDuration": [
@@ -2566,7 +2591,7 @@
         "Url": "healing_ward",
         "HeroAbilityUrl": "juggernaut_healing_ward",
         "ID": 5029,
-        "Description": "Summons a Healing Ward that heals all nearby allied units, based on their max hit points. The Healing Ward can move at 450 movement speed after being summoned. Lasts 25 seconds.",
+        "Description": "Summons a Healing Ward which heals all nearby allied units, based on their max health. The Healing Ward moves at 42000% movement speed after being summoned. Lasts 2500% seconds.",
         "Lore": "Of the rituals learned at the Isle of Masks, tending wounds with a bit of voodoo magic has proven to be quite useful.",
         "Notes": [
           "The healing ward can be controlled.",
@@ -2606,7 +2631,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Max Hp Per Second",
+            "Name": "Max Health Per Second",
             "Url": "healing_ward_heal_amount",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -2622,6 +2647,22 @@
             "ValueType": "PERCENTAGE",
             "Value": [
               500
+            ]
+          },
+          {
+            "Name": "Healing Ward_movespeed_tooltip",
+            "Url": "healing_ward_movespeed_tooltip",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              420
+            ]
+          },
+          {
+            "Name": "Healing Ward_duration_tooltip",
+            "Url": "healing_ward_duration_tooltip",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              25
             ]
           }
         ]
@@ -2667,11 +2708,10 @@
         "Description": "Juggernaut leaps towards the target enemy unit with a damaging attack, and then slashes other nearby enemy units, dealing between 200-225 damage per slash. Juggernaut is invulnerable for the duration. Upgradable by Aghanim's Scepter.",
         "Lore": "'The fruits of discipline; with practice comes strength.'",
         "Notes": [
-          "Interrupts channeling spells of the primary target.",
+          "You can use items during Omnislash.",
           "Can target Spell Immune units.",
           "Slashes happen on an interval of 0.4 seconds.",
-          "Creeps are killed in one hit of omnislash.",
-          "You can use items during Omnislash."
+          "Creeps are killed in one hit of omnislash."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -2721,7 +2761,7 @@
             ]
           },
           {
-            "Name": "Jumps",
+            "Name": "Slashes",
             "Url": "omni_slash_jumps",
             "ValueType": "FIXED",
             "Value": [
@@ -2731,7 +2771,7 @@
             ]
           },
           {
-            "Name": "Jump Radius",
+            "Name": "Slash Jump Radius",
             "Url": "omni_slash_radius",
             "ValueType": "FIXED",
             "Value": [
@@ -2747,21 +2787,21 @@
             ]
           },
           {
-            "Name": "Scepter Cooldown",
-            "Url": "omni_slash_cooldown_scepter",
-            "ValueType": "FIXED",
-            "Value": [
-              70
-            ]
-          },
-          {
-            "Name": "Scepter Jumps",
+            "Name": "Scepter Slashes",
             "Url": "omni_slash_jumps_scepter",
             "ValueType": "FIXED",
             "Value": [
               6,
               9,
               12
+            ]
+          },
+          {
+            "Name": "Scepter Cooldown",
+            "Url": "omni_slash_cooldown_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              70
             ]
           }
         ]
@@ -2820,7 +2860,7 @@
         "Url": "starfall",
         "HeroAbilityUrl": "mirana_starfall",
         "ID": 5051,
-        "Description": "Calls down a wave of meteors to damage nearby enemy units. One random enemy unit in 175 range will take a second hit for 75% of the damage.",
+        "Description": "Calls down a wave of meteors to damage nearby enemy units. The closesest enemy unit to Mirana in a 325 radius will be struck a second time for 75% of the damage.",
         "Lore": "The Goddess breaks the strata to empower her Princess in the time of need.",
         "Notes": [
           "Starstorm is not blocked by Linken's Sphere.",
@@ -2877,7 +2917,7 @@
             "Url": "starfall_secondary_radius",
             "ValueType": "FIXED",
             "Value": [
-              175
+              325
             ]
           }
         ]
@@ -3099,7 +3139,7 @@
         "Url": "invis",
         "HeroAbilityUrl": "mirana_invis",
         "ID": 5049,
-        "Description": "Turns Mirana and all allied heroes invisible. If a hero is revealed, invisibility will restore after the fade delay as long as Moonlight Shadow's duration has not expired. Silence will prevent revealed units from becoming invisible.",
+        "Description": "Turns Mirana and all allied heroes invisible. If a hero is revealed, invisibility will restore after the fade delay as long as Moonlight Shadow's duration has not expired.",
         "Lore": "Her tenure with Selemene allows Mirana to eclipse the ground, wrapping her allies in a cloak of shadows.",
         "Notes": [
           "Units affected will not auto attack enemies.",
@@ -3742,10 +3782,11 @@
         "Url": "adaptive_strike",
         "HeroAbilityUrl": "morphling_adaptive_strike",
         "ID": 5053,
-        "Description": "Strikes an enemy unit with a blast of water, stunning the target while dealing base damage plus additional damage based on Morphling's agility times a multiplier. If Morphling's agility is 50% higher than strength, the maximum damage and the minimum stun is dealt. If his strength is 50% higher than his agility, the maximum stun and minimum damage are dealt.",
+        "Description": "Launches a surge of water toward an enemy unit, stunning the target while dealing base damage plus additional damage based on Morphling's agility times a multiplier. If Morphling's agility is 50% higher than strength, the maximum damage and the minimum stun is dealt. If his strength is 50% higher than his agility, the maximum stun and minimum damage are dealt.",
         "Lore": "The Morphling calls upon his elements to crush his opponents with waves.",
         "Notes": [
-          "Knocks the target back 100 - 300 units."
+          "Knocks the target back 100 - 300 units.",
+          "Projectile moves at 1150 speed."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -3864,6 +3905,14 @@
               700,
               800,
               900
+            ]
+          },
+          {
+            "Name": "Projectile Speed",
+            "Url": "projectile_speed",
+            "ValueType": "FIXED",
+            "Value": [
+              1150
             ]
           }
         ]
@@ -4003,14 +4052,104 @@
         ]
       },
       {
+        "Title": "Hybrid",
+        "Url": "hybrid",
+        "HeroAbilityUrl": "morphling_hybrid",
+        "ID": 5674,
+        "Description": "Morphling becomes a hybrid replication of a target allied hero, and can cast all of that hero's non-ultimate abilities. Morphling will reappear at the location of the hybrid if it dies, or when its duration ends. Cannot be cast while Morphling has an active Replicate.",
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_CUSTOM"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_CUSTOM"
+        ],
+        "AbilityCastRange": [
+          600
+        ],
+        "AbilityCastPoint": [
+          0.25
+        ],
+        "AbilityCooldown": [
+          140
+        ],
+        "AbilityManaCost": [
+          200
+        ],
+        "AbilitySpecial": [
+          {
+            "Name": "Illusion Damage_out_pct",
+            "Url": "illusion_damage_out_pct",
+            "Value": [
+              -50,
+              -50,
+              -50
+            ]
+          },
+          {
+            "Name": "Tooltip Illusion_damage_out_pct",
+            "Url": "tooltip_illusion_damage_out_pct",
+            "Value": [
+              50,
+              50,
+              50
+            ]
+          },
+          {
+            "Name": "Illusion Incoming_dmg_pct_tooltip",
+            "Url": "illusion_incoming_dmg_pct_tooltip",
+            "Value": [
+              100,
+              100,
+              100
+            ]
+          },
+          {
+            "Name": "Illusion Damage_in_pct",
+            "Url": "illusion_damage_in_pct",
+            "Value": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "Name": "Tooltip Cast_range",
+            "Url": "tooltip_cast_range",
+            "Value": [
+              600
+            ]
+          },
+          {
+            "Name": "Illusion Damage_out_pct_scepter",
+            "Url": "illusion_damage_out_pct_scepter",
+            "Value": [
+              -20
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              20
+            ]
+          }
+        ]
+      },
+      {
         "Title": "Replicate",
         "Url": "replicate",
         "HeroAbilityUrl": "morphling_replicate",
         "ID": 5057,
-        "Description": "Morphling replicates any hero, friend or foe, dealing 50% of the original Hero's outgoing damage while taking 100% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana. If Morphling dies, the Replicate will expire.",
+        "Description": "Morphling replicates any hero, friend or foe, dealing 50% of the original Hero's outgoing damage while taking 100% of any incoming damage. At any time, Morphling can instantly take the position of the Replicate for 150 mana. If Morphling dies, the Replicate will expire. Upgradable by Aghanim's Scepter.",
         "Lore": "Staring into Morphling produces a reflection that mimics the beholder.",
         "Notes": [
-          "You can't target yourself with Replicate."
+          "You can't target yourself with Replicate without Aghanim's Scepter."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -4099,6 +4238,14 @@
               700,
               1100,
               1500
+            ]
+          },
+          {
+            "Name": "Illusion Damage_out_pct_scepter",
+            "Url": "illusion_damage_out_pct_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              -20
             ]
           }
         ]
@@ -4746,15 +4893,12 @@
           0.1
         ],
         "AbilityCooldown": [
-          16,
-          16,
-          16,
           16
         ],
         "AbilityDamage": [
-          70,
-          140,
-          210,
+          100,
+          160,
+          220,
           280
         ],
         "AbilityManaCost": [
@@ -5198,11 +5342,14 @@
             ]
           },
           {
-            "Name": "Slow",
+            "Name": "Move Slow",
             "Url": "rot_slow",
             "ValueType": "PERCENTAGE",
             "Value": [
-              -0.2
+              -0.2,
+              -0.22,
+              -0.24,
+              -0.26
             ]
           }
         ]
@@ -5987,7 +6134,7 @@
         "Title": "Caustic Finale",
         "HeroAbilityUrl": "sand_king_undefined",
         "ID": 5104,
-        "Description": "Sand King's attacks inject a venom that causes enemy units to explode violently upon death, spreading area damage. Caustic Finale is a Unique Attack Modifier, and does not stack with other Unique Attack Modifier.",
+        "Description": "Sand King's attacks inject a venom that causes enemy units to violently explode when its timer expires, or when the unit dies, damaging and slowing nearby enemies. Caustic Finale is a Unique Attack Modifier, and does not stack with other Unique Attack Modifier.",
         "Lore": "An injection from Crixalis makes one brittle and as dry as the arid wastes, subject to implosive demise.",
         "Notes": [
           "Units afflicted with the debuff will explode even if Sand King did not deliver the killing blow.",
@@ -5998,21 +6145,9 @@
           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
-        "AbilityDuration": [
-          8,
-          8,
-          8,
-          8
-        ],
-        "AbilityDamage": [
-          90,
-          130,
-          170,
-          220
-        ],
         "AbilitySpecial": [
           {
-            "Name": "Radius",
+            "Name": "Explode Radius",
             "Url": "caustic_finale_radius",
             "ValueType": "FIXED",
             "Value": [
@@ -6020,7 +6155,7 @@
             ]
           },
           {
-            "Name": "Caustic Finale_damage",
+            "Name": "Explode Death Damage",
             "Url": "caustic_finale_damage",
             "ValueType": "FIXED",
             "Value": [
@@ -6031,14 +6166,46 @@
             ]
           },
           {
-            "Name": "Caustic Finale_duration",
+            "Name": "Explode Timer Damage",
+            "Url": "caustic_finale_damage_expire_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              27,
+              39,
+              51,
+              66
+            ]
+          },
+          {
+            "Name": "Caustic Finale_damage_reduced",
+            "Url": "caustic_finale_damage_reduced",
+            "ValueType": "FIXED",
+            "Value": [
+              30
+            ]
+          },
+          {
+            "Name": "Explode Timer",
             "Url": "caustic_finale_duration",
             "ValueType": "FIXED",
             "Value": [
-              8,
-              8,
-              8,
-              8
+              6
+            ]
+          },
+          {
+            "Name": "Move Slow",
+            "Url": "caustic_finale_slow",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.2
+            ]
+          },
+          {
+            "Name": "Slow Duration",
+            "Url": "caustic_finale_slow_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              3
             ]
           }
         ]
@@ -6223,7 +6390,7 @@
       "VisionDayRange": 1800,
       "VisionNightRange": 800,
       "ProjectileSpeed": 1100,
-      "MovementSpeed": 290,
+      "MovementSpeed": 285,
       "TurnRate": 0.8
     },
     "Abilities": [
@@ -6534,7 +6701,15 @@
             "Url": "ball_lightning_vision_radius",
             "ValueType": "PERCENTAGE",
             "Value": [
-              1000
+              400
+            ]
+          },
+          {
+            "Name": "Blocker Duration",
+            "Url": "blocker_duration",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              5
             ]
           }
         ]
@@ -6744,10 +6919,10 @@
             "Url": "warcry_armor",
             "ValueType": "FIXED",
             "Value": [
-              4,
-              8,
-              12,
-              16
+              5,
+              10,
+              15,
+              20
             ]
           },
           {
@@ -6997,7 +7172,7 @@
         "Url": "toss",
         "HeroAbilityUrl": "tiny_toss",
         "ID": 5107,
-        "Description": "Grabs a random unit in a 275 radius around Tiny, friend or enemy, and launches it at the target unit or rune to deal damage where they land. If the tossed unit is an enemy, it will take an extra 20% damage. Toss does more damage as Tiny's size increases.",
+        "Description": "Grabs the nearest unit in a 275 radius around Tiny, ally or enemy, and launches it at the target unit or rune to deal damage where they land. If the tossed unit is an enemy, it will take an extra 20% damage. Toss does more damage with each level in Growth.",
         "Lore": "Tiny's gargantuan stature allows him to catapult even the sturdiest of warriors.",
         "Notes": [
           "If a unit is hit by Avalanche then Tossed, it can be hit a second time by Avalanche if it lands in the area of effect before Avalanche ends.",
@@ -7050,10 +7225,7 @@
             "Name": "Grab Radius",
             "Url": "grab_radius",
             "Value": [
-              250,
-              250,
-              250,
-              250
+              275
             ]
           },
           {
@@ -7678,10 +7850,7 @@
           800
         ],
         "AbilityCastPoint": [
-          0.3,
-          0.3,
-          0.3,
-          0.3
+          0.15
         ],
         "AbilityCooldown": [
           12,
@@ -8361,9 +8530,8 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "True Sight Radius",
+            "Name": "True Sight_radius",
             "Url": "true_sight_radius",
-            "ValueType": "FIXED",
             "Value": [
               900,
               900,
@@ -8371,14 +8539,19 @@
             ]
           },
           {
+            "Name": "True Sight Radius",
+            "Url": "true_sight_radius_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              500
+            ]
+          },
+          {
             "Name": "Sight Radius_day",
             "Url": "sight_radius_day",
             "ValueType": "FIXED",
             "Value": [
-              1000,
-              1000,
-              1000,
-              1000
+              500
             ]
           },
           {
@@ -8386,10 +8559,7 @@
             "Url": "sight_radius_night",
             "ValueType": "FIXED",
             "Value": [
-              1000,
-              1000,
-              1000,
-              1000
+              500
             ]
           },
           {
@@ -8499,10 +8669,7 @@
           0.4
         ],
         "AbilityCooldown": [
-          12,
-          12,
-          12,
-          12
+          10
         ],
         "AbilityDamage": [
           120,
@@ -8529,7 +8696,7 @@
             ]
           },
           {
-            "Name": "Slow",
+            "Name": "Move Slow",
             "Url": "movespeed_bonus",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -8668,7 +8835,7 @@
           10
         ],
         "AbilityManaCost": [
-          80
+          50
         ],
         "AbilitySpecial": [
           {
@@ -9176,13 +9343,11 @@
             ]
           },
           {
-            "Name": "Scepter Range",
+            "Name": "Cast Range_scepter",
             "Url": "cast_range_scepter",
             "ValueType": "FIXED",
             "Value": [
-              900,
-              900,
-              900
+              600
             ]
           },
           {
@@ -9369,7 +9534,7 @@
           "DOTA_UNIT_TARGET_BUILDING"
         ],
         "AbilityCastRange": [
-          800
+          1000
         ],
         "AbilityCastPoint": [
           0.4,
@@ -9400,7 +9565,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Armor Bonus",
+            "Name": "Ally Armor Bonus",
             "Url": "armor_bonus",
             "ValueType": "FIXED",
             "Value": [
@@ -9408,6 +9573,28 @@
               5,
               7,
               9
+            ]
+          },
+          {
+            "Name": "Enemy Move Slow",
+            "Url": "slow_movement_speed",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.3,
+              -0.3,
+              -0.3,
+              -0.3
+            ]
+          },
+          {
+            "Name": "Enemy Attack Slow",
+            "Url": "slow_attack_speed",
+            "ValueType": "FIXED",
+            "Value": [
+              -20,
+              -20,
+              -20,
+              -20
             ]
           },
           {
@@ -9419,28 +9606,6 @@
               2,
               2,
               2
-            ]
-          },
-          {
-            "Name": "Movement Slow",
-            "Url": "slow_movement_speed",
-            "ValueType": "PERCENTAGE",
-            "Value": [
-              -0.3,
-              -0.3,
-              -0.3,
-              -0.3
-            ]
-          },
-          {
-            "Name": "Attack Slow",
-            "Url": "slow_attack_speed",
-            "ValueType": "FIXED",
-            "Value": [
-              -20,
-              -20,
-              -20,
-              -20
             ]
           }
         ]
@@ -9508,12 +9673,12 @@
         "Url": "chain_frost",
         "HeroAbilityUrl": "lich_chain_frost",
         "ID": 5137,
-        "Description": "Releases an orb of frost that bounces up to 10 times, slowing and damaging enemy units. The first target is mini-stunned. Upgradable by Aghanim's Scepter.",
+        "Description": "Releases an orb of frost that bounces between nearby enemy units up to 10,10,10 times, slowing and damaging each time it hits. The first target is mini-stunned. Upgradable by Aghanim's Scepter.",
         "Lore": "Almost universally considered the ultimate in frost magic, Ethreain's orb of frozen death strikes fear into those who dare stand against him.",
         "Notes": [
           "The first target will be immediately interrupted. This stun goes through spell immunity.",
           "Chain Frost cannot be disjointed.",
-          "Chain Frost has a movement speed of 675.",
+          "Chain Frost has a movement speed of 750.",
           "Chain Frost's first target ministun is not blocked by spell immunity."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -9565,7 +9730,17 @@
             ]
           },
           {
-            "Name": "Jumps",
+            "Name": "Damage Each Bounce",
+            "Url": "damage",
+            "ValueType": "FIXED",
+            "Value": [
+              280,
+              370,
+              460
+            ]
+          },
+          {
+            "Name": "Bounces",
             "Url": "jumps",
             "ValueType": "FIXED",
             "Value": [
@@ -9575,13 +9750,13 @@
             ]
           },
           {
-            "Name": "Slow Duration",
-            "Url": "slow_duration",
+            "Name": "Bounce Range",
+            "Url": "jump_range",
             "ValueType": "FIXED",
             "Value": [
-              4,
-              4,
-              4
+              575,
+              575,
+              575
             ]
           },
           {
@@ -9605,13 +9780,13 @@
             ]
           },
           {
-            "Name": "Jump Range",
-            "Url": "jump_range",
+            "Name": "Slow Duration",
+            "Url": "slow_duration",
             "ValueType": "FIXED",
             "Value": [
-              575,
-              575,
-              575
+              4,
+              4,
+              4
             ]
           },
           {
@@ -9619,9 +9794,7 @@
             "Url": "projectile_speed",
             "ValueType": "FIXED",
             "Value": [
-              675,
-              675,
-              675
+              750
             ]
           },
           {
@@ -9632,16 +9805,6 @@
               1000,
               1000,
               1000
-            ]
-          },
-          {
-            "Name": "Damage",
-            "Url": "damage",
-            "ValueType": "FIXED",
-            "Value": [
-              280,
-              370,
-              460
             ]
           },
           {
@@ -10081,14 +10244,14 @@
     "AttackCapabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
     "PrimaryAttribute": "DOTA_ATTRIBUTE_INTELLECT",
     "Initial": {
-      "Strength": 19,
-      "StrengthGain": 1.6,
+      "Strength": 21,
+      "StrengthGain": 1.8,
       "Agility": 16,
       "AgilityGain": 1.6,
       "Intelligence": 21,
       "IntelligenceGain": 3,
-      "Health": 511,
-      "HealthRegen": 0.82,
+      "Health": 549,
+      "HealthRegen": 0.88,
       "Mana": 273,
       "ManaRegen": 0.85,
       "Armor": 1.24,
@@ -10620,10 +10783,10 @@
           2.5
         ],
         "AbilityDamage": [
-          50,
-          100,
-          150,
-          200
+          75,
+          125,
+          175,
+          225
         ],
         "AbilityManaCost": [
           80,
@@ -10949,7 +11112,7 @@
         "Url": "kraken_shell",
         "HeroAbilityUrl": "tidehunter_kraken_shell",
         "ID": 5119,
-        "Description": "Creates a thick armor shell that reduces physical damage and removes negative buffs when damage received reaches a critical threshold. Kraken Shell does not stack with items that provide Damage Block.",
+        "Description": "Thickens Tidehunter's hide to passively block a portion of any incoming physical attack damage. The hide also removes negative status effects if the damage taken crosses a threshold. Does not stack with items that provide Damage Block.",
         "Lore": "Claddish navymen tell tales of a mighty sea-faring beast that suffered spear and sword but continued to lay waste to the fleet.",
         "Notes": [
           "Only damage from player owned sources is counted towards buff removal.",
@@ -10962,14 +11125,14 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Damage Reduction",
+            "Name": "Damage Block",
             "Url": "damage_reduction",
             "ValueType": "FIXED",
             "Value": [
-              10,
-              20,
-              30,
-              40
+              12,
+              24,
+              36,
+              48
             ]
           },
           {
@@ -10984,7 +11147,7 @@
             ]
           },
           {
-            "Name": "Damage Reset_interval",
+            "Name": "Threshold Timer",
             "Url": "damage_reset_interval",
             "ValueType": "FIXED",
             "Value": [
@@ -11637,7 +11800,7 @@
         "Url": "smoke_screen",
         "HeroAbilityUrl": "riki_smoke_screen",
         "ID": 5142,
-        "Description": "Throws down a smoke bomb, silencing and slowing enemy units in an area while causing them to miss on most attacks. Lasts 6 seconds.",
+        "Description": "Throws down a smoke bomb, silencing enemies, causing causing them to miss most attacks, as well as slowing movement and turn speed.",
         "Lore": "Since his escape during the night of his betrayal, Riki has valued the use of a simple smoke screen to confuse his opponents.",
         "Notes": [
           "Doesn't prevent the use of active items."
@@ -11693,25 +11856,30 @@
             ]
           },
           {
-            "Name": "Movement Slow",
+            "Name": "Movement Speed_reduction",
             "Url": "movement_speed_reduction",
             "ValueType": "PERCENTAGE",
-            "Value": [
-              0.25,
-              0.25,
-              0.25,
-              0.25
-            ]
-          },
-          {
-            "Name": "Attack Slow",
-            "Url": "attack_speed_reduction",
-            "ValueType": "FIXED",
             "Value": [
               25,
               25,
               25,
               25
+            ]
+          },
+          {
+            "Name": "Turn Slow",
+            "Url": "turn_reduction",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.3
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              6
             ]
           }
         ]
@@ -11721,11 +11889,10 @@
         "Url": "permanent_invisibility",
         "HeroAbilityUrl": "riki_permanent_invisibility",
         "ID": 5145,
-        "Description": "Riki fades into the shadows, becoming invisible and gaining additional health regeneration. If Riki attacks an enemy or is silenced, Riki will become visible.",
+        "Description": "Riki fades into the shadows, becoming invisible and gaining additional health regeneration. If Riki attacks an enemy, he will become visible.",
         "Lore": "Riki comes for you.",
         "Notes": [
-          "Riki won't auto attack enemies while invisible.",
-          "Silence disables this ability."
+          "Riki won't auto attack enemies while invisible."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -12178,10 +12345,7 @@
           700
         ],
         "AbilityCastPoint": [
-          0.3,
-          0.3,
-          0.3,
-          0.3
+          0.2
         ],
         "AbilityCooldown": [
           35
@@ -12227,7 +12391,7 @@
         "Url": "black_hole",
         "HeroAbilityUrl": "enigma_black_hole",
         "ID": 5149,
-        "Description": "CHANNELED - Summons a vortex that sucks in nearby enemy units. Enemies affected by Black Hole cannot move, attack, or cast spells. The closer units get to the center, the more damage is dealt. Upgradable by Aghanim's Scepter.",
+        "Description": "CHANNELED - Summons a vortex that sucks in nearby enemy units. Enemies affected by Black Hole cannot move, attack, or cast spells. Upgradable by Aghanim's Scepter.",
         "Lore": "The ground trembles as Enigma channels his ultimate vortex of destruction, a singularity with the power to end worlds.",
         "Notes": [
           "Disables enemies through spell immunity."
@@ -12259,24 +12423,18 @@
         ],
         "AbilityManaCost": [
           275,
-          350,
-          425
+          325,
+          375
         ],
         "AbilitySpecial": [
           {
-            "Name": "Pull Radius",
-            "Url": "pull_radius",
+            "Name": "Damage Per Second",
+            "Url": "far_damage",
+            "ValueType": "FIXED",
             "Value": [
-              400
-            ]
-          },
-          {
-            "Name": "Pull Speed",
-            "Url": "pull_speed",
-            "Value": [
-              40,
-              40,
-              40
+              55,
+              110,
+              165
             ]
           },
           {
@@ -12288,6 +12446,24 @@
             ]
           },
           {
+            "Name": "Pull Radius",
+            "Url": "pull_radius",
+            "ValueType": "FIXED",
+            "Value": [
+              400
+            ]
+          },
+          {
+            "Name": "Pull Speed",
+            "Url": "pull_speed",
+            "ValueType": "FIXED",
+            "Value": [
+              40,
+              40,
+              40
+            ]
+          },
+          {
             "Name": "Near Radius",
             "Url": "near_radius",
             "ValueType": "FIXED",
@@ -12296,23 +12472,13 @@
             ]
           },
           {
-            "Name": "Min Damage Per Second",
-            "Url": "far_damage",
-            "ValueType": "FIXED",
-            "Value": [
-              25,
-              50,
-              75
-            ]
-          },
-          {
-            "Name": "Max Damage Per Second",
+            "Name": "Near Damage",
             "Url": "near_damage",
             "ValueType": "FIXED",
             "Value": [
-              50,
-              100,
-              150
+              55,
+              110,
+              165
             ]
           },
           {
@@ -12399,7 +12565,7 @@
         "Url": "laser",
         "HeroAbilityUrl": "tinker_laser",
         "ID": 5150,
-        "Description": "Fires an intense energy beam, dealing damage and blinding the target for 3 seconds, causing it to miss all physical attacks. Its range is doubled with Aghanim's Scepter.",
+        "Description": "Fires an intense energy beam, dealing damage and blinding the target, causing it to miss all physical attacks. Upgradable by Aghanim's Scepter, causing the laser to refract between all visible enemy units in a 550 range.",
         "Lore": "Boush perfected this rock cutting laser in his subterranean laboratory, never considering its combat utility.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -12445,27 +12611,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Duration Hero",
-            "Url": "duration_hero",
-            "Value": [
-              3,
-              3,
-              3,
-              3
-            ]
-          },
-          {
-            "Name": "Duration Creep",
-            "Url": "duration_creep",
-            "Value": [
-              6,
-              6,
-              6,
-              6
-            ]
-          },
-          {
-            "Name": "Miss Rate",
+            "Name": "Blind Miss Rate",
             "Url": "miss_rate",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -12476,11 +12622,41 @@
             ]
           },
           {
+            "Name": "Hero Blind Duration",
+            "Url": "duration_hero",
+            "ValueType": "FIXED",
+            "Value": [
+              3,
+              3.5,
+              4,
+              4.5
+            ]
+          },
+          {
+            "Name": "Creep Blind Duration",
+            "Url": "duration_creep",
+            "ValueType": "FIXED",
+            "Value": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          {
+            "Name": "Cast Range",
+            "Url": "cast_range_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              550
+            ]
+          },
+          {
             "Name": "Cast Range_scepter",
             "Url": "cast_range_scepter",
-            "ValueType": "PERCENTAGE",
+            "ValueType": "FIXED",
             "Value": [
-              1100
+              550
             ]
           }
         ]
@@ -12710,9 +12886,9 @@
           0
         ],
         "AbilityManaCost": [
-          150,
-          250,
-          350
+          125,
+          225,
+          325
         ],
         "AbilitySpecial": [
           {
@@ -12745,7 +12921,7 @@
       "Strength": 16,
       "StrengthGain": 1.7,
       "Agility": 21,
-      "AgilityGain": 2.9,
+      "AgilityGain": 2.5,
       "Intelligence": 15,
       "IntelligenceGain": 2.6,
       "Health": 454,
@@ -12776,7 +12952,7 @@
         "Url": "shrapnel",
         "HeroAbilityUrl": "sniper_shrapnel",
         "ID": 5154,
-        "Description": "Consumes a charge to launch a ball of shrapnel that showers the target area in explosive pellets. Enemies are subject to damage and slowed movement. Reveals the targeted area. Shrapnel charges restore every 40 seconds.",
+        "Description": "Consumes a charge to launch a ball of shrapnel that showers the target area in explosive pellets. Enemies are subject to damage and slowed movement. Reveals the targeted area. Shrapnel charges restore every 55 seconds.",
         "Lore": "Kardel's modular rifle also fires incendiary rounds, useful for assaulting entrenched locations.",
         "Notes": [
           "Damage is dealt 11 times, immediately at spell effect then every second.",
@@ -12855,10 +13031,7 @@
             "Url": "damage_delay",
             "ValueType": "FIXED",
             "Value": [
-              0.8,
-              0.8,
-              0.8,
-              0.8
+              1.4
             ]
           },
           {
@@ -12885,7 +13058,7 @@
             "Url": "charge_restore_time",
             "ValueType": "FIXED",
             "Value": [
-              40
+              55
             ]
           }
         ]
@@ -12895,7 +13068,7 @@
         "Url": "headshot",
         "HeroAbilityUrl": "sniper_headshot",
         "ID": 5155,
-        "Description": "Sniper increases his accuracy, giving him a chance to deal extra damage and briefly stop the movements of his enemies. Headshot procs cannot be evaded.",
+        "Description": "Sniper increases his accuracy, giving him a chance to deal extra damage and briefly stop the movements of his enemies.",
         "Lore": "Taking potshots at steepstalkers in his childhood has been thoroughly refined into perfect leads on enemy combatants.",
         "Notes": [
           "Works on allied creeps."
@@ -13010,9 +13183,9 @@
           10
         ],
         "AbilityDamage": [
-          355,
-          505,
-          655
+          320,
+          485,
+          650
         ],
         "AbilityManaCost": [
           175,
@@ -13456,10 +13629,7 @@
           "DOTA_UNIT_TARGET_BASIC"
         ],
         "AbilityCastPoint": [
-          0.5,
-          0.5,
-          0.5,
-          0.5
+          0.2
         ],
         "AbilityCooldown": [
           25,
@@ -13480,7 +13650,7 @@
           120
         ],
         "AbilityCastRange": [
-          900
+          1000
         ],
         "AbilityModifierSupportValue": [
           0
@@ -13597,7 +13767,7 @@
         "Url": "upheaval",
         "HeroAbilityUrl": "warlock_upheaval",
         "ID": 5164,
-        "Description": "CHANNELED - A powerful slowing current that grows stronger as it's channelled. Lasts up to 16 seconds, slowing enemies up to 84%. Enemies are slowed for 3 seconds after leaving the area or the spell ends.",
+        "Description": "CHANNELED - A powerful slowing current that grows stronger as it's channelled. Lasts up to 16 seconds. Enemies are slowed for 3 seconds after leaving the area or the spell ends.",
         "Lore": "Demnok manipulates space-time, impairing entire armies.",
         "Notes": [
           "The slow increase is based on length of the channel, not the duration an enemy was standing in the area."
@@ -13651,20 +13821,20 @@
             ]
           },
           {
-            "Name": "Slow Rate",
-            "Url": "slow_rate",
-            "ValueType": "PERCENTAGE",
+            "Name": "Max Slow Channel",
+            "Url": "slow_rate_duration",
+            "ValueType": "FIXED",
             "Value": [
-              0.07,
-              0.14,
-              0.21,
-              0.28
+              12.5,
+              6.5,
+              4.5,
+              3.5
             ]
           },
           {
             "Name": "Duration",
             "Url": "duration",
-            "ValueType": "PERCENTAGE",
+            "ValueType": "FIXED",
             "Value": [
               3
             ]
@@ -13674,7 +13844,7 @@
             "Url": "max_slow",
             "ValueType": "PERCENTAGE",
             "Value": [
-              84
+              0.84
             ]
           }
         ]
@@ -13719,8 +13889,19 @@
         ],
         "AbilitySpecial": [
           {
+            "Name": "Scepter Golem Damage",
+            "Url": "golem_dmg_tooltip_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              56,
+              75,
+              94
+            ]
+          },
+          {
             "Name": "Hp Dmg_reduction_scepter",
             "Url": "hp_dmg_reduction_scepter",
+            "ValueType": "FIXED",
             "Value": [
               25
             ]
@@ -13752,7 +13933,7 @@
             ]
           },
           {
-            "Name": "Radius",
+            "Name": "Summon Blast Radius",
             "Url": "aoe",
             "ValueType": "FIXED",
             "Value": [
@@ -13760,7 +13941,7 @@
             ]
           },
           {
-            "Name": "Golem Hp",
+            "Name": "Golem Health",
             "Url": "golem_hp_tooltip",
             "ValueType": "FIXED",
             "Value": [
@@ -13790,6 +13971,16 @@
             ]
           },
           {
+            "Name": "Golem Health Regen",
+            "Url": "golem_regen_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              25,
+              50,
+              75
+            ]
+          },
+          {
             "Name": "Scepter Number Of Golems",
             "Url": "number_of_golems_scepter",
             "ValueType": "FIXED",
@@ -13798,23 +13989,13 @@
             ]
           },
           {
-            "Name": "Scepter Golem Hp",
+            "Name": "Scepter Golem Health",
             "Url": "golem_hp_tooltip_scepter",
             "ValueType": "FIXED",
             "Value": [
               675,
               900,
               1125
-            ]
-          },
-          {
-            "Name": "Scepter Golem Damage",
-            "Url": "golem_dmg_tooltip_scepter",
-            "ValueType": "FIXED",
-            "Value": [
-              56,
-              75,
-              94
             ]
           }
         ]
@@ -13852,9 +14033,9 @@
       "ManaRegen": 0.65,
       "Armor": 4.52,
       "MagicResistance": 0.25,
-      "MinDamage": 60,
-      "MaxDamage": 64,
-      "AvgDamage": 62,
+      "MinDamage": 64,
+      "MaxDamage": 68,
+      "AvgDamage": 66,
       "IncreasedAttackSpeed": 18,
       "BaseAttackTime": 1.7,
       "AttackTime": 1.44,
@@ -13898,10 +14079,7 @@
           1300
         ],
         "AbilityCastPoint": [
-          0.5,
-          0.5,
-          0.5,
-          0.5
+          0.4
         ],
         "AbilityCooldown": [
           13,
@@ -14003,9 +14181,9 @@
             "ValueType": "FIXED",
             "Value": [
               250,
+              275,
               300,
-              350,
-              400
+              325
             ]
           },
           {
@@ -14378,7 +14556,7 @@
       "VisionDayRange": 1800,
       "VisionNightRange": 800,
       "ProjectileSpeed": 1500,
-      "MovementSpeed": 300,
+      "MovementSpeed": 295,
       "TurnRate": 0.5
     },
     "Abilities": [
@@ -14820,10 +14998,10 @@
             "Url": "tick_damage",
             "ValueType": "FIXED",
             "Value": [
-              0,
-              30,
-              60,
-              90
+              10,
+              40,
+              70,
+              100
             ]
           },
           {
@@ -15240,7 +15418,7 @@
         "Url": "backtrack",
         "HeroAbilityUrl": "faceless_void_backtrack",
         "ID": 5183,
-        "Description": "Faceless Void dodges damage by jumping backward in time, eluding both physical and magical attacks. Stacks diminishingly with other sources of Evasion.",
+        "Description": "Faceless Void dodges damage by jumping backward in time, eluding both physical and magical attacks.",
         "Lore": "Darkterror sees what has yet to be seen.",
         "Notes": [
           "Abilities that grant True Strike don't work against Backtrack."
@@ -15663,24 +15841,32 @@
         "Url": "reincarnation",
         "HeroAbilityUrl": "skeleton_king_reincarnation",
         "ID": 5089,
-        "Description": "Wraith King's members regroup after death, allowing him to resurrect when killed in battle. Upon death, enemy units in a 900 radius will be slowed.",
+        "Description": "Wraith King's form regroups after death, allowing him to resurrect when killed in battle. Upon death, enemy units in a 900 radius will be slowed. Upgradable by Aghanim's Scepter.",
         "Lore": "Conspirators against the Wraith King wonder why he never stays dead.",
         "Notes": [
           "Wraith King won't revive if he doesn't have enough mana.",
           "If Wraith King has an Aegis and Reincarnation off cooldown, Reincarnation will trigger first.",
-          "Revives with full HP and Mana."
+          "Revives with full HP and Mana.",
+          "Credit for allies whose death was delayed will go to whoever struck the original killing blow.",
+          "Wraith Delay not affect Techies' Suicide Squad, Attack ability."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_HERO"
+        ],
+        "AbilityManaCost": [
+          160
+        ],
         "AbilityCooldown": [
           260,
           160,
           60
-        ],
-        "AbilityManaCost": [
-          160
         ],
         "AbilityModifierSupportValue": [
           0.2
@@ -15726,6 +15912,30 @@
             "ValueType": "FIXED",
             "Value": [
               5
+            ]
+          },
+          {
+            "Name": "Scepter Ally Death Delay",
+            "Url": "scepter_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              5
+            ]
+          },
+          {
+            "Name": "Aura Radius",
+            "Url": "aura_radius",
+            "ValueType": "FIXED",
+            "Value": [
+              1200
+            ]
+          },
+          {
+            "Name": "Scepter Death Delay Radius",
+            "Url": "aura_radius_tooltip_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              1200
             ]
           }
         ]
@@ -16088,8 +16298,8 @@
             "Url": "spirits",
             "ValueType": "FIXED",
             "Value": [
-              4,
-              12,
+              6,
+              13,
               21
             ]
           },
@@ -16604,15 +16814,12 @@
           0.2
         ],
         "AbilityCooldown": [
+          15,
           12,
-          10,
-          8,
+          9,
           6
         ],
         "AbilityDuration": [
-          2,
-          2.5,
-          3,
           3.5
         ],
         "AbilityManaCost": [
@@ -16628,7 +16835,7 @@
             ]
           },
           {
-            "Name": "Ally Movement Slow",
+            "Name": "Ally Move Slow",
             "Url": "bonus_movement_speed_allies",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -16640,15 +16847,21 @@
             "Url": "bonus_spell_damage_pct",
             "ValueType": "PERCENTAGE",
             "Value": [
-              -0.5
+              -0.3,
+              -0.4,
+              -0.5,
+              -0.6
             ]
           },
           {
-            "Name": "Enemy Movement Slow",
+            "Name": "Enemy Move Slow",
             "Url": "bonus_movement_speed",
             "ValueType": "PERCENTAGE",
             "Value": [
-              -0.5
+              -0.3,
+              -0.4,
+              -0.5,
+              -0.6
             ]
           },
           {
@@ -16656,9 +16869,6 @@
             "Url": "tooltip_duration",
             "ValueType": "FIXED",
             "Value": [
-              2,
-              2.5,
-              3,
               3.5
             ]
           }
@@ -16776,7 +16986,9 @@
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastRange": [
-          1100
+          900,
+          1050,
+          1200
         ],
         "AbilityCastPoint": [
           0.2,
@@ -16805,9 +17017,9 @@
             "Url": "health_drain",
             "ValueType": "FIXED",
             "Value": [
-              120,
-              160,
-              200
+              150,
+              185,
+              220
             ]
           },
           {
@@ -16815,7 +17027,9 @@
             "Url": "cast_range_tooltip",
             "ValueType": "FIXED",
             "Value": [
-              850
+              900,
+              1050,
+              1200
             ]
           },
           {
@@ -16854,22 +17068,6 @@
               0.25,
               0.25,
               0.25
-            ]
-          },
-          {
-            "Name": "Bonus Range_scepter",
-            "Url": "bonus_range_scepter",
-            "ValueType": "FIXED",
-            "Value": [
-              50
-            ]
-          },
-          {
-            "Name": "Scepter Cast Range",
-            "Url": "cast_range_scepter_tooltip",
-            "ValueType": "FIXED",
-            "Value": [
-              900
             ]
           }
         ]
@@ -17025,10 +17223,7 @@
           0
         ],
         "AbilityCooldown": [
-          7,
-          7,
-          7,
-          7
+          6
         ],
         "AbilityDuration": [
           10,
@@ -17574,7 +17769,7 @@
           0.3
         ],
         "AbilityCooldown": [
-          80,
+          70,
           50,
           30
         ],
@@ -17690,7 +17885,7 @@
       "HealthRegen": 0.7,
       "Mana": 208,
       "ManaRegen": 0.65,
-      "Armor": 2.52,
+      "Armor": 3.52,
       "MagicResistance": 0.25,
       "MinDamage": 44,
       "MaxDamage": 50,
@@ -17877,11 +18072,21 @@
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
         ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_HERO",
+          "DOTA_UNIT_TARGET_BASIC"
+        ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastPoint": [
           0.6,
           0.6,
           0.6
+        ],
+        "AbilityCastRange": [
+          2500
         ],
         "AbilityCooldown": [
           160,
@@ -17895,26 +18100,6 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              675,
-              675,
-              675
-            ]
-          },
-          {
-            "Name": "Strike Interval",
-            "Url": "beam_interval",
-            "ValueType": "FIXED",
-            "Value": [
-              0.6,
-              0.6,
-              0.6
-            ]
-          },
-          {
             "Name": "Beams",
             "Url": "beams",
             "ValueType": "FIXED",
@@ -17925,13 +18110,31 @@
             ]
           },
           {
-            "Name": "Max Hits",
+            "Name": "Max Beams Per Unit",
             "Url": "hit_count",
             "ValueType": "FIXED",
             "Value": [
-              4,
-              4,
-              4
+              5
+            ]
+          },
+          {
+            "Name": "Beam Interval",
+            "Url": "beam_interval",
+            "ValueType": "FIXED",
+            "Value": [
+              0.6,
+              0.6,
+              0.6
+            ]
+          },
+          {
+            "Name": "Radius",
+            "Url": "radius",
+            "ValueType": "FIXED",
+            "Value": [
+              675,
+              675,
+              675
             ]
           },
           {
@@ -17955,7 +18158,7 @@
             ]
           },
           {
-            "Name": "Scepter Max Hits",
+            "Name": "Scepter Max Beams",
             "Url": "hit_count_scepter",
             "ValueType": "FIXED",
             "Value": [
@@ -17972,6 +18175,14 @@
               3,
               5.4,
               7.8
+            ]
+          },
+          {
+            "Name": "Scepter Cast Range",
+            "Url": "cast_range_tooltip_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              2500
             ]
           }
         ]
@@ -18032,7 +18243,7 @@
         "Url": "breathe_fire",
         "HeroAbilityUrl": "dragon_knight_breathe_fire",
         "ID": 5226,
-        "Description": "Unleashes a breath of fire on enemy units in a line in front of Dragon Knight.",
+        "Description": "Unleashes a breath of fire in front of Dragon Knight that burns enemies and reduces the damage their attacks deal.",
         "Lore": "Knight Davion's breath has become that of the mighty Eldwurm Slyrak, remembered for burning numerous other knights to a crisp.",
         "Notes": [
           "Affects mechanical units.",
@@ -18118,6 +18329,25 @@
             "Url": "speed",
             "Value": [
               1050
+            ]
+          },
+          {
+            "Name": "Damage Reduction",
+            "Url": "reduction",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.2,
+              -0.25,
+              -0.3,
+              -0.35
+            ]
+          },
+          {
+            "Name": "Reduction Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              8
             ]
           }
         ]
@@ -18231,11 +18461,11 @@
         "Url": "elder_dragon_form",
         "HeroAbilityUrl": "dragon_knight_elder_dragon_form",
         "ID": 5229,
-        "Description": "Dragon Knight takes the form of one of three powerful elder dragons, increasing his damage, speed, and Dragon Tail's range, while granting him new powers. LEVEL 1 Green Dragon - Corrosive Breath: attacks deal 20 poison damage over 5 seconds. Works on structures.LEVEL 2 Red Dragon - Splash Attack: attacks damage all enemy units in a 250 radius, with Corrosive Breath added to the primary target.LEVEL 3 Blue Dragon - Frost Breath: slows movement speed by 30% and attack speed by 20 of enemy units in Splash Attack range for 3 seconds, with Corrosive Breath added to the primary target.",
+        "Description": "Dragon Knight takes the form of one of three powerful elder dragons, increasing his damage, speed, and Dragon Tail's range, while granting him new powers. LEVEL 1 Green Dragon - Corrosive Breath: attacks deal 20 poison damage over 5 seconds. Works on structures.LEVEL 2 Red Dragon - Splash Attack: attacks damage all enemy units in a 300 radius, with Corrosive Breath added to the primary target.LEVEL 3 Blue Dragon - Frost Breath: slows movement speed by 30% and attack speed by 20 of enemy units in Splash Attack range for 3 seconds, with Corrosive Breath added to the primary target.",
         "Lore": "The dormant dragon power springs forth from within Davion, combining the powers of a legendary knight with a legendary Eldwurm.",
         "Notes": [
-          "Corrosive Breath poison damage is non-lethal.",
-          "Splash Attack deals 100/75/50% damage in a 100/200/250 radius. Splash damage does not affect buildings.",
+          "Corrosive Breath poison damage is lethal.",
+          "Splash Attack deals 100/75/50% damage in a 150/225/300 radius. Splash damage does not affect buildings.",
           "Frost Breath stacks with Unique Attack Modifiers.",
           "Manta Style's cooldown time will be based on whether Dragon Knight was in his ranged or melee form when the item was used."
         ],
@@ -18337,9 +18567,9 @@
             "Url": "splash_radius",
             "ValueType": "FIXED",
             "Value": [
-              100,
-              200,
-              250
+              150,
+              225,
+              300
             ]
           },
           {
@@ -18458,7 +18688,7 @@
           14,
           20,
           26,
-          32
+          36
         ],
         "AbilityDuration": [
           10
@@ -19126,10 +19356,7 @@
             "Url": "speed",
             "ValueType": "FIXED",
             "Value": [
-              1500,
-              1500,
-              1500,
-              1500
+              1750
             ]
           },
           {
@@ -19296,7 +19523,7 @@
       "VisionDayRange": 1800,
       "VisionNightRange": 800,
       "ProjectileSpeed": 900,
-      "MovementSpeed": 315,
+      "MovementSpeed": 320,
       "TurnRate": 0.5
     },
     "Abilities": [
@@ -19476,7 +19703,7 @@
         "Url": "lightning_storm",
         "HeroAbilityUrl": "leshrac_lightning_storm",
         "ID": 5243,
-        "Description": "Summons a lightning storm that blasts the target enemy unit, then jumps to nearby enemy units. Struck enemies are slowed by 75% for 0.75 seconds.",
+        "Description": "Summons a lightning storm that blasts the target enemy unit, then strikes any nearby enemy units. Struck enemies are slowed.",
         "Lore": "The Tormented Soul's mastery of the elements is evident in the massive storms that strike down armies before him.",
         "Notes": [
           "The lightning searches in a 650 area."
@@ -19497,7 +19724,7 @@
           800
         ],
         "AbilityCastPoint": [
-          0.7
+          0.6
         ],
         "AbilityCooldown": [
           4
@@ -19516,7 +19743,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Jumps",
+            "Name": "Lightning Strikes",
             "Url": "jump_count",
             "ValueType": "FIXED",
             "Value": [
@@ -19549,19 +19776,22 @@
             ]
           },
           {
+            "Name": "Movement Slow",
+            "Url": "slow_movement_speed",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.75
+            ]
+          },
+          {
             "Name": "Slow Duration",
             "Url": "slow_duration",
             "ValueType": "FIXED",
             "Value": [
-              0.75
-            ]
-          },
-          {
-            "Name": "Slow Movement_speed",
-            "Url": "slow_movement_speed",
-            "ValueType": "FIXED",
-            "Value": [
-              -75
+              0.7,
+              0.8,
+              0.9,
+              1
             ]
           }
         ]
@@ -19723,7 +19953,10 @@
           "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
         ],
         "AbilityCastRange": [
-          600
+          625,
+          700,
+          775,
+          850
         ],
         "AbilityCastPoint": [
           0.5,
@@ -19757,9 +19990,20 @@
             "ValueType": "FIXED",
             "Value": [
               3,
-              3.75,
-              4.5,
-              5.25
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "Name": "Cast Range",
+            "Url": "cast_range_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              625,
+              700,
+              775,
+              850
             ]
           }
         ]
@@ -19810,7 +20054,7 @@
         "Url": "force_of_nature",
         "HeroAbilityUrl": "furion_force_of_nature",
         "ID": 5247,
-        "Description": "Converts an area of trees into Treants. Treants have 550 hit points and deal 21-23 damage.",
+        "Description": "Converts an area of trees into Treants. Treants have 550 health and deal 22-28 damage.",
         "Lore": "Verodicia bestowed the Prophet with the ability to summon the Treant Guard, a mythical sentient army of the wild.",
         "Notes": [
           "Nature's Call can only create as many treants as there are trees in the target area."
@@ -19872,6 +20116,30 @@
               60,
               60,
               60
+            ]
+          },
+          {
+            "Name": "Treant Health_tooltip",
+            "Url": "treant_health_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              550
+            ]
+          },
+          {
+            "Name": "Treant Min_dmg_tooltip",
+            "Url": "treant_min_dmg_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              22
+            ]
+          },
+          {
+            "Name": "Treant Max_dmg_tooltip",
+            "Url": "treant_max_dmg_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              28
             ]
           }
         ]
@@ -20095,7 +20363,7 @@
         "Url": "feast",
         "HeroAbilityUrl": "life_stealer_feast",
         "ID": 5250,
-        "Description": "Regenerates a portion of the attacked enemy's current HP and deals the same portion of damage per attack.",
+        "Description": "Lifestealer's attacks damage enemies and heal himself for a percentage of his target's current health.",
         "Lore": "After escaping from his cell in Devarque, N'aix subsisted on flesh and bones of those unfortunate to cross his path.",
         "Notes": [
           "Does not affect Roshan.",
@@ -20126,7 +20394,7 @@
         "Url": "open_wounds",
         "HeroAbilityUrl": "life_stealer_open_wounds",
         "ID": 5251,
-        "Description": "Lifestealer rends an enemy unit, slowing the victim's movespeed and allowing all allies to lifesteal on that unit. All damage dealt will steal life, including damage from spells. The victim recovers movement speed over the duration.",
+        "Description": "Lifestealer rends an enemy unit, slowing the victim's movement speed and allowing all allies to regain health for a percentage of the damage they deal to that unit. All damage dealt will steal life, including damage from spells. The victim recovers movement speed over the duration.",
         "Lore": "Fresh wounds and the scent of blood often draw out the scavengers to finish the job.",
         "Notes": [
           "Open Wounds slows over 8 different steps: 70% / 70% / 60% / 50% / 30% / 10% / 10% / 10%, with the slow decreasing one step per second.",
@@ -20190,10 +20458,7 @@
             "Url": "heal_percent",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.15,
-              0.2,
-              0.25,
-              0.3
+              0.5
             ]
           },
           {
@@ -20213,7 +20478,7 @@
             ]
           },
           {
-            "Name": "Range",
+            "Name": "Cast Range",
             "Url": "tooltip_range",
             "ValueType": "FIXED",
             "Value": [
@@ -20226,11 +20491,113 @@
         ]
       },
       {
+        "Title": "Assimilate",
+        "Url": "assimilate",
+        "HeroAbilityUrl": "life_stealer_assimilate",
+        "ID": 5671,
+        "Description": "Lifestealer swallows an allied hero, allowing them to hide within him. Any healing Lifestealer receives is shared with the hero within. When an assimilated hero leaves Lifestealer, they erupt outward, damaging nearby enemies.",
+        "Lore": "How can Lifestealer resist the chance to sample an ally?",
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_HERO"
+        ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        ],
+        "TargetFlags": [
+          "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+        ],
+        "AbilityCastRange": [
+          150
+        ],
+        "AbilityCastPoint": [
+          0.2
+        ],
+        "AbilityCooldown": [
+          50
+        ],
+        "AbilityManaCost": [
+          50
+        ],
+        "AbilitySpecial": [
+          {
+            "Name": "Erupt Damage",
+            "Url": "damage",
+            "ValueType": "FIXED",
+            "Value": [
+              300
+            ]
+          },
+          {
+            "Name": "Erupt Radius",
+            "Url": "radius",
+            "ValueType": "FIXED",
+            "Value": [
+              700,
+              700,
+              700
+            ]
+          },
+          {
+            "Name": "Order Lock_duration",
+            "Url": "order_lock_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Eject",
+        "Url": "assimilate_eject",
+        "HeroAbilityUrl": "life_stealer_assimilate_eject",
+        "ID": 5675,
+        "Description": "Ejects an Assimilated hero, damaging nearby enemies.",
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        ],
+        "AbilityCastPoint": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "AbilitySpecial": [
+          {
+            "Name": "Erupt Damage",
+            "Url": "damage_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              300
+            ]
+          },
+          {
+            "Name": "Erupt Radius",
+            "Url": "radius_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              700,
+              700,
+              700
+            ]
+          }
+        ]
+      },
+      {
         "Title": "Infest",
         "Url": "infest",
         "HeroAbilityUrl": "life_stealer_infest",
         "ID": 5252,
-        "Description": "Lifestealer infests the body of a target unit, becoming undetectable inside. He can then explode from the host body, dealing damage to nearby enemies. If the infested unit is an enemy creep or a neutral creep, he can take control of the unit's ability to move and attack, and when consumed the creep will heal Lifestealer's health equal to the creep's current health. Does not work on enemy Heroes.",
+        "Description": "Lifestealer infests the body of a target unit, becoming undetectable inside. He can then explode from the host body, dealing damage to nearby enemies. If the infested unit is an enemy creep or a neutral creep, he can take control of the unit's ability to move and attack, and when consumed the creep will heal Lifestealer's health equal to the creep's current health. Does not work on enemy Heroes. Upgradable by Aghanim's Scepter.",
         "Lore": "With this infestation, N'aix consumes the life blood of the host, restoring him back to full unholy power.",
         "Notes": [
           "If the infested unit dies before Lifestealer consumes it, no health is gained.",
@@ -20288,60 +20655,40 @@
               275,
               400
             ]
+          },
+          {
+            "Name": "Infest Scepter_duration",
+            "Url": "infest_scepter_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              8
+            ]
+          },
+          {
+            "Name": "Damage Increase_pct",
+            "Url": "damage_increase_pct",
+            "ValueType": "FIXED",
+            "Value": [
+              50
+            ]
+          },
+          {
+            "Name": "Cast Range_scepter",
+            "Url": "cast_range_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              500
+            ]
+          },
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              25
+            ]
           }
         ]
-      },
-      {
-        "Title": "Empty 1",
-        "Url": "empty_1",
-        "HeroAbilityUrl": "life_stealer_empty_1",
-        "ID": 5657,
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        ],
-        "AbilitySpecial": []
-      },
-      {
-        "Title": "Empty 2",
-        "Url": "empty_2",
-        "HeroAbilityUrl": "life_stealer_empty_2",
-        "ID": 5658,
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        ],
-        "AbilitySpecial": []
-      },
-      {
-        "Title": "Empty 3",
-        "Url": "empty_3",
-        "HeroAbilityUrl": "life_stealer_empty_3",
-        "ID": 5659,
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        ],
-        "AbilitySpecial": []
-      },
-      {
-        "Title": "Empty 4",
-        "Url": "empty_4",
-        "HeroAbilityUrl": "life_stealer_empty_4",
-        "ID": 5660,
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        ],
-        "AbilitySpecial": []
       },
       {
         "Title": "Control",
@@ -20586,7 +20933,7 @@
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
-              20
+              25
             ]
           }
         ]
@@ -20682,9 +21029,9 @@
           100
         ],
         "AbilityManaCost": [
-          200,
-          300,
-          400
+          125,
+          250,
+          375
         ],
         "AbilitySpecial": [
           {
@@ -20721,8 +21068,6 @@
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
-              15,
-              30,
               45
             ]
           },
@@ -20731,8 +21076,8 @@
             "Url": "replica_damage_outgoing",
             "ValueType": "FIXED",
             "Value": [
-              -30,
-              -20,
+              -40,
+              -25,
               -10
             ]
           },
@@ -20741,8 +21086,8 @@
             "Url": "tooltip_outgoing",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.7,
-              0.8,
+              0.6,
+              0.75,
               0.9
             ]
           },
@@ -20977,9 +21322,9 @@
         ],
         "AbilityCooldown": [
           20,
-          20,
-          20,
-          20
+          19,
+          18,
+          17
         ],
         "AbilityCastPoint": [
           0,
@@ -21067,8 +21412,8 @@
         ],
         "AbilityCooldown": [
           45,
-          40,
-          35
+          35,
+          25
         ],
         "AbilityManaCost": [
           100,
@@ -21081,8 +21426,6 @@
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
-              35,
-              35,
               35
             ]
           },
@@ -21183,10 +21526,7 @@
           700
         ],
         "AbilityCastPoint": [
-          0.5,
-          0.5,
-          0.5,
-          0.5
+          0.4
         ],
         "AbilityCooldown": [
           10
@@ -21466,10 +21806,10 @@
             "Url": "slow_attack_speed",
             "ValueType": "FIXED",
             "Value": [
-              -30,
-              -60,
-              -90,
-              -120
+              -40,
+              -70,
+              -100,
+              -130
             ]
           },
           {
@@ -21487,7 +21827,7 @@
         "Url": "enchant",
         "HeroAbilityUrl": "enchantress_enchant",
         "ID": 5268,
-        "Description": "Enchantress charms an enemy, bringing it under her control (if a creep) or slowing it (if a hero).",
+        "Description": "Enchantress charms an enemy. If the enemy is a hero, they are slowed. If the enemy is a creep, she brings it under her control. If cast on a creep already under her control, she refreshes its enchant duration.",
         "Lore": "A true steward of the forest, Aiushtha befriends all within it - from lowly trolls to powerful centaurs.",
         "Notes": [
           "Illusions can be converted."
@@ -21535,7 +21875,15 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Move Slow",
+            "Name": "Creep Enchant Duration",
+            "Url": "dominate_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              80
+            ]
+          },
+          {
+            "Name": "Hero Move Slow",
             "Url": "slow_movement_speed",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -21546,15 +21894,7 @@
             ]
           },
           {
-            "Name": "Enchant Duration",
-            "Url": "dominate_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              80
-            ]
-          },
-          {
-            "Name": "Slow Duration",
+            "Name": "Hero Slow Duration",
             "Url": "tooltip_duration",
             "ValueType": "FIXED",
             "Value": [
@@ -21672,6 +22012,9 @@
           "DOTA_UNIT_TARGET_HERO",
           "DOTA_UNIT_TARGET_BASIC"
         ],
+        "TargetFlags": [
+          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        ],
         "DamageType": "DAMAGE_TYPE_PURE",
         "AbilityCastRange": [
           550
@@ -21782,7 +22125,7 @@
         "Url": "inner_vitality",
         "HeroAbilityUrl": "huskar_inner_vitality",
         "ID": 5271,
-        "Description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 40% it will heal faster. Lasts 16 seconds.",
+        "Description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 40%, it will heal faster. Lasts 16 seconds.",
         "Lore": "While Huskar has little use for magic, this minor enchantment was learned from the Dazzle and the Dezun priests, to be used in times of great injury.",
         "Notes": [
           "The HP percentage is checked every second and the regeneration adjusted accordingly.",
@@ -21800,7 +22143,7 @@
           "DOTA_UNIT_TARGET_HERO"
         ],
         "AbilityCastRange": [
-          550
+          800
         ],
         "AbilityCastPoint": [
           0.3,
@@ -21809,10 +22152,10 @@
           0.3
         ],
         "AbilityCooldown": [
-          25,
           22,
-          19,
-          16
+          18,
+          14,
+          10
         ],
         "AbilityDuration": [
           16,
@@ -22270,10 +22613,10 @@
             "Url": "attackspeed_slow",
             "ValueType": "FIXED",
             "Value": [
-              -35,
-              -35,
-              -35,
-              -35
+              -50,
+              -50,
+              -50,
+              -50
             ]
           }
         ]
@@ -22722,7 +23065,7 @@
         "Url": "incapacitating_bite",
         "HeroAbilityUrl": "broodmother_incapacitating_bite",
         "ID": 5281,
-        "Description": "Broodmother's venom cripples enemy units, causing her attacks to slow and giving the affected unit a chance to miss its attacks. Incapacitating Bite is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers.",
+        "Description": "Broodmother's venom cripples enemy units, causing her attacks to slow and giving the affected unit a chance to miss its attacks.",
         "Lore": "Paralytic toxins come from Black Arachnia's fangs, causing a slow and painful death to those who intrude on her webs.",
         "Notes": [
           "The miss chance stacks with evasion and terrain dodge chance."
@@ -22804,8 +23147,8 @@
             "ValueType": "FIXED",
             "Value": [
               60,
-              80,
-              100
+              90,
+              120
             ]
           },
           {
@@ -22856,7 +23199,7 @@
       "Agility": 21,
       "AgilityGain": 3,
       "Intelligence": 19,
-      "IntelligenceGain": 1.4,
+      "IntelligenceGain": 2,
       "Health": 473,
       "HealthRegen": 1.26,
       "Mana": 247,
@@ -22885,7 +23228,7 @@
         "Url": "shuriken_toss",
         "HeroAbilityUrl": "bounty_hunter_shuriken_toss",
         "ID": 5285,
-        "Description": "Hurls a deadly shuriken at an enemy unit, dealing damage and mini-stunning the target. The shuriken will bounce between any Tracked units who are within a 900 radius of each other.",
+        "Description": "Hurls a deadly shuriken at an enemy unit, dealing damage and mini-stunning the target. The shuriken will bounce between any Tracked units who are within a 1200 radius of each other.",
         "Lore": "While the shuriken may be small, Gondar's precise aim can cause critical damage.",
         "Notes": [
           "This spell interrupts channeling abilities."
@@ -22903,7 +23246,7 @@
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastRange": [
-          650
+          400
         ],
         "AbilityCastPoint": [
           0.3,
@@ -22915,10 +23258,10 @@
           10
         ],
         "AbilityManaCost": [
-          90,
-          115,
-          135,
-          155
+          120,
+          130,
+          140,
+          150
         ],
         "AbilityModifierSupportValue": [
           0.1
@@ -22929,10 +23272,10 @@
             "Url": "bonus_damage",
             "ValueType": "FIXED",
             "Value": [
-              100,
-              200,
-              250,
-              325
+              150,
+              225,
+              300,
+              375
             ]
           },
           {
@@ -22947,11 +23290,11 @@
             ]
           },
           {
-            "Name": "Bounce Aoe",
+            "Name": "Track Bounce Range",
             "Url": "bounce_aoe",
             "ValueType": "FIXED",
             "Value": [
-              900
+              1200
             ]
           }
         ]
@@ -23097,7 +23440,7 @@
         "Url": "track",
         "HeroAbilityUrl": "bounty_hunter_track",
         "ID": 5288,
-        "Description": "Tracks an enemy hero, giving True Sight of it and grants a gain in movement speed to allies near the hunted. If the target dies, Bounty Hunter and nearby heroes collect a bounty in gold.",
+        "Description": "Tracks an enemy hero, giving True Sight of its location, and information on how much gold it is carrying. Allies near the hunted are granted bonus movement speed. If the target dies, Bounty Hunter and nearby heroes collect a bounty in gold.",
         "Lore": "Using his elevated senses of sight and smell, Gondar's hits have quite a good chance of success.",
         "Notes": [
           "Bounty Hunter will get the bonus gold if the target dies while Track is active, regardless of how it died.",
@@ -23208,9 +23551,9 @@
             "Url": "gold_steal",
             "ValueType": "FIXED",
             "Value": [
-              0.2,
               0.3,
-              0.4
+              0.4,
+              0.5
             ]
           }
         ]
@@ -23272,7 +23615,6 @@
         "Notes": [
           "When a beetle latches on a target, it will remain there until it is killed or the duration expires.",
           "Beetles are Spell Immune, but can be killed in 4 attacks from a hero, or 8 from other units.",
-          "Every 1.35 seconds, the beetle will attack its target, dealing damage and reducing the target's armor by 1 until the beetle is killed or the duration expires.",
           "Beetles provide 321/321 sight, but will drop off their target if it becomes invisible."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
@@ -23311,32 +23653,18 @@
             "Url": "damage",
             "ValueType": "FIXED",
             "Value": [
-              15,
-              20,
-              25,
-              30
+              20
             ]
           },
           {
-            "Name": "Attack Rate",
+            "Name": "Attack Frequency",
             "Url": "attack_rate",
             "ValueType": "FIXED",
             "Value": [
-              1.35,
-              1.35,
-              1.35,
-              1.35
-            ]
-          },
-          {
-            "Name": "Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              14,
-              16,
-              18,
-              20
+              1.4,
+              1.25,
+              1.1,
+              0.95
             ]
           },
           {
@@ -23359,6 +23687,14 @@
               1,
               1,
               1
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              16
             ]
           },
           {
@@ -23494,8 +23830,12 @@
         "Url": "geminate_attack",
         "HeroAbilityUrl": "weaver_geminate_attack",
         "ID": 5291,
-        "Description": "Allows Weaver to dispatch two swarms, attacking an enemy twice.",
+        "Description": "Allows Weaver to dispatch two attacks at once.",
         "Lore": "Skitskurr's relationship with time is somewhat variable, causing his actions to be witnessed - and felt - more than once.",
+        "Notes": [
+          "The second attack will never trigger attack effects such as bash or critical strike.",
+          "The second attack leaves Weaver 0.25 seconds after the first, and has no range limit."
+        ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -23506,14 +23846,22 @@
           4,
           3
         ],
-        "AbilitySpecial": []
+        "AbilitySpecial": [
+          {
+            "Name": "Delay",
+            "Url": "delay",
+            "Value": [
+              0.25
+            ]
+          }
+        ]
       },
       {
         "Title": "Time Lapse",
         "Url": "time_lapse",
         "HeroAbilityUrl": "weaver_time_lapse",
         "ID": 5292,
-        "Description": "Weaver warps backward to whatever position it was in five seconds earlier--regaining the HP and mana from that time. No effect on cooldown, gold or experience.",
+        "Description": "Weaver warps backward to whatever position it was in five seconds earlier--regaining the HP and mana from that time. No effect on cooldown, gold or experience. Upgradable by Aghanim's Scepter.",
         "Lore": "If Skitskurr does not deem the current reality of the world to fit his desires, he simply crawls back in time to right what was wronged.",
         "Notes": [
           "Removes most negative buffs from Weaver."
@@ -23524,6 +23872,18 @@
           "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT",
           "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
           "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_HERO"
+        ],
+        "TargetFlags": [
+          "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+        ],
+        "AbilityCastRange": [
+          1000
         ],
         "AbilityCastPoint": [
           0.3,
@@ -23541,7 +23901,23 @@
           75,
           0
         ],
-        "AbilitySpecial": []
+        "AbilitySpecial": [
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "Value": [
+              20
+            ]
+          },
+          {
+            "Name": "Scepter Ally Cast Range",
+            "Url": "cast_range_tooltip_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              1000
+            ]
+          }
+        ]
       }
     ],
     "Subtitles": null
@@ -23563,14 +23939,14 @@
     "AttackCapabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
     "PrimaryAttribute": "DOTA_ATTRIBUTE_INTELLECT",
     "Initial": {
-      "Strength": 24,
+      "Strength": 25,
       "StrengthGain": 2.3,
       "Agility": 10,
       "AgilityGain": 1.2,
       "Intelligence": 28,
       "IntelligenceGain": 2.8,
-      "Health": 606,
-      "HealthRegen": 0.97,
+      "Health": 625,
+      "HealthRegen": 1,
       "Mana": 364,
       "ManaRegen": 1.13,
       "Armor": 2.4,
@@ -23982,17 +24358,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Duration",
-            "Url": "tooltip_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              7,
-              7,
-              7
-            ]
-          },
-          {
-            "Name": "Damage",
+            "Name": "Damage Per Second",
             "Url": "damage",
             "ValueType": "FIXED",
             "Value": [
@@ -24002,7 +24368,7 @@
             ]
           },
           {
-            "Name": "Range",
+            "Name": "Flame Length",
             "Url": "cast_range",
             "ValueType": "FIXED",
             "Value": [
@@ -24010,19 +24376,27 @@
             ]
           },
           {
+            "Name": "Flame Width",
+            "Url": "path_radius",
+            "ValueType": "FIXED",
+            "Value": [
+              240
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "tooltip_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              10
+            ]
+          },
+          {
             "Name": "Duration",
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
-              7
-            ]
-          },
-          {
-            "Name": "Path Radius",
-            "Url": "path_radius",
-            "ValueType": "FIXED",
-            "Value": [
-              225
+              10
             ]
           },
           {
@@ -24036,15 +24410,7 @@
             ]
           },
           {
-            "Name": "Scepter Duration",
-            "Url": "duration_scepter",
-            "ValueType": "FIXED",
-            "Value": [
-              14
-            ]
-          },
-          {
-            "Name": "Scepter Damage",
+            "Name": "Scepter Damage Per Second",
             "Url": "damage_scepter",
             "ValueType": "FIXED",
             "Value": [
@@ -24054,11 +24420,19 @@
             ]
           },
           {
-            "Name": "Scepter Range",
+            "Name": "Scepter Flame Length",
             "Url": "cast_range_scepter",
             "ValueType": "FIXED",
             "Value": [
               1800
+            ]
+          },
+          {
+            "Name": "Scepter Duration",
+            "Url": "duration_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              20
             ]
           }
         ]
@@ -24228,7 +24602,7 @@
         "Url": "flamebreak",
         "HeroAbilityUrl": "batrider_flamebreak",
         "ID": 5321,
-        "Description": "Hurls an explosive cocktail that explodes when it reaches the target location, knocking back and dealing damage to enemies in the area.",
+        "Description": "Hurls an explosive cocktail that explodes when it reaches the target location, knocking back, briefly stunning, and dealing damage over time to enemies in the area.",
         "Lore": "A molotov cocktail is the weapon of choice for Batrider.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -24256,14 +24630,43 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Damage",
-            "Url": "damage",
+            "Name": "Knockback Duration",
+            "Url": "knockback_duration",
+            "Value": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ]
+          },
+          {
+            "Name": "Damage Per Second",
+            "Url": "damage_per_second",
             "ValueType": "FIXED",
             "Value": [
-              75,
+              50
+            ]
+          },
+          {
+            "Name": "Burn Duration",
+            "Url": "damage_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "Name": "Total Damage",
+            "Url": "damage_total_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              50,
+              100,
               150,
-              225,
-              300
+              200
             ]
           },
           {
@@ -24328,17 +24731,6 @@
               100,
               100
             ]
-          },
-          {
-            "Name": "Knockback Duration",
-            "Url": "knockback_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              0.25,
-              0.25,
-              0.25,
-              0.25
-            ]
           }
         ]
       },
@@ -24384,10 +24776,10 @@
             "Url": "damage_per_second",
             "ValueType": "FIXED",
             "Value": [
-              20,
-              40,
-              60,
-              80
+              10,
+              30,
+              50,
+              70
             ]
           },
           {
@@ -24829,14 +25221,14 @@
             ]
           },
           {
-            "Name": "Health Bonus",
-            "Url": "health_bonus",
+            "Name": "Health Minimum",
+            "Url": "health_min",
             "ValueType": "FIXED",
             "Value": [
-              75,
-              150,
-              225,
-              300
+              700,
+              800,
+              900,
+              1000
             ]
           }
         ]
@@ -25200,7 +25592,7 @@
         "Url": "reality",
         "HeroAbilityUrl": "spectre_reality",
         "ID": 5338,
-        "Description": "Spectre physically possesses a chosen Haunt.",
+        "Description": "Spectre exchanges places with a chosen Haunt.",
         "Lore": "The scattered shadows unite into the one true Spectre.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -25220,7 +25612,7 @@
         "Url": "haunt",
         "HeroAbilityUrl": "spectre_haunt",
         "ID": 5337,
-        "Description": "Creates a spectral nemesis to attack each enemy hero after a short delay. At any moment during the duration, Spectre can use Reality to take the place of a given illusion. Haunt illusions are uncontrollable, take extra damage, and deal less damage than Spectre herself. They move at 400 base movement speed and ignore terrain.",
+        "Description": "Creates a spectral nemesis to attack each enemy hero after a short delay. At any moment during the duration, Spectre can use Reality to exchange places of a given haunt. Haunt illusions are uncontrollable, take extra damage, and deal less damage than Spectre herself. They move at 400 base movement speed and ignore terrain.",
         "Lore": "At the height of combat, Mercurial's physical manifestation shatters, and the shadowy pieces haunt those who still cling to life.",
         "Notes": [
           "Haunt illusions are uncontrollable, move at 400 base movement speed, and cannot be disabled.",
@@ -25247,7 +25639,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Illusion Duration",
+            "Name": "Haunt Duration",
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
@@ -25265,7 +25657,7 @@
             ]
           },
           {
-            "Name": "Illusion Damage",
+            "Name": "Haunt Damage",
             "Url": "tooltip_outgoing",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -25283,7 +25675,7 @@
             ]
           },
           {
-            "Name": "Illusion Damage Taken",
+            "Name": "Haunt Damage Taken",
             "Url": "tooltip_illusion_total_damage_incoming",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -26149,7 +26541,7 @@
             ]
           },
           {
-            "Name": "Shatter Health Threshhold",
+            "Name": "Shatter Health Threshold",
             "Url": "kill_pct",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -26431,7 +26823,7 @@
         "Url": "enrage",
         "HeroAbilityUrl": "ursa_enrage",
         "ID": 5360,
-        "Description": "Ursa goes into a frenzy, gaining a percentage of his current health as bonus damage. Lasts 15 seconds.",
+        "Description": "Ursa goes into a frenzy, multiplying his Fury Swipes damage and causing him to take 80% less damage. Removes any existing debuffs.",
         "Lore": "Ulfsaar succumbs to his ancient spirit, becoming the most ferocious creature on the battlefield.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -26441,20 +26833,10 @@
         "AbilityCastRange": [
           0
         ],
-        "AbilityCastPoint": [
-          0,
-          0,
-          0
-        ],
         "AbilityCooldown": [
-          25,
-          25,
-          25
-        ],
-        "AbilityDuration": [
-          15,
-          15,
-          15
+          50,
+          45,
+          40
         ],
         "AbilityManaCost": [
           0,
@@ -26463,13 +26845,29 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Health To Damage",
-            "Url": "life_damage_bonus_percent",
+            "Name": "Fury Swipes Multiplier",
+            "Url": "enrage_multiplier",
+            "ValueType": "FIXED",
+            "Value": [
+              1.5,
+              2,
+              2.5
+            ]
+          },
+          {
+            "Name": "Damage Reduction",
+            "Url": "damage_reduction",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.05,
-              0.06,
-              0.07
+              0.8
+            ]
+          },
+          {
+            "Name": "Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              4
             ]
           }
         ]
@@ -26646,7 +27044,7 @@
           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
         ],
         "AbilityCooldown": [
-          16
+          12
         ],
         "AbilitySpecial": [
           {
@@ -26934,12 +27332,12 @@
       "StrengthGain": 1.8,
       "Agility": 24,
       "AgilityGain": 2.8,
-      "Intelligence": 23,
+      "Intelligence": 19,
       "IntelligenceGain": 2.1,
       "Health": 492,
       "HealthRegen": 0.79,
-      "Mana": 299,
-      "ManaRegen": 0.93,
+      "Mana": 247,
+      "ManaRegen": 0.77,
       "Armor": 4.36,
       "MagicResistance": 0.25,
       "MinDamage": 41,
@@ -26971,17 +27369,15 @@
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastRange": [
           0
         ],
         "AbilityCastPoint": [
-          0.3,
-          0.3,
-          0.3,
-          0.3
+          0
         ],
         "AbilityCooldown": [
           7,
@@ -26996,9 +27392,9 @@
           3
         ],
         "AbilityDamage": [
-          11,
-          15,
-          19,
+          8,
+          13,
+          18,
           23
         ],
         "AbilityManaCost": [
@@ -27257,7 +27653,7 @@
         "Url": "call_down",
         "HeroAbilityUrl": "gyrocopter_call_down",
         "ID": 5364,
-        "Description": "Call down an aerial missile strike on enemy units in a target area. Two missiles arrive in succession, the first dealing major damage and minor slow for 2 seconds; the second dealing minor damage and major slow for 3 seconds. Upgradable by Aghanim's Scepter.",
+        "Description": "Call down an aerial missile strike on enemy units in a target area. Two missiles arrive in succession, the first dealing major damage and minor slow for 2 seconds; the second dealing minor damage and major slow for 4 seconds. Upgradable by Aghanim's Scepter.",
         "Lore": "'Bombs Away!'",
         "Notes": [
           "The visual indicator is visible to allies only.",
@@ -27299,7 +27695,7 @@
             "Name": "Slow Duration_second",
             "Url": "slow_duration_second",
             "Value": [
-              3
+              4
             ]
           },
           {
@@ -27500,7 +27896,7 @@
         "Lore": "A silver lining to the failure of turning a mountain into gold, this volatile solution has destructive potential.",
         "Notes": [
           "Alchemist can move and act normally while brewing.",
-          "A timer above Alchemist's head will indicate the remaining brew time.",
+          "A timer above Alchemist's head will indicate the remaining brew time. This timer is visible to enemies.",
           "You can deny yourself with this skill.",
           "Unstable Concoction cannot be disjointed.",
           "Once thrown, Unstable Concoction stops brewing."
@@ -27587,7 +27983,7 @@
         "Url": "goblins_greed",
         "HeroAbilityUrl": "alchemist_goblins_greed",
         "ID": 5368,
-        "Description": "Alchemist synthesizes additional gold from his enemies. With each kill, Alchemist earns base bonus gold and extra bonus gold. If Alchemist kills another unit which yields gold within the next 30 seconds, an additional instance of Extra Bonus Gold is added to the total.",
+        "Description": "Alchemist synthesizes additional gold from his enemies and bounty runes. With each kill, Alchemist earns base bonus gold and extra bonus gold. If Alchemist kills another unit which yields gold within the next 30 seconds, an additional instance of Extra Bonus Gold is added to the total. Additionally, causes bounty runes to yield 4 times their normal gold.",
         "Lore": "While it is not a mountain, Razzil has mastered the conversion of smaller compounds to line his pockets.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -27735,6 +28131,7 @@
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_AOE",
           "DOTA_ABILITY_BEHAVIOR_HIDDEN"
         ],
         "TargetTeam": [
@@ -27852,7 +28249,7 @@
       "Agility": 20,
       "AgilityGain": 1.9,
       "Intelligence": 22,
-      "IntelligenceGain": 2.5,
+      "IntelligenceGain": 3.2,
       "Health": 511,
       "HealthRegen": 0.82,
       "Mana": 286,
@@ -28072,10 +28469,11 @@
         "Url": "invoke",
         "HeroAbilityUrl": "invoker_invoke",
         "ID": 5375,
-        "Description": "Combines the properties of the elements currently being manipulated, creating a new spell at the Invoker's disposal. Click the help button to see the list of possible spells. Upgradable by Aghanim's Scepter.",
+        "Description": "Combines the properties of the elements currently being manipulated to create a new spell for Invoker to use. Click the help button to see the list of possible spells. Upgradable by Aghanim's Scepter.",
         "Lore": "So begins a new age of knowledge.",
         "Notes": [
-          "The arrangement of instances does not matter."
+          "The arrangement of instances does not matter.",
+          "Invoke's cooldown is not triggered if the only effect is to swap the positions of existing spells."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -28792,7 +29190,7 @@
           0
         ],
         "AbilityCooldown": [
-          30
+          25
         ],
         "AbilityManaCost": [
           175
@@ -29094,7 +29492,7 @@
         "Url": "deafening_blast",
         "HeroAbilityUrl": "invoker_deafening_blast",
         "ID": 5390,
-        "Description": "Invoker unleashes a mighty sonic wave in front of him, dealing damage to any enemy unit it collides with based on the level of Exort. The sheer impact from the blast is enough to knock those enemy units back for a duration based on the level of Quas, then disarm their attacks for a duration based on the level of Wex.",
+        "Description": "Invoker unleashes a mighty sonic wave in front of him, dealing damage to any enemy unit it collides with based on the level of Exort. The sheer impact from the blast is enough to knock those enemy units back for a duration based on the level of Quas, then disarm their attacks for a duration based on the level of Wex. If Quas, Wex, and Exort are all at max level, Deafening Blast becomes a non-targetable circular wave released in every direction around Invoker.",
         "Lore": "Buluphont's Aureal Incapacitator.",
         "Notes": [
           "This skill interrupts channeling abilities."
@@ -29259,7 +29657,7 @@
       "VisionDayRange": 1800,
       "VisionNightRange": 800,
       "ProjectileSpeed": 1000,
-      "MovementSpeed": 300,
+      "MovementSpeed": 295,
       "TurnRate": 0.6
     },
     "Abilities": [
@@ -29410,7 +29808,7 @@
         "Url": "last_word",
         "HeroAbilityUrl": "silencer_last_word",
         "ID": 5379,
-        "Description": "Enchants a target damaging and silencing them if they cast a spell. If the enchantment expires the target will be disarmed in addition to being damaged and silenced.",
+        "Description": "Enchants a target, causing them to be damaged, silenced, and their movement speed slowed if they cast a spell or if the enchantment timer expires.",
         "Lore": "Nortrom ensures that spells uttered by his opponents will be their last.",
         "Notes": [
           "Channeling abilities will trigger this affect once the caster finishes its channel."
@@ -29450,25 +29848,6 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Silence/disarm Duration",
-            "Url": "duration",
-            "ValueType": "FIXED",
-            "Value": [
-              3,
-              4,
-              5,
-              6
-            ]
-          },
-          {
-            "Name": "Debuff Duration",
-            "Url": "debuff_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              5
-            ]
-          },
-          {
             "Name": "Damage",
             "Url": "damage",
             "ValueType": "FIXED",
@@ -29477,6 +29856,36 @@
               200,
               250,
               300
+            ]
+          },
+          {
+            "Name": "Enemy Cast Timer",
+            "Url": "debuff_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              4
+            ]
+          },
+          {
+            "Name": "Move Slow",
+            "Url": "movespeed",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              -0.14,
+              -0.16,
+              -0.18,
+              -0.2
+            ]
+          },
+          {
+            "Name": "Silence/slow Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              3,
+              4,
+              5,
+              6
             ]
           }
         ]
@@ -29823,8 +30232,6 @@
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCooldown": [
-          160,
-          160,
           160
         ],
         "AbilityManaCost": [
@@ -29874,13 +30281,13 @@
             ]
           },
           {
-            "Name": "Scepter Int Diff Damage Multiplier",
+            "Name": "Damage Multiplier_scepter",
             "Url": "damage_multiplier_scepter",
             "ValueType": "FIXED",
             "Value": [
+              8,
               9,
-              10,
-              11
+              10
             ]
           },
           {
@@ -30857,10 +31264,7 @@
           0.3
         ],
         "AbilityManaCost": [
-          50,
-          50,
-          50,
-          50
+          40
         ],
         "AbilityDamage": [
           50,
@@ -31119,7 +31523,7 @@
         "Url": "spirit_bear",
         "HeroAbilityUrl": "lone_druid_spirit_bear",
         "ID": 5412,
-        "Description": "Summons a powerful Spirit Bear companion that can equip items. If the bear moves 1100 distance away from the Lone Druid, it cannot attack. Lone Druid suffers 10% of his max health as backlash damage if the Spirit Bear dies. As the bear increases in levels, it can learn the Return, Entangling Claws, and Demolish abilities. Spirit Bear does not benefit from attributes. ",
+        "Description": "Summons a powerful Spirit Bear companion that can equip items. If the bear moves 1100 distance away from the Lone Druid, it cannot attack. Lone Druid suffers 10% of his max health as backlash damage if the Spirit Bear dies. As the bear increases in levels, it can learn the Return, Entangling Claws, and Demolish abilities. Spirit Bear does not benefit from attributes. Upgradable with Aghanim's Scepter, allowing Spirit Bear to attack at any range from Lone Druid, and to survive if Lone Druid dies.",
         "Lore": "Sylla's lifelong companion is symbiotic with his spirit and heart, coming to aid him in any time of need.",
         "Notes": [
           "Most spells interact with the Spirit Bear in the same way as they do with heroes.",
@@ -31200,6 +31604,17 @@
             "ValueType": "PERCENTAGE",
             "Value": [
               0.1
+            ]
+          },
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              180,
+              160,
+              140,
+              120
             ]
           }
         ]
@@ -31367,9 +31782,9 @@
             "Url": "bonus_damage",
             "ValueType": "FIXED",
             "Value": [
-              50,
-              75,
-              100
+              60,
+              90,
+              120
             ]
           },
           {
@@ -31377,9 +31792,9 @@
             "Url": "bonus_armor",
             "ValueType": "FIXED",
             "Value": [
-              5,
-              10,
-              15
+              6,
+              12,
+              18
             ]
           },
           {
@@ -31405,7 +31820,7 @@
         "Url": "true_form",
         "HeroAbilityUrl": "lone_druid_true_form",
         "ID": 5415,
-        "Description": "Lone Druid learns to morph himself into a raging bear, losing his ranged advantage and some base movement speed, but gaining melee power as well as the Battle Cry ability. He can morph freely between druid and bear form.",
+        "Description": "Lone Druid learns to morph himself into a raging bear, losing his ranged advantage and some base movement speed, but gaining melee power as well as the Battle Cry ability. He can morph freely between druid and bear form. Upgradable with Aghanim's Scepter.",
         "Lore": "The mighty bear is the king of the forest, possessing the throne through raw power.",
         "Notes": [
           "You can dodge stuns during the 2 second duration of transforming.",
@@ -31484,7 +31899,7 @@
         "Url": "true_form_druid",
         "HeroAbilityUrl": "lone_druid_true_form_druid",
         "ID": 5416,
-        "Description": "Return to Druid form.",
+        "Description": "Return to Druid form. Upgradable with Aghanim's Scepter.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
@@ -31642,10 +32057,10 @@
             "Url": "damage_min",
             "ValueType": "FIXED",
             "Value": [
-              1,
-              50,
               75,
-              100
+              100,
+              125,
+              150
             ]
           },
           {
@@ -31862,8 +32277,6 @@
             "Url": "incoming_damage_tooltip",
             "ValueType": "PERCENTAGE",
             "Value": [
-              2,
-              2,
               2
             ]
           },
@@ -32080,10 +32493,10 @@
           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         ],
         "AbilityDamage": [
-          7,
-          14,
-          21,
-          28
+          8,
+          16,
+          24,
+          32
         ],
         "AbilityDuration": [
           2
@@ -32093,7 +32506,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Slow",
+            "Name": "Move Slow",
             "Url": "slow",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -32118,7 +32531,7 @@
         "Url": "divided_we_stand",
         "HeroAbilityUrl": "meepo_divided_we_stand",
         "ID": 5433,
-        "Description": "Meepo summons an imperfect, semi-autonomous duplicate of himself, which can gain gold and experience as he does and shares his experience and abilities. However, the clones cannot wield any items but the boots that Meepo himself wears. If any of the clones die, they all die. Increases the speed at which you respawn. Upgradable by Aghanim's Scepter.",
+        "Description": "Meepo summons an imperfect, semi-autonomous duplicate of himself, which can gain gold and experience as he does and shares his experience and abilities. However, the clones cannot wield any items but the boots that Meepo himself wears. If any of the clones die, they all die. Upgradable by Aghanim's Scepter.",
         "Lore": "Do I know you?",
         "Notes": [
           "Clones can't use Arcane Boots or pick up runes."
@@ -32160,15 +32573,15 @@
             "Url": "respawn",
             "ValueType": "FIXED",
             "Value": [
-              0.2
+              0
             ]
           },
           {
-            "Name": "Respawn Time Reduction",
+            "Name": "Tooltip Respawn",
             "Url": "tooltip_respawn",
-            "ValueType": "PERCENTAGE",
+            "ValueType": "FIXED",
             "Value": [
-              0.2
+              20
             ]
           }
         ]
@@ -32502,7 +32915,7 @@
         "Url": "eyes_in_the_forest",
         "HeroAbilityUrl": "treant_eyes_in_the_forest",
         "ID": 5649,
-        "Description": "Treant Protector enchants a tree, which grants him unobstructed vision in that location. If Overgrowth is cast, units within an 800 radius of an enchanted tree will be entangled and damaged.",
+        "Description": "Treant Protector enchants a tree, which grants him unobstructed vision in that location. If Overgrowth is cast, units within a 700 radius of an enchanted tree will be entangled and damaged.",
         "Lore": "One can never be too certain who, or what, might need protecting.",
         "Notes": [
           "Being entangled by Overgrowth through enchanted trees from Eyes of the Forest does damage. Being entangled by Overgrowth directly from Treant Protector does not.",
@@ -32534,7 +32947,7 @@
             "Url": "vision_aoe",
             "ValueType": "FIXED",
             "Value": [
-              800
+              700
             ]
           },
           {
@@ -32542,7 +32955,7 @@
             "Url": "overgrowth_aoe",
             "ValueType": "FIXED",
             "Value": [
-              800
+              700
             ]
           },
           {
@@ -32902,7 +33315,7 @@
         "Url": "unrefined_fireblast",
         "HeroAbilityUrl": "ogre_magi_unrefined_fireblast",
         "ID": 5466,
-        "Description": "Blasts an enemy unit with a wave of fire, dealing damage and stunning the target.",
+        "Description": "Blasts an enemy unit with a wave of fire, dealing damage and stunning the target. Its mana cost is 60% of the hero's current mana.",
         "Lore": "The 'who-casts-spell-first' argument between himself is solved simply by both casting at once.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -33146,11 +33559,12 @@
         "Url": "decay",
         "HeroAbilityUrl": "undying_decay",
         "ID": 5442,
-        "Description": "Undying saps the life from enemy Heroes in an area, dealing damage and stealing Strength for the duration.",
+        "Description": "Undying steals strength from all enemy heroes in an area, dealing base damage as he claims the enemy's strength for himself.",
         "Lore": "The strength of the living is simply borrowed from the strength of the dead.",
         "Notes": [
           "The strength stolen stacks, but can't cause a hero to have strength below 1.",
-          "The strength steal takes effect before the damage is dealt."
+          "The strength steal takes effect before the damage is dealt.",
+          "Affects invisible units."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -33192,7 +33606,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Damage",
+            "Name": "Base Damage",
             "Url": "decay_damage",
             "ValueType": "FIXED",
             "Value": [
@@ -33203,15 +33617,15 @@
             ]
           },
           {
-            "Name": "Radius",
-            "Url": "radius",
+            "Name": "Strength Steal",
+            "Url": "str_steal",
             "ValueType": "FIXED",
             "Value": [
-              325
+              4
             ]
           },
           {
-            "Name": "Duration",
+            "Name": "Steal Duration",
             "Url": "decay_duration",
             "ValueType": "FIXED",
             "Value": [
@@ -33219,11 +33633,11 @@
             ]
           },
           {
-            "Name": "Strength Steal",
-            "Url": "str_steal",
+            "Name": "Radius",
+            "Url": "radius",
             "ValueType": "FIXED",
             "Value": [
-              4
+              325
             ]
           },
           {
@@ -33241,10 +33655,11 @@
         "Url": "soul_rip",
         "HeroAbilityUrl": "undying_soul_rip",
         "ID": 5443,
-        "Description": "Redirects the flow of energy through a target friendly or enemy unit, healing or damaging it depending on how many units are near Undying. Each unit loses HP as part of the cost.",
-        "Lore": "Even his allied Heroes feel despair in Undying's presence.",
+        "Description": "Undying rips health away from all nearby units and uses it to heal an ally, or damage an enemy.",
+        "Lore": "Even allies feel despair in Undying's presence.",
         "Notes": [
-          "Can heal Tombstone, but can't heal or damage another buildings."
+          "Can heal Tombstone, but can't heal or damage other buildings.",
+          "Does not rip from invisible units."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -33271,10 +33686,10 @@
           6
         ],
         "AbilityManaCost": [
-          50,
-          75,
           100,
-          125
+          110,
+          120,
+          130
         ],
         "AbilityCastRange": [
           750
@@ -33295,14 +33710,6 @@
             ]
           },
           {
-            "Name": "Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              1300
-            ]
-          },
-          {
             "Name": "Max Units",
             "Url": "max_units",
             "ValueType": "FIXED",
@@ -33311,6 +33718,14 @@
               12,
               14,
               16
+            ]
+          },
+          {
+            "Name": "Rip Radius",
+            "Url": "radius",
+            "ValueType": "FIXED",
+            "Value": [
+              1300
             ]
           }
         ]
@@ -33458,13 +33873,11 @@
             ]
           },
           {
-            "Name": "Scepter Min Damage Amp",
+            "Name": "Min Damage_amp_scepter",
             "Url": "min_damage_amp_scepter",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.15,
-              0.2,
-              0.25
+              1
             ]
           },
           {
@@ -33522,9 +33935,7 @@
             "Url": "min_damage_amp",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.05,
-              0.1,
-              0.15
+              0.01
             ]
           },
           {
@@ -33540,7 +33951,7 @@
             "Url": "min_speed_slow",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.05
+              0.01
             ]
           },
           {
@@ -33721,6 +34132,14 @@
               600,
               625
             ]
+          },
+          {
+            "Name": "Max Land_distance_allied",
+            "Url": "max_land_distance_allied",
+            "ValueType": "FIXED",
+            "Value": [
+              950
+            ]
           }
         ]
       },
@@ -33877,7 +34296,7 @@
         "Url": "null_field",
         "HeroAbilityUrl": "rubick_null_field",
         "ID": 5451,
-        "Description": "Rubick's mastery of the arcane protects allied heroes against weaker magics, granting them magic resistance.",
+        "Description": "Rubick's mastery of the arcane protects nearby allies against weaker magics, granting them magic resistance.",
         "Lore": "Not every magus can be a Grand Magus...",
         "Notes": [
           "Stacks multiplicatively with other spell resistance sources."
@@ -34324,7 +34743,7 @@
             ]
           },
           {
-            "Name": "Formation Time",
+            "Name": "Formation Delay",
             "Url": "formation_time",
             "ValueType": "FIXED",
             "Value": [
@@ -34339,10 +34758,10 @@
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
-              2.5,
-              3,
-              3.5,
-              4
+              2.6,
+              3.2,
+              3.8,
+              4.4
             ]
           }
         ]
@@ -34571,6 +34990,14 @@
               1600,
               1600
             ]
+          },
+          {
+            "Name": "Cooldown Upgrade",
+            "Url": "cooldown_upgrade",
+            "ValueType": "FIXED",
+            "Value": [
+              9
+            ]
           }
         ]
       },
@@ -34633,7 +35060,7 @@
         "Url": "spiked_carapace",
         "HeroAbilityUrl": "nyx_assassin_spiked_carapace",
         "ID": 5464,
-        "Description": "When activated, Spiked Carapace reflects and negates damage dealt to Nyx Assassin (max once from each source), as well as stunning the source of the damage.",
+        "Description": "When activated while above ground, Spiked Carapace reflects and negates damage dealt to Nyx Assassin (max once from each source), as well as stunning the source of the damage. Activating Spiked Carapace will not break Vendetta invisibility. While Burrowed, Spiked Carapace instantly stuns nearby enemies when cast.",
         "Lore": "While their carapace is relatively thin, it's guarded by a retractable field of razor-sharp spikes.",
         "Notes": [
           "The damage is calculated after all reductions.",
@@ -34706,15 +35133,140 @@
             "Value": [
               0
             ]
+          },
+          {
+            "Name": "Burrow Aoe",
+            "Url": "burrow_aoe",
+            "ValueType": "FIXED",
+            "Value": [
+              300
+            ]
           }
         ]
+      },
+      {
+        "Title": "Burrow",
+        "Url": "burrow",
+        "HeroAbilityUrl": "nyx_assassin_burrow",
+        "ID": 5666,
+        "Description": "Nyx Assasssin buries himself beneath the battlefield over 1 second. Once burrowed, Spiked Carapace instantly stuns nearby enemies when cast, the range of Mana Burn and Impale by is increased by 50, and Impale's cooldown is decreased. While Burrowed, Nyx Assassin is stationary, unable to attack, and invisible. His health and mana regeneration are also increased, and he gains 40 damage reduction.",
+        "Lore": "Some castes of zealot scarab are known to create small burrows to lie in wait, ready to ambush their prey.",
+        "Notes": [
+          "Casting Vendetta will cancel burrow."
+        ],
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        ],
+        "AbilityCastPoint": [
+          1
+        ],
+        "AbilitySpecial": [
+          {
+            "Name": "Burrow Health/mana Regen",
+            "Url": "health_regen_rate",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              0.015
+            ]
+          },
+          {
+            "Name": "Mana Regen_rate",
+            "Url": "mana_regen_rate",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              1.5
+            ]
+          },
+          {
+            "Name": "Burrow Damage Reduction",
+            "Url": "damage_reduction",
+            "ValueType": "FIXED",
+            "Value": [
+              40
+            ]
+          },
+          {
+            "Name": "Burrow Delay",
+            "Url": "burrow_delay",
+            "ValueType": "FIXED",
+            "Value": [
+              1
+            ]
+          },
+          {
+            "Name": "Impale Burn_range_increase_pct_tooltip",
+            "Url": "impale_burn_range_increase_pct_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              50
+            ]
+          },
+          {
+            "Name": "Burrow Mana Burn Range",
+            "Url": "mana_burn_burrow_range_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              900
+            ]
+          },
+          {
+            "Name": "Burrow Impale Range",
+            "Url": "impale_burrow_range_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              1050
+            ]
+          },
+          {
+            "Name": "Burrow Impale Cooldown",
+            "Url": "impale_burrow_cooldown_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              9
+            ]
+          },
+          {
+            "Name": "Burrow Spiked Carapace Range",
+            "Url": "carapace_burrow_range_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              300
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Unburrow",
+        "Url": "unburrow",
+        "HeroAbilityUrl": "nyx_assassin_unburrow",
+        "ID": 5673,
+        "Description": "Emerge from the burrow.",
+        "Lore": "Some castes of zealot scarab are known to create small burrows to lie in wait, ready to ambush their prey.",
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        ],
+        "AbilityCastPoint": [
+          0
+        ],
+        "AbilityCooldown": [
+          0
+        ],
+        "AbilityManaCost": [
+          0
+        ],
+        "AbilitySpecial": []
       },
       {
         "Title": "Vendetta",
         "Url": "vendetta",
         "HeroAbilityUrl": "nyx_assassin_vendetta",
         "ID": 5465,
-        "Description": "Allows Nyx Assassin to become invisible and gain a speed bonus. If Nyx Assassin attacks to break the invisibility, massive bonus damage is dealt with the attack.",
+        "Description": "Allows Nyx Assassin to become invisible and gain a speed bonus. If Nyx Assassin attacks to break the invisibility, massive bonus damage is dealt with the attack. Upgradable by Aghanim's Scepter.",
         "Lore": "The scarab kills for the glory of his queen.",
         "Notes": [
           "Has a 0 second fadetime.",
@@ -34784,6 +35336,22 @@
               70,
               60,
               50
+            ]
+          },
+          {
+            "Name": "Health Regen_rate_scepter",
+            "Url": "health_regen_rate_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              3
+            ]
+          },
+          {
+            "Name": "Mana Regen_rate_scepter",
+            "Url": "mana_regen_rate_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              3
             ]
           }
         ]
@@ -34954,8 +35522,7 @@
         "Description": "Interrupts the target and traps them in place, preventing movement or blinking.",
         "Lore": "The only way to escape the onslaught of a Slithereen is to never oppose one in the first place.",
         "Notes": [
-          "Works on Spell Immune units.",
-          "Becoming ethereal removes Ensnare."
+          "Works on Spell Immune units."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -34975,10 +35542,7 @@
           0.65
         ],
         "AbilityCooldown": [
-          14,
-          14,
-          14,
-          14
+          12
         ],
         "AbilityManaCost": [
           90,
@@ -35103,7 +35667,7 @@
         "Url": "song_of_the_siren",
         "HeroAbilityUrl": "naga_siren_song_of_the_siren",
         "ID": 5470,
-        "Description": "All enemies in range of the Naga Siren are put into a magical stasis where they cannot act or be attacked. Using Song of the Siren again will end the duration early.",
+        "Description": "All enemies in range of the Naga Siren are put into a magical stasis where they cannot act or be attacked. Using Song of the Siren again will end the duration early. Upgradable by Aghanim's Scepter.",
         "Lore": "Slithice's powerful voice enchants leagues of opponents, while calling her Slithereen kin in a time of need.",
         "Notes": [
           "Units affected by Song of the Siren are invulnerable and cannot take damage from any source.",
@@ -35162,11 +35726,35 @@
               0.55,
               0.55
             ]
+          },
+          {
+            "Name": "Regen Rate",
+            "Url": "regen_rate",
+            "ValueType": "FIXED",
+            "Value": [
+              6
+            ]
+          },
+          {
+            "Name": "Regen Rate_self",
+            "Url": "regen_rate_self",
+            "ValueType": "FIXED",
+            "Value": [
+              6
+            ]
+          },
+          {
+            "Name": "Scepter Health Regen",
+            "Url": "regen_rate_tooltip_scepter",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              0.06
+            ]
           }
         ]
       },
       {
-        "Title": "Song of the Siren Cancel",
+        "Title": "Song of the Siren End",
         "Url": "song_of_the_siren_cancel",
         "HeroAbilityUrl": "naga_siren_song_of_the_siren_cancel",
         "ID": 5478,
@@ -35244,7 +35832,7 @@
         "Url": "illuminate",
         "HeroAbilityUrl": "keeper_of_the_light_illuminate",
         "ID": 5471,
-        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75% of its damage values during daytime.",
+        "Description": "Channels light energy, building power the longer it's channeled. Once released, a wave is sent forth that deals damage and gives vision in its path. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies and harm enemies during daytime. The heal and damage amounts are the same.",
         "Lore": "Ezalor's hidden light reveals itself in marvelous fashion.",
         "Notes": [
           "Gives increasing vision over the channeling time.",
@@ -35299,7 +35887,7 @@
             ]
           },
           {
-            "Name": "Damage Per Second",
+            "Name": "Damage Per Second Channeled",
             "Url": "damage_per_second",
             "ValueType": "FIXED",
             "Value": [
@@ -35310,7 +35898,18 @@
             ]
           },
           {
-            "Name": "Radius",
+            "Name": "Max Channel Time",
+            "Url": "max_channel_time",
+            "ValueType": "FIXED",
+            "Value": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "Name": "Width",
             "Url": "radius",
             "ValueType": "FIXED",
             "Value": [
@@ -35334,17 +35933,6 @@
             "ValueType": "FIXED",
             "Value": [
               1050
-            ]
-          },
-          {
-            "Name": "Max Channel Time",
-            "Url": "max_channel_time",
-            "ValueType": "FIXED",
-            "Value": [
-              2,
-              3,
-              4,
-              5
             ]
           },
           {
@@ -35415,7 +36003,10 @@
           0.3
         ],
         "AbilityCooldown": [
-          16
+          16,
+          14,
+          12,
+          10
         ],
         "AbilityManaCost": [
           75,
@@ -35478,7 +36069,7 @@
         "Url": "chakra_magic",
         "HeroAbilityUrl": "keeper_of_the_light_chakra_magic",
         "ID": 5473,
-        "Description": "Restores mana to the target unit.",
+        "Description": "Restores mana to the target unit, and reduces the cooldown of the next spell they cast.",
         "Lore": "In the same vein, Ezalor bestows his harmony among others.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -35528,6 +36119,25 @@
               150,
               225,
               300
+            ]
+          },
+          {
+            "Name": "Ally Cooldown Reduction",
+            "Url": "cooldown_reduction",
+            "ValueType": "FIXED",
+            "Value": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "Name": "Cooldown Reduction Duration",
+            "Url": "duration",
+            "ValueType": "FIXED",
+            "Value": [
+              12
             ]
           }
         ]
@@ -35759,7 +36369,7 @@
         "Url": "spirit_form_illuminate",
         "HeroAbilityUrl": "keeper_of_the_light_spirit_form_illuminate",
         "ID": 5479,
-        "Description": "Channels a ball of light energy, building power the longer it's channeled. Once released, the ball deals damage and gives vision in a line. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies for 75% of its damage values during daytime.",
+        "Description": "Channels light energy, building power the longer it's channeled. Once released, a wave is sent forth that deals damage and gives vision in its path. The longer it is channeled, the more damage is dealt. Upgradable by Aghanim's Scepter, allowing Illuminate to heal allies and harm enemies during daytime. The heal and damage amounts are the same.",
         "Lore": "Ezalor's hidden light reveals itself in marvelous fashion.",
         "Notes": [
           "Gives increasing vision over the channeling time.",
@@ -35808,7 +36418,7 @@
             ]
           },
           {
-            "Name": "Damage Per Second",
+            "Name": "Damage Per Second Channeled",
             "Url": "damage_per_second",
             "ValueType": "FIXED",
             "Value": [
@@ -35819,7 +36429,18 @@
             ]
           },
           {
-            "Name": "Radius",
+            "Name": "Max Channel Time",
+            "Url": "max_channel_time",
+            "ValueType": "FIXED",
+            "Value": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "Name": "Width",
             "Url": "radius",
             "ValueType": "FIXED",
             "Value": [
@@ -35843,17 +36464,6 @@
             "ValueType": "FIXED",
             "Value": [
               1050
-            ]
-          },
-          {
-            "Name": "Max Channel Time",
-            "Url": "max_channel_time",
-            "ValueType": "FIXED",
-            "Value": [
-              2,
-              3,
-              4,
-              5
             ]
           },
           {
@@ -35924,7 +36534,7 @@
     "Title": "Io",
     "Url": "wisp",
     "ID": 91,
-    "Lore": "Io is everywhere, and in all things. Denounced by enemies as the great unmaker, worshiped by scholars as the twinkling of a divine eye, this strange Wisp of life-force occupies all planes at once, the merest fraction of its being crossing into physical existence at any one moment. Like the great twin riders Dark and Light, and yet another ancient traveler whose true history is lost to the ages, Io the Wisp is a Fundamental of the universe, a force older than time, a wanderer from realms far beyond mortal understanding. Io is nothing less than the sum of all attractive and repulsive forces within the material field, a sentient manifestation of the charge that bind existence together. It is only in the controlled warping of these electrical waylines that Io's presence can be experienced on the physical plane. A benevolent, cooperative force, Io bonds its strange magnetism to others so that the power of allies might be enhanced. Its motives inscrutable, its strength unimaginable, Io moves through the physical plane, the perfect expression of the mysteries of the universe. ",
+    "Lore": "Io is everywhere, and in all things. Denounced by enemies as the great unmaker, worshiped by scholars as the twinkling of a divine eye, this strange Wisp of life-force occupies all planes at once, the merest fraction of its being crossing into physical existence at any one moment. Like the great twin riders Dark and Light, and yet another ancient traveler whose true history is lost to the ages, Io the Wisp is a Fundamental of the universe, a force older than time, a wanderer from realms far beyond mortal understanding. Io is nothing less than the sum of all attractive and repulsive forces within the material field, a sentient manifestation of the charge that bind existence together. It is only in the controlled warping of these electrical waylines that Io's presence can be experienced on the physical plane. A benevolent, cooperative force, Io bonds its strange magnetism to others so that the power of allies might be enhanced. Its motives inscrutable, its strength unimaginable, Io moves through the physical plane, the perfect expression of the mysteries of the universe.",
     "SuggestedRoleLevels": {
       "Support": 3,
       "LaneSupport": 2,
@@ -36035,6 +36645,9 @@
             "Url": "movespeed",
             "ValueType": "PERCENTAGE",
             "Value": [
+              0.14,
+              0.15,
+              0.16,
               0.17
             ]
           },
@@ -36399,7 +37012,7 @@
         "Url": "relocate",
         "HeroAbilityUrl": "wisp_relocate",
         "ID": 5488,
-        "Description": "Teleports Io and any tethered ally to any location. After the spell expires Io and any tethered ally will return to their original location.",
+        "Description": "Teleports Io and any tethered ally to any location. After the spell expires Io and any tethered ally will return to their original location. Double-click to teleport to your team's base fountain.",
         "Lore": "Io is the embodiment of the mystery of the universe.",
         "Notes": [
           "Enemies receive a visual indicator in the world and on the minimap of the target location during the cast delay.",
@@ -36622,7 +37235,7 @@
         "Url": "soul_assumption",
         "HeroAbilityUrl": "visage_soul_assumption",
         "ID": 5481,
-        "Description": "Visage damages the targeted unit based on the number of soul charges. Visage gains a soul charge when damage taken by all heroes around him reaches the damage threshold.",
+        "Description": "Visage gathers charges of soul essence each time nearby heroes take more than 110 damage. When the essence is released, it deals base damage as well as damage for each gathered soul charge.",
         "Lore": "The collected souls of the dead reach out to bring another into their fold.",
         "Notes": [
           "Charges are only gained for damage greater than 2 and less than 3000 that is dealt by a player or Roshan. Self-damage or Soul Assumption damage isn't counted.",
@@ -36681,7 +37294,7 @@
             ]
           },
           {
-            "Name": "Soul Damage",
+            "Name": "Damage Per Charge",
             "Url": "soul_charge_damage",
             "ValueType": "FIXED",
             "Value": [
@@ -36689,15 +37302,7 @@
             ]
           },
           {
-            "Name": "Damage Threshold",
-            "Url": "damage_limit",
-            "ValueType": "FIXED",
-            "Value": [
-              110
-            ]
-          },
-          {
-            "Name": "Max Souls",
+            "Name": "Max Charges",
             "Url": "stack_limit",
             "ValueType": "FIXED",
             "Value": [
@@ -36708,7 +37313,7 @@
             ]
           },
           {
-            "Name": "Soul Duration",
+            "Name": "Charge Duration",
             "Url": "stack_duration",
             "ValueType": "FIXED",
             "Value": [
@@ -36716,7 +37321,15 @@
             ]
           },
           {
-            "Name": "Assumption Radius",
+            "Name": "Gather Damage Threshold",
+            "Url": "damage_limit",
+            "ValueType": "FIXED",
+            "Value": [
+              110
+            ]
+          },
+          {
+            "Name": "Gather Damage Radius",
             "Url": "radius",
             "ValueType": "FIXED",
             "Value": [
@@ -36787,11 +37400,11 @@
             ]
           },
           {
-            "Name": "Recovery Time",
+            "Name": "Layer Recovery Time",
             "Url": "recovery_time",
             "ValueType": "FIXED",
             "Value": [
-              6
+              4
             ]
           }
         ]
@@ -36831,11 +37444,18 @@
           {
             "Name": "Familiar Hp",
             "Url": "familiar_hp",
-            "ValueType": "FIXED",
             "Value": [
               300,
               450,
               600
+            ]
+          },
+          {
+            "Name": "Familiar Attacks To Destroy",
+            "Url": "familiar_attacks_to_destroy_tooltip",
+            "ValueType": "FIXED",
+            "Value": [
+              3
             ]
           },
           {
@@ -37734,9 +38354,8 @@
           {
             "Name": "Bonus Damage",
             "Url": "bonus_damage",
-            "ValueType": "FIXED",
             "Value": [
-              15
+              0
             ]
           },
           {
@@ -38011,9 +38630,6 @@
             "Url": "blind_pct",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.6,
-              0.6,
-              0.6,
               0.6
             ]
           },
@@ -38094,7 +38710,7 @@
             "Url": "trance_duration",
             "ValueType": "FIXED",
             "Value": [
-              7
+              5
             ]
           },
           {
@@ -38292,10 +38908,10 @@
         "Url": "return",
         "HeroAbilityUrl": "centaur_return",
         "ID": 5516,
-        "Description": "Centaur immediately counters every attack, damaging the attacker based on a percentage of Centaur's strength.",
+        "Description": "Centaur counters every attack, damaging the attacker based on a percentage of Centaur's strength.",
         "Lore": "Bradwarden has no need to parry his opponent's attacks; his armor-like hide does it for him.",
         "Notes": [
-          "Return's damage is inflicted when the attacker begins their attack, not when their attack is completed.",
+          "Return triggers when the attack hits.",
           "Return deals damage to towers."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
@@ -38333,7 +38949,7 @@
         "Url": "stampede",
         "HeroAbilityUrl": "centaur_stampede",
         "ID": 5517,
-        "Description": "Centaur leads all allies into a vicious charge causing them to move through units at max speed and slow enemy units they tread upon. Each enemy can be trampled once and takes damage based on the Warrunner's strength.",
+        "Description": "Centaur leads all allies into a vicious charge causing them to move through units at max speed and stop any enemy units they trample. Trampled enemies take damage based on Centaur Warrunner's strength. Each enemy can be trampled once. Upgradable with Aghanim's Scepter.",
         "Lore": "The great belt of Omexe, which labels Bradwarden as the greatest warrior of his kind, incites his fellow gladiators to follow him into barbarous combat.",
         "Notes": [
           "Doesn't affect Spell Immune units."
@@ -38356,7 +38972,7 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Charge Duration",
+            "Name": "Stampede Duration",
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
@@ -38382,7 +38998,7 @@
             ]
           },
           {
-            "Name": "Slow Duration",
+            "Name": "Stop Duration",
             "Url": "slow_duration",
             "ValueType": "FIXED",
             "Value": [
@@ -38398,11 +39014,37 @@
             ]
           },
           {
-            "Name": "Movement Slow",
+            "Name": "Slow Movement_speed",
             "Url": "slow_movement_speed",
+            "ValueType": "FIXED",
+            "Value": [
+              100
+            ]
+          },
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              90,
+              75,
+              60
+            ]
+          },
+          {
+            "Name": "Damage Reduction",
+            "Url": "damage_reduction",
+            "ValueType": "FIXED",
+            "Value": [
+              60
+            ]
+          },
+          {
+            "Name": "Scepter Damage Reduction",
+            "Url": "damage_reduction_tooltip_scepter",
             "ValueType": "PERCENTAGE",
             "Value": [
-              1
+              0.6
             ]
           }
         ]
@@ -39089,10 +39731,10 @@
             "Url": "stack_limit",
             "ValueType": "FIXED",
             "Value": [
-              4,
-              8,
-              12,
-              16
+              5,
+              10,
+              15,
+              20
             ]
           },
           {
@@ -39440,16 +40082,16 @@
       "MaxDamage": 58,
       "AvgDamage": 53,
       "IncreasedAttackSpeed": 17,
-      "BaseAttackTime": 1.7,
-      "AttackTime": 1.45,
-      "AttacksPerSecond": 0.69,
+      "BaseAttackTime": 1.8,
+      "AttackTime": 1.54,
+      "AttacksPerSecond": 0.65,
       "AttackAnimationPoint": 0.3,
       "AttackAcquisitionRange": 600,
       "AttackRange": 128,
       "VisionDayRange": 1800,
       "VisionNightRange": 800,
       "ProjectileSpeed": 0,
-      "MovementSpeed": 295,
+      "MovementSpeed": 290,
       "TurnRate": 1
     },
     "Abilities": [
@@ -39512,9 +40154,9 @@
             "ValueType": "FIXED",
             "Value": [
               1,
-              1,
-              2,
-              2
+              1.4,
+              1.8,
+              2.2
             ]
           },
           {
@@ -39526,7 +40168,7 @@
             ]
           },
           {
-            "Name": "Slow Per Stack",
+            "Name": "Move Slow Per Stack",
             "Url": "move_slow_per_stack",
             "ValueType": "PERCENTAGE",
             "Value": [
@@ -39867,16 +40509,13 @@
           0.1
         ],
         "AbilityCooldown": [
-          18,
+          19,
           16,
-          14,
-          12
+          13,
+          10
         ],
         "AbilityManaCost": [
-          120,
-          120,
-          120,
-          120
+          90
         ],
         "AbilitySpecial": [
           {
@@ -39953,11 +40592,11 @@
         "Url": "snowball",
         "HeroAbilityUrl": "tusk_snowball",
         "ID": 5566,
-        "Description": "Tusk begins rolling into a snowball, automatically gathering allied Heroes within a 100 radius. Allies within a 400 radius can also be added to the snowball by right-clicking on them. Once launched, any enemies caught in the snowball's path will be stunned and take damage. Each allied Hero in the snowball will add to its speed and damage.",
+        "Description": "Tusk begins rolling into a snowball. Allies within a 400 radius can also be added to the snowball by right-clicking on them, even while the snowball is moving. Once launched, any enemies caught in the snowball's path will be stunned and take damage. Each allied Hero in the snowball will add to its damage.",
         "Lore": "Tales are still told of the wild feat that ended the grand brawl at White Fields.",
         "Notes": [
           "The snowball destroys trees.",
-          "The snowball travels at 150% of Tusk's movement speed.",
+          "The snowball travels at 675 movement speed.",
           "Doesn't carry illusions, but will carry Meepo clones and other units that Tusk controls.",
           "Each Meepo clone added to the snowball will add its own bonus damage and speed.",
           "Allies can click on a snowball to add themselves to it."
@@ -39997,14 +40636,6 @@
         ],
         "AbilitySpecial": [
           {
-            "Name": "Launch Time",
-            "Url": "snowball_windup",
-            "ValueType": "FIXED",
-            "Value": [
-              4
-            ]
-          },
-          {
             "Name": "Base Damage",
             "Url": "snowball_damage",
             "ValueType": "FIXED",
@@ -40016,11 +40647,11 @@
             ]
           },
           {
-            "Name": "Snowball Speed_pct",
-            "Url": "snowball_speed_pct",
+            "Name": "Snowball Speed",
+            "Url": "snowball_speed",
             "ValueType": "FIXED",
             "Value": [
-              150
+              675
             ]
           },
           {
@@ -40032,14 +40663,6 @@
               30,
               40,
               50
-            ]
-          },
-          {
-            "Name": "Bonus Speed Per Ally",
-            "Url": "snowball_speed_bonus",
-            "ValueType": "FIXED",
-            "Value": [
-              100
             ]
           },
           {
@@ -40083,6 +40706,14 @@
             "ValueType": "FIXED",
             "Value": [
               40
+            ]
+          },
+          {
+            "Name": "Launch Time",
+            "Url": "snowball_windup",
+            "ValueType": "FIXED",
+            "Value": [
+              4
             ]
           }
         ]
@@ -40164,11 +40795,123 @@
         ]
       },
       {
+        "Title": "Launch Snowball",
+        "Url": "launch_snowball",
+        "HeroAbilityUrl": "tusk_launch_snowball",
+        "ID": 5641,
+        "Description": "Launch the snowball toward the target.",
+        "Lore": "Into the great wide white!",
+        "Notes": [
+          "The snowball destroys trees.",
+          "The snowball travels at 675 movement speed.",
+          "Doesn't carry illusions, but will carry Meepo clones and other units that Tusk controls.",
+          "Each Meepo clone added to the snowball will add its own bonus damage and speed."
+        ],
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+          "DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+        ],
+        "AbilityCastPoint": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "AbilitySpecial": []
+      },
+      {
+        "Title": "Walrus Kick",
+        "Url": "walrus_kick",
+        "HeroAbilityUrl": "tusk_walrus_kick",
+        "ID": 5672,
+        "Description": "Kicks the target unit back 900 units and slows their movement by 40% for 4 seconds.",
+        "Type": "DOTA_ABILITY_TYPE_BASIC",
+        "Behavior": [
+          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        ],
+        "TargetTeam": [
+          "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        ],
+        "TargetType": [
+          "DOTA_UNIT_TARGET_HERO",
+          "DOTA_UNIT_TARGET_BASIC",
+          "DOTA_UNIT_TARGET_MECHANICAL"
+        ],
+        "TargetFlags": [
+          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        ],
+        "AbilityCastPoint": [
+          0.2
+        ],
+        "AbilityCastRange": [
+          128
+        ],
+        "AbilityCooldown": [
+          12
+        ],
+        "AbilityManaCost": [
+          100
+        ],
+        "AbilitySpecial": [
+          {
+            "Name": "Crit Multiplier",
+            "Url": "crit_multiplier",
+            "Value": [
+              0
+            ]
+          },
+          {
+            "Name": "Air Time",
+            "Url": "air_time",
+            "Value": [
+              1
+            ]
+          },
+          {
+            "Name": "Kick Push",
+            "Url": "push_length",
+            "ValueType": "FIXED",
+            "Value": [
+              900
+            ]
+          },
+          {
+            "Name": "Move Slow",
+            "Url": "move_slow",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              0.4
+            ]
+          },
+          {
+            "Name": "Slow Duration",
+            "Url": "slow_duration",
+            "ValueType": "FIXED",
+            "Value": [
+              4
+            ]
+          },
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "ValueType": "FIXED",
+            "Value": [
+              12
+            ]
+          }
+        ]
+      },
+      {
         "Title": "Walrus PUNCH!",
         "Url": "walrus_punch",
         "HeroAbilityUrl": "tusk_walrus_punch",
         "ID": 5568,
-        "Description": "Tusk connects with his mighty Walrus Punch, a critical strike so powerful it launches its victim into the air. The victim is slowed upon landing.",
+        "Description": "Tusk connects with his mighty Walrus Punch, a critical strike so powerful it launches its victim into the air. The victim is slowed upon landing. Upgradable by Aghanim's Scepter.",
         "Lore": "It never matters who throws the first punch, only who throws the last.",
         "Notes": [
           "Walrus Punch cannot miss.",
@@ -40241,37 +40984,26 @@
             "Value": [
               0.4
             ]
+          },
+          {
+            "Name": "Push Length",
+            "Url": "push_length",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              1000
+            ]
+          },
+          {
+            "Name": "Cooldown Scepter",
+            "Url": "cooldown_scepter",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              20,
+              16,
+              12
+            ]
           }
         ]
-      },
-      {
-        "Title": "Launch Snowball",
-        "Url": "launch_snowball",
-        "HeroAbilityUrl": "tusk_launch_snowball",
-        "ID": 5641,
-        "Description": "Launch the snowball toward the target.",
-        "Lore": "Into the great wide white!",
-        "Notes": [
-          "The snowball destroys trees.",
-          "The snowball travels at 175% of Tusk's movement speed.",
-          "Doesn't carry illusions, but will carry Meepo clones and other units that Tusk controls.",
-          "Each Meepo clone added to the snowball will add its own bonus damage and speed."
-        ],
-        "Type": "DOTA_ABILITY_TYPE_BASIC",
-        "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
-          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
-          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
-          "DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-        ],
-        "AbilityCastPoint": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "AbilitySpecial": []
       }
     ],
     "Subtitles": null
@@ -40957,15 +41689,14 @@
         "ID": 5588,
         "Description": "When activated, all damage dealt to you will heal instead of harm. Most negative buffs will also be removed. If the ability is not on cooldown, it will passively activate if your hitpoints drop below 400. Upgradable by Aghanim's Scepter.",
         "Lore": "The most unnatural of all the gifts of the Font of Avernus, this power defies mortal understanding. What should hurt, instead heals; and what should kill gives strength anew.",
+        "Notes": [
+          "Borrowed Time can be activated while Abaddon is disabled, but not while silenced."
+        ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-        ],
-        "AbilityCastPoint": [
-          0.452,
-          0.452,
-          0.452
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+          "DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
         ],
         "AbilityCooldown": [
           60,
@@ -41094,16 +41825,13 @@
           0.4
         ],
         "AbilityCooldown": [
-          15,
-          15,
-          15,
-          15
+          14,
+          13,
+          12,
+          11
         ],
         "AbilityChannelTime": [
-          1.4,
-          1.4,
-          1.4,
-          1.4
+          1.2
         ],
         "AbilityManaCost": [
           100
@@ -41117,7 +41845,7 @@
             "Url": "cast_time",
             "ValueType": "FIXED",
             "Value": [
-              1.8
+              1.6
             ]
           },
           {
@@ -41756,25 +42484,25 @@
         "Url": "moment_of_courage",
         "HeroAbilityUrl": "legion_commander_moment_of_courage",
         "ID": 5597,
-        "Description": "When attacked, Legion Commander has a chance to immediately attack again with bonus lifesteal.",
+        "Description": "When attacked, Legion Commander has a chance to immediately counterattack with bonus lifesteal.",
         "Lore": "Tresdin knows that an enemy's most vulnerable moment often follows their fiercest stroke.",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         ],
         "AbilityCooldown": [
+          2.7,
+          2.1,
+          1.5,
           0.9
         ],
         "AbilitySpecial": [
           {
-            "Name": "Chance",
+            "Name": "Counterattack Chance",
             "Url": "trigger_chance",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.16,
-              0.18,
-              0.2,
-              0.22
+              0.25
             ]
           },
           {
@@ -41790,10 +42518,10 @@
             "Url": "hp_leech_percent",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.2,
-              0.4,
-              0.6,
-              0.8
+              0.55,
+              0.65,
+              0.75,
+              0.85
             ]
           }
         ]
@@ -41803,7 +42531,7 @@
         "Url": "duel",
         "HeroAbilityUrl": "legion_commander_duel",
         "ID": 5598,
-        "Description": "Legion Commander and the target enemy hero are forced to attack each other for a short duration. Neither hero can use items or abilities. If either hero dies during the duration, the hero winning the Duel gains permanent bonus damage.",
+        "Description": "Legion Commander and the target enemy hero are forced to attack each other for a short duration. Neither hero can use items or abilities. If either hero dies during the duration, the hero winning the Duel gains permanent bonus damage. Upgradable by Aghanim's Scepter.",
         "Lore": "To face a soldier of Stonehall in single combat is a challenge few can resist.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -42429,7 +43157,10 @@
             "Url": "rock_damage",
             "ValueType": "FIXED",
             "Value": [
-              125
+              50,
+              100,
+              150,
+              200
             ]
           },
           {
@@ -42449,17 +43180,6 @@
             "ValueType": "FIXED",
             "Value": [
               1200
-            ]
-          },
-          {
-            "Name": "Silence Duration",
-            "Url": "silence_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              3.5,
-              4,
-              4.5,
-              5
             ]
           },
           {
@@ -42602,7 +43322,7 @@
         "Url": "geomagnetic_grip",
         "HeroAbilityUrl": "earth_spirit_geomagnetic_grip",
         "ID": 5610,
-        "Description": "Earth Spirit pulls the target Stone Remnant or allied unit to his location. Enemies struck by the pulled target will be silenced, and take damage if the pulled target is a Stone Remnant.",
+        "Description": "Earth Spirit pulls the target Stone Remnant or allied unit to his location. Enemies struck by the gripped target will be silenced, and take damage if the gripped target is a Stone Remnant.",
         "Lore": "Like calls to like. Even the minerals found in the blood and bones of living beings are not immune to the call of the Earth Spirit.",
         "Notes": [
           "Will not work on a unit inside Chronosphere, Duel, or Black Hole."
@@ -42634,56 +43354,51 @@
           13
         ],
         "AbilityManaCost": [
-          75
+          100
         ],
         "AbilitySpecial": [
           {
             "Name": "Radius",
             "Url": "radius",
-            "ValueType": "FIXED",
             "Value": [
               180
             ]
           },
           {
-            "Name": "Stone Damage",
-            "Url": "rock_damage",
-            "ValueType": "FIXED",
+            "Name": "Miss Rate",
+            "Url": "miss_rate",
             "Value": [
-              50,
-              125,
-              200,
-              275
-            ]
-          },
-          {
-            "Name": "Speed",
-            "Url": "speed",
-            "ValueType": "FIXED",
-            "Value": [
-              800
-            ]
-          },
-          {
-            "Name": "Stun Duration",
-            "Url": "stun_duration",
-            "ValueType": "FIXED",
-            "Value": [
-              1,
-              1.5,
-              2,
-              2.5
+              75
             ]
           },
           {
             "Name": "Silence Duration",
-            "Url": "silence_duration",
+            "Url": "miss_duration",
             "ValueType": "FIXED",
             "Value": [
               2.5,
               3,
               3.5,
               4
+            ]
+          },
+          {
+            "Name": "Hero Pull Speed",
+            "Url": "pull_units_per_second_heroes",
+            "ValueType": "FIXED",
+            "Value": [
+              600
+            ]
+          },
+          {
+            "Name": "Remnant Damage",
+            "Url": "rock_damage",
+            "ValueType": "FIXED",
+            "Value": [
+              50,
+              100,
+              150,
+              200
             ]
           },
           {
@@ -42695,11 +43410,11 @@
             ]
           },
           {
-            "Name": "Hero Pull Speed",
-            "Url": "pull_units_per_second_heroes",
+            "Name": "Speed",
+            "Url": "speed",
             "ValueType": "FIXED",
             "Value": [
-              600
+              800
             ]
           },
           {
@@ -42975,7 +43690,7 @@
         "Url": "reflection",
         "HeroAbilityUrl": "terrorblade_reflection",
         "ID": 5619,
-        "Description": "Terrorblade brings forth an invulnerable dark reflection of the targeted enemy Hero. The enemy Hero is slowed and attacked by the reflection for a short duration.",
+        "Description": "Terrorblade brings forth an invulnerable dark reflection of the targeted enemy hero. The enemy hero is slowed and attacked by the reflection for a short duration.",
         "Lore": "In the fractal prison of Foulfell, Terrorblade learned the truth of this old tale: you are your own worst enemy. Now it is a lesson he teaches others.",
         "Notes": [
           "Reflections are untargetable, invulnerable illusions.",
@@ -43002,7 +43717,7 @@
           10
         ],
         "AbilityCastRange": [
-          275
+          325
         ],
         "AbilityCastPoint": [
           0.3
@@ -43028,9 +43743,9 @@
             "ValueType": "FIXED",
             "Value": [
               -60,
-              -50,
               -40,
-              -30
+              -20,
+              "-0.0"
             ]
           },
           {
@@ -43039,9 +43754,9 @@
             "ValueType": "PERCENTAGE",
             "Value": [
               0.4,
-              0.5,
               0.6,
-              0.7
+              0.8,
+              1
             ]
           },
           {
@@ -43225,7 +43940,7 @@
         "Url": "sunder",
         "HeroAbilityUrl": "terrorblade_sunder",
         "ID": 5622,
-        "Description": "Severs the life from both Terrorblade and a target Hero, exchanging a percentage of both units' current health. Some health points must remain.",
+        "Description": "Severs the life from both Terrorblade and a target hero, exchanging a percentage of both units' current health. Some health points must remain.",
         "Lore": "You didn't need that life, did you? The demon marauder steals that which you hold most dear.",
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -43424,6 +44139,9 @@
         "ID": 5625,
         "Description": "Summons 4 fire spirits that circle around Phoenix. Each spirit can be launched independently at a targeted area of effect. Affected enemy units take damage over time and have their attack speed greatly reduced.",
         "Lore": "The ever-collapsing core of Phoenix often emits short-lived bursts of conscious light.",
+        "Notes": [
+          "Fire Spirits reveal the area they strike for 1 second."
+        ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
@@ -43781,7 +44499,7 @@
         "Url": "launch_fire_spirit",
         "HeroAbilityUrl": "phoenix_launch_fire_spirit",
         "ID": 5631,
-        "Description": "Each fire spirit can be launched independently at a targeted area of effect. Affected enemy units take damage over time and have their attack speed greatly reduced.",
+        "Description": "Each fire spirit can be launched independently at a targeted area of effect. Affected enemy units take damage over time and have their attack speed greatly reduced. Reveals the area it strikes for 1 second.",
         "Lore": "PKAWW! BOOM",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
@@ -44202,7 +44920,8 @@
           "DOTA_UNIT_TARGET_TEAM_ENEMY"
         ],
         "TargetType": [
-          "DOTA_UNIT_TARGET_HERO"
+          "DOTA_UNIT_TARGET_HERO",
+          "DOTA_UNIT_TARGET_BASIC"
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "TargetFlags": [
@@ -44215,13 +44934,13 @@
           0.3
         ],
         "AbilityCooldown": [
-          3
+          2.5
         ],
         "AbilityManaCost": [
-          55,
+          50,
+          60,
           70,
-          85,
-          100
+          80
         ],
         "AbilitySpecial": [
           {
@@ -44280,12 +44999,11 @@
         "Url": "false_promise",
         "HeroAbilityUrl": "oracle_false_promise",
         "ID": 5640,
-        "Description": "Temporarily alters an ally's destiny, rendering them invisible while moving, attacking, or using abilities, and delaying any healing or damage taken until False Promise ends. Any healing that is delayed by False Promise is doubled. Removes most negative status effects and disables when applied.",
-        "Lore": "As false prophets are blind to the future, so your enemies shall be blind to your allies.",
+        "Description": "Temporarily alters an ally's destiny, delaying any healing or damage taken until False Promise ends. Any healing that is delayed by False Promise is doubled. Removes most negative status effects and disables while active.",
+        "Lore": "Foes and false prophets oft make lies of men's fates.",
         "Notes": [
           "Delayed damage and healing will take armor and magic resistance reductions into account when received.",
-          "The delayed damage and healing takes effect as soon as the target becomes vulnerable.",
-          "Heroes hidden by False Promise can still be revealed by True Sight."
+          "The delayed damage and healing takes effect as soon as the target becomes vulnerable."
         ],
         "Type": "DOTA_ABILITY_TYPE_ULTIMATE",
         "Behavior": [
@@ -44304,7 +45022,9 @@
           0.3
         ],
         "AbilityCooldown": [
-          20
+          80,
+          60,
+          40
         ],
         "AbilityManaCost": [
           200
@@ -44315,9 +45035,9 @@
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
+              6,
               7,
-              8,
-              9
+              8
             ]
           }
         ]
@@ -44438,7 +45158,7 @@
             "Url": "activation_time",
             "ValueType": "FIXED",
             "Value": [
-              1.75
+              0.5
             ]
           },
           {
@@ -44516,7 +45236,7 @@
             "Url": "explode_delay",
             "ValueType": "FIXED",
             "Value": [
-              2
+              1.5
             ]
           },
           {
@@ -44543,7 +45263,7 @@
             "Url": "activation_time",
             "ValueType": "FIXED",
             "Value": [
-              2
+              1.5
             ]
           },
           {
@@ -44600,10 +45320,10 @@
           0
         ],
         "AbilityCooldown": [
-          180,
-          170,
           160,
-          150
+          140,
+          120,
+          100
         ],
         "AbilityManaCost": [
           100,
@@ -44679,7 +45399,9 @@
         "Behavior": [
           "DOTA_ABILITY_BEHAVIOR_POINT",
           "DOTA_ABILITY_BEHAVIOR_AOE",
-          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+          "DOTA_ABILITY_BEHAVIOR_UNRESTRICTED",
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
         ],
         "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastRange": [
@@ -44706,15 +45428,16 @@
         "Url": "minefield_sign",
         "HeroAbilityUrl": "techies_minefield_sign",
         "ID": 5644,
-        "Description": "Plant a warning sign to remind enemies to step lightly. Only one sign can exist at a time.",
+        "Description": "Plant a warning sign to remind enemies to step lightly. Only one sign can exist at a time. Lasts 180 seconds. Upgradable by Aghanim's Scepter, allowing Minefield Sign to hide any Land Mines, Stasis Traps, and Remote Mines in a 125 radius from True Sight.",
         "Lore": "Watch your step!",
         "Type": "DOTA_ABILITY_TYPE_BASIC",
         "Behavior": [
-          "DOTA_ABILITY_BEHAVIOR_POINT"
+          "DOTA_ABILITY_BEHAVIOR_POINT",
+          "DOTA_ABILITY_BEHAVIOR_AOE"
         ],
         "DamageType": "DAMAGE_TYPE_NONE",
         "AbilityCastRange": [
-          500
+          10
         ],
         "AbilityCastPoint": [
           0,
@@ -44723,12 +45446,28 @@
           0
         ],
         "AbilityCooldown": [
-          120
+          360
         ],
         "AbilityManaCost": [
           0
         ],
-        "AbilitySpecial": []
+        "AbilitySpecial": [
+          {
+            "Name": "Aura Radius",
+            "Url": "aura_radius",
+            "Value": [
+              125
+            ]
+          },
+          {
+            "Name": "Sign Duration",
+            "Url": "lifetime",
+            "ValueType": "FIXED",
+            "Value": [
+              180
+            ]
+          }
+        ]
       },
       {
         "Title": "Remote Mines",
@@ -44910,7 +45649,7 @@
         "Url": "arctic_burn",
         "HeroAbilityUrl": "winter_wyvern_arctic_burn",
         "ID": 5651,
-        "Description": "Winter Wyvern soars upon an arctic wind, granting her unobstructed movement and allowing her to exhale a blistering chill into each attack. While soaring, her attacks travel further and faster, and slow enemies with a burning freeze that strips them of 6% of their current health each second. Her sight is also hardened against night's chill, granting her 400 additional vision range at night while soaring.",
+        "Description": "Winter Wyvern soars upon an arctic wind, granting her unobstructed movement and allowing her to exhale a blistering chill into each attack. While soaring, her attacks travel further and faster, and slow enemies with a magical freeze that strips them of 8% of their current health each second. Her sight is also hardened against night's chill, granting her 400 additional vision range at night while soaring.",
         "Lore": "The same organ where some dragons stoke their inner flame is, in Auroth, a crucible of unimaginable cold. From deep within her frosty gullet, an exhalation sends enemies into burning agony.",
         "Notes": [
           "Enemy units can only receive the Arctic Burn debuff once per cast.",
@@ -44922,7 +45661,7 @@
           "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
           "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
         ],
-        "DamageType": "DAMAGE_TYPE_PURE",
+        "DamageType": "DAMAGE_TYPE_MAGICAL",
         "AbilityCastPoint": [
           0,
           0,
@@ -44950,6 +45689,13 @@
             ]
           },
           {
+            "Name": "Max Attacks",
+            "Url": "max_attacks",
+            "Value": [
+              5
+            ]
+          },
+          {
             "Name": "Flight Duration",
             "Url": "duration",
             "ValueType": "FIXED",
@@ -44973,7 +45719,7 @@
             "Url": "percent_damage",
             "ValueType": "PERCENTAGE",
             "Value": [
-              0.06
+              0.08
             ]
           },
           {
@@ -45037,7 +45783,7 @@
         "Description": "Launches a ball of brittle ice toward an enemy. The ice shatters on impact, leaving the primary target completely unaffected, while hurling damaging splinters into nearby enemies in a 500 radius. Enemies struck by these splinters are slowed by 25%.",
         "Lore": "Produced slowly by specialized vesicles in her frozen gullet, Winter Wyvern blast shards of ice at her enemies.",
         "Notes": [
-          "The primary projectile moves at 500 movespeed, or reaches the target in 1.35s, whichever is faster.",
+          "The primary projectile moves at 500 movespeed, or reaches the target in 1 second, whichever is faster up to 4000 speed.",
           "Neither the primary or secondary projectiles can be disjointed."
         ],
         "Type": "DOTA_ABILITY_TYPE_BASIC",
@@ -45082,14 +45828,14 @@
             "Name": "Projectile Speed",
             "Url": "projectile_speed",
             "Value": [
-              500
+              650
             ]
           },
           {
             "Name": "Projectile Max_time",
             "Url": "projectile_max_time",
             "Value": [
-              1.35
+              1
             ]
           },
           {
@@ -45129,7 +45875,7 @@
             "Url": "secondary_projectile_speed",
             "ValueType": "FIXED",
             "Value": [
-              600
+              650
             ]
           }
         ]
@@ -45204,14 +45950,6 @@
               0.05,
               0.06
             ]
-          },
-          {
-            "Name": "Tick Rate",
-            "Url": "tick_rate",
-            "ValueType": "PERCENTAGE",
-            "Value": [
-              0.1
-            ]
           }
         ]
       },
@@ -45220,7 +45958,7 @@
         "Url": "winters_curse",
         "HeroAbilityUrl": "winter_wyvern_winters_curse",
         "ID": 5654,
-        "Description": "Winter Wyvern freezes an enemy in place while striking those nearby with a maddening curse which causes them to attack their frozen ally.",
+        "Description": "Winter Wyvern freezes an enemy in place while striking those nearby with a maddening curse which causes them to attack their frozen ally. Those cursed to attack their ally take 70% less damage.",
         "Lore": "The oldest of the bookwurm’s spells, this curse lends truth to the old saw: sometimes the enemy of my enemy is my enemy still.",
         "Notes": [
           "If the target dies to its allies, Winter Wyvern will receive credit for the kill."
@@ -45251,30 +45989,38 @@
           0.3
         ],
         "AbilityCooldown": [
-          90,
-          80,
-          70
+          110,
+          100,
+          90
         ],
         "AbilityManaCost": [
           250
         ],
         "AbilitySpecial": [
           {
+            "Name": "Curse Radius",
+            "Url": "radius",
+            "ValueType": "FIXED",
+            "Value": [
+              400
+            ]
+          },
+          {
+            "Name": "Curse Damage Reduction",
+            "Url": "damage_reduction",
+            "ValueType": "PERCENTAGE",
+            "Value": [
+              0.7
+            ]
+          },
+          {
             "Name": "Curse Duration",
             "Url": "duration",
             "ValueType": "FIXED",
             "Value": [
               2.5,
-              2.75,
-              3
-            ]
-          },
-          {
-            "Name": "Curse Radius",
-            "Url": "radius",
-            "ValueType": "FIXED",
-            "Value": [
-              350
+              3,
+              3.5
             ]
           }
         ]
